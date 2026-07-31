@@ -1,0 +1,396 @@
+<!--
+	这是新的成就表，增加的分类。
+
+	Desc 菜单要显示的名称
+	SpeNameBonus依次为各称号的编号，分别代表''....
+	ID 子类成就ID
+	AchievementPoint 成就分数
+	Threshold  成就目标（进度条）
+	title 称号 fla格式 titleColor 称号颜色  如果称号颜色为0xFFFFFF 显示原本样式
+			 路径 resource\achieve\title
+			 其他颜色路径 resource\achieve\icon
+	AbilityTitle 0|1  是否是能力加成称号  将会在个人信息面板中出现。
+	titleColor="0xFFFFFF">
+
+	icon表示奖励的成就点的图标，直接按照AchievementPoint自动匹配了
+	1 对应的资源是 10
+	2 对应的资源是 15
+	3 对应的资源是 30
+	4 对应的资源是 20
+	5 对应的资源是 40
+	6 对应的资源是 50
+	7 对应的资源是 25
+	8 对应的资源是 5
+	proicon表示单项前面的icon 路径resource\achieve\icon
+
+
+			 * type 表示成就类别
+				0 常态成就
+				1 精灵扑捉
+				2 精灵对战
+				3 精灵升级
+				4 要塞相关
+				5 游戏相关
+				6 捕猎场捕捉精灵
+-->
+
+<AchievementRules>
+	<type ID="0" Desc="赛尔类">
+		<Branches Desc="其他">
+			<!--每一个branch最多有30个rule，全部收集满了前端就会自动折叠，SourceType是数据获取的来源，现有TTILE，MILESTONE，STATISTIC 分别对应称号，里程碑，统计数据，
+			SourceKey是对应的key值，StatisticType是统计类型，SET表示集合，COUNT表示计数。
+			对于每条rule,proicon是前端显示的图标，SpeNameBonus是称号id，-->
+			<Branch ID="129" type="0" Desc="头衔" SourceType="TITLE">
+				<Rule ID="1" Threshold="1" AchievementPoint="10" icon="1" proicon="503" SpeNameBonus="283"
+					  title="初心不负" Desc="初心不负" AbilityTitle="1" titleColor="0xFFFFFF"/>
+				<Rule ID="2" Threshold="2" AchievementPoint="10" icon="1" proicon="3000" SpeNameBonus="1000"
+					  title="仰望星空" Desc="仰望星空" titleColor="0xFFFFFF" AbilityTitle="1"/>
+				<Rule ID="3" Threshold="3" AchievementPoint="10" icon="1" proicon="3001" SpeNameBonus="1001"
+					  title="NIEO开拓者" Desc="NIEO开拓者" titleColor="0xFFFFFF" AbilityTitle="1"/>
+				<Rule ID="4" Threshold="4" AchievementPoint="10" icon="1" proicon="3002" SpeNameBonus="1002"
+					  title="横贯八方" Desc="第一届爱尼杯冠军" titleColor="0xFFFFFF" AbilityTitle="1"/>
+				<Rule ID="5" Threshold="5" AchievementPoint="10" icon="1" proicon="3003" SpeNameBonus="1003"
+					  title="玄武好可怕" Desc="玄武好可怕" titleColor="0xFFFFFF" AbilityTitle="1"/>
+				<Rule ID="6" Threshold="6" AchievementPoint="10" icon="1" proicon="3004" SpeNameBonus="1004"
+					  title="布鲁专家" Desc="布鲁专家" titleColor="0xFFFFFF" AbilityTitle="1"/>
+				<Rule ID="7" Threshold="7" AchievementPoint="10" icon="1" proicon="3009" SpeNameBonus="1009"
+					  title="愚人金" Desc="愚人节限定" titleColor="0xFFFFFF" AbilityTitle="1"/>
+				<Rule ID="8" Threshold="8" AchievementPoint="10" icon="1" proicon="3005" SpeNameBonus="1005"
+					  title="圣堂裁决1" Desc="圣堂赛季达到900分" titleColor="0xFFFFFF" AbilityTitle="1"/>
+				<Rule ID="9" Threshold="9" AchievementPoint="10" icon="1" proicon="3006" SpeNameBonus="1007"
+					  title="圣堂裁决2" Desc="圣堂赛季达到1200分" titleColor="0xFFFFFF" AbilityTitle="1"/>
+				<Rule ID="10" Threshold="10" AchievementPoint="10" icon="1" proicon="3007" SpeNameBonus="1008"
+					  title="圣堂裁决3" Desc="圣堂赛季达到1500分" titleColor="0xFFFFFF" AbilityTitle="1"/>
+				<Rule ID="11" Threshold="11" AchievementPoint="10" icon="1" proicon="3010" SpeNameBonus="1010"
+					  title="星际常客" Desc="连续签到28天" titleColor="0xFFFFFF" AbilityTitle="1"/>
+				<Rule ID="12" Threshold="12" AchievementPoint="10" icon="1" proicon="3014" SpeNameBonus="1014"
+					  title="苍龙独尊1" Desc="苍龙赛季达到900分" titleColor="0xFFFFFF" AbilityTitle="1"/>
+				<Rule ID="13" Threshold="13" AchievementPoint="10" icon="1" proicon="3014" SpeNameBonus="1015"
+					  title="苍龙独尊2" Desc="苍龙赛季达到1200分" titleColor="0xFFFFFF" AbilityTitle="1"/>
+				<Rule ID="14" Threshold="14" AchievementPoint="10" icon="1" proicon="3014" SpeNameBonus="1016"
+					  title="苍龙独尊3" Desc="苍龙赛季达到1500分" titleColor="0xFFFFFF" AbilityTitle="1"/>
+				<Rule ID="15" Threshold="15" AchievementPoint="10" icon="1" proicon="3021" SpeNameBonus="1021"
+					  title="四驱兄弟" Desc="第二届爱尼杯冠军" titleColor="0xFFFFFF" AbilityTitle="1"/>
+
+
+
+
+				<Rule ID="31" Threshold="31" AchievementPoint="10" icon="1" proicon="1150" SpeNameBonus="268"
+					  title="皇帝的意志" Desc="皇帝的意志" titleColor="0xFFFFFF" AbilityTitle="1"/>
+			</Branch>
+
+		</Branches>
+		<Branches Desc="竞技战">
+			<Branch ID="34" Desc="获胜次数" introl="在赛尔竞技战中获得更多的胜利场次" proicon="39" type="0"
+					isShowPro="1">
+				<Rule ID="1" Threshold="10" AchievementPoint="10" Desc="获得10次胜利" proicon="39" icon="1"/>
+				<Rule ID="2" Threshold="30" AchievementPoint="10" Desc="获得30次胜利" proicon="39" icon="1"/>
+				<Rule ID="3" Threshold="50" AchievementPoint="15" Desc="获得50次胜利" proicon="39" icon="2"/>
+				<Rule ID="4" Threshold="100" AchievementPoint="15" Desc="获得100次胜利" proicon="39" icon="2"/>
+			</Branch>
+		</Branches>
+	</type>
+
+	<type ID="1" Desc="精灵类">
+		<Branches Desc="精灵收集">
+			<Branch ID="1" Desc="收集数量" introl="星际探索中会遇到各种各样的危机，寻找更多精灵伙伴一起踏上探索旅途吧。"
+					proicon="1" type="0" isShowPro="1" SourceType="STATISTIC" SourceKey="PetCollectInfo" StatisticType="SET">
+				<Rule ID="1" Threshold="5" AchievementPoint="10" Desc="收集5种精灵" proicon="1" icon="1"/>
+				<Rule ID="2" Threshold="10" AchievementPoint="10" Desc="收集10种精灵" proicon="1" icon="1"/>
+				<Rule ID="3" Threshold="20" AchievementPoint="10" Desc="收集20种精灵" proicon="1" icon="1"/>
+				<Rule ID="4" Threshold="30" AchievementPoint="10" Desc="收集30种精灵" proicon="1" icon="1"/>
+				<Rule ID="5" Threshold="40" AchievementPoint="10" Desc="收集40种精灵" proicon="1" icon="1"/>
+				<Rule ID="6" Threshold="50" AchievementPoint="10" Desc="收集50种精灵" proicon="1" SpeNameBonus="1"
+					  title="精灵爱好者" icon="1"/>
+				<Rule ID="7" Threshold="60" AchievementPoint="10" Desc="收集60种精灵" proicon="1" icon="1"/>
+				<Rule ID="8" Threshold="70" AchievementPoint="10" Desc="收集70种精灵" proicon="1" icon="1"/>
+				<Rule ID="9" Threshold="80" AchievementPoint="10" Desc="收集80种精灵" proicon="1" icon="1"/>
+				<Rule ID="10" Threshold="90" AchievementPoint="10" Desc="收集90种精灵" proicon="1" icon="1"/>
+				<Rule ID="11" Threshold="100" AchievementPoint="15" Desc="收集100种精灵" proicon="1" SpeNameBonus="2"
+					  title="精灵收藏家" icon="2"/>
+			</Branch>
+		</Branches>
+
+		<!--<Branches Desc="精灵捕猎场">-->
+		<!--	<Branch ID="55" Desc="精灵捕捉大赛" introl="精灵捕捉大赛开幕咯！来看看谁的捕捉技巧最高超，谁才是真正的捕猎之王！" proicon="60" type="6" isShowPro="1">-->
+		<!--		<Rule ID="1" Threshold="10" AchievementPoint="10"  Desc="大赛捕捉10只精灵" proicon="60" icon="1" />-->
+		<!--		<Rule ID="2" Threshold="20" AchievementPoint="10"  Desc="大赛捕捉20只精灵" proicon="60" icon="1" />-->
+		<!--		<Rule ID="3" Threshold="50" AchievementPoint="10"  Desc="大赛捕捉50只精灵" proicon="60" icon="1" />-->
+		<!--		<Rule ID="4" Threshold="100" AchievementPoint="10"  Desc="大赛捕捉100只精灵" proicon="60" icon="1" SpeNameBonus="45"  title="捕猎能手" />-->
+		<!--	</Branch>-->
+		<!--</Branches>-->
+	</type>
+
+	<type ID="2" Desc="挑战类">
+		<Branches Desc="SPT挑战">
+			<Branch ID="2" Desc="SPT个人挑战" introl="一些星球上散发着强大的气息，你能战胜这些精灵王者么？" proicon="2"
+					type="2" isShowPro="0" SourceType="MILESTONE">
+				<Rule ID="1" Threshold="301" AchievementPoint="10" Desc="击败蘑菇怪" proicon="1" icon="1"
+					  SourceKey="BossMoGuGuai"/>
+				<Rule ID="2" Threshold="302" AchievementPoint="10" Desc="击败钢牙鲨" proicon="2" icon="1"
+					  SourceKey="BossGangYaSha"/>
+				<Rule ID="3" Threshold="303" AchievementPoint="10" Desc="击败里奥斯" proicon="3" icon="1"
+					  SourceKey="BossLiAoSi"/>
+				<Rule ID="4" Threshold="304" AchievementPoint="15" Desc="击败阿克希亚" proicon="4" icon="2"
+					  SourceKey="BossAKeXiYa"/>
+				<Rule ID="5" Threshold="305" AchievementPoint="10" Desc="击败提亚斯" proicon="5" icon="1"
+					  SourceKey="BossTiYaSi"/>
+				<Rule ID="6" Threshold="306" AchievementPoint="15" Desc="击败雷伊" proicon="6" SpeNameBonus="3"
+					  title="孤傲挑战者" icon="2" SourceKey="BossLeiYi"/>
+				<Rule ID="7" Threshold="307" AchievementPoint="10" Desc="击败纳多雷" proicon="7" icon="1"
+					  SourceKey="BossNaDuoLei"/>
+				<Rule ID="8" Threshold="308" AchievementPoint="10" Desc="击败雷纳多" proicon="8" icon="1"
+					  SourceKey="BossLeiNaDuo"/>
+				<Rule ID="9" Threshold="309" AchievementPoint="10" Desc="击败尤纳斯" proicon="9" icon="1"
+					  SourceKey="BossYouNaSi"/>
+				<Rule ID="10" Threshold="310" AchievementPoint="10" Desc="击败魔狮迪露" proicon="10" icon="1"
+					  SourceKey="BossMoShiDiLu"/>
+				<Rule ID="11" Threshold="311" AchievementPoint="15" Desc="击败哈莫雷特" proicon="11" SpeNameBonus="4"
+					  title="龙族盟友" icon="2" SourceKey="BossHaMoLeiTe"/>
+				<Rule ID="12" Threshold="312" AchievementPoint="10" Desc="击败奈尼芬多" proicon="12" icon="1"
+					  SourceKey="BossNaiNiFenDuo"/>
+				<Rule ID="13" Threshold="314" AchievementPoint="20" Desc="击败塔西亚" proicon="201" icon="4"
+					  SourceKey="BossTaXiYa"/>
+				<Rule ID="14" Threshold="315" AchievementPoint="20" Desc="击败塔克林" proicon="202" icon="4"
+					  SourceKey="BossTaKeLin"/>
+				<Rule ID="15" Threshold="316" AchievementPoint="15" Desc="击败厄尔塞拉" proicon="203" icon="2"
+					  SourceKey="BossGuangMuJi"/>
+				<Rule ID="16" Threshold="317" AchievementPoint="15" Desc="击败劳克蒙德" proicon="204" icon="2"/>
+				<Rule ID="17" Threshold="318" AchievementPoint="10" Desc="击败克拉尼特" proicon="205" icon="1"
+					  SourceKey="BossKeLaNiTe1"/>
+				<Rule ID="18" Threshold="319" AchievementPoint="20" Desc="再次击败克拉尼特" proicon="206" icon="4"
+					  SpeNameBonus="27" title="烈火之翼" SourceKey="BossKeLaNiTe2"/>
+				<Rule ID="19" Threshold="320" AchievementPoint="15" Desc="击败墨杜萨" proicon="207" icon="2"
+					  SourceKey="BossMoDuSa"/>
+				<Rule ID="20" Threshold="321" AchievementPoint="15" Desc="击败肯佩德" proicon="208" icon="2" />
+				<Rule ID="21" Threshold="322" AchievementPoint="10" Desc="击败冰之妖兽" proicon="209" icon="1"
+					  SourceKey="BossYaLunSi"/>
+				<Rule ID="22" Threshold="323" AchievementPoint="15" Desc="击败德拉萨" proicon="210" icon="2" />
+				<Rule ID="23" Threshold="324" AchievementPoint="15" Desc="击败斯普林特" proicon="211" icon="2"/>
+				<Rule ID="24" Threshold="325" AchievementPoint="20" Desc="击败卡修斯" proicon="212" icon="4"
+					  SpeNameBonus="43" title="破空挑战者"/>
+				<Rule ID="25" Threshold="326" AchievementPoint="20" Desc="击败迪符特" proicon="213" icon="4"
+					  SpeNameBonus="44" title="炫彩守护者"/>
+				<Rule ID="26" Threshold="327" AchievementPoint="10" Desc="击败克莱芬" proicon="214" icon="1" />
+				<Rule ID="27" Threshold="328" AchievementPoint="15" Desc="再次击败克莱芬" proicon="214" icon="2"
+					  SpeNameBonus="53" title="灭焰勇士"/>
+				<Rule ID="28" Threshold="329" AchievementPoint="15" Desc="击败布莱克" proicon="215" icon="2"
+					  SpeNameBonus="55" title="光明救赎者"/>
+				<Rule ID="29" Threshold="330" AchievementPoint="15" Desc="击败古尔扎迪" proicon="216" icon="2"
+					  SpeNameBonus="56" title="毁灭者"/>
+				<Rule ID="30" Threshold="331" AchievementPoint="15" Desc="击败斯宾塞" proicon="217" icon="2"/>
+				<Rule ID="31" Threshold="332" AchievementPoint="15" Desc="击败米诺斯" proicon="218" icon="2"/>
+			</Branch>
+
+			<!--<Branch ID="119" Type="4" Desc="SPT勇者历险困难模式">-->
+			<!--    <Rule ID="1" Threshold="1" AchievementPoint="20" Desc="首次通过试炼之地" proicon="977"/>-->
+			<!--    <Rule ID="2" Threshold="2" AchievementPoint="20" Desc="首次通过进阶之途" proicon="977"/>-->
+			<!--    <Rule ID="3" Threshold="3" AchievementPoint="20" Desc="首次通过死亡峡谷" proicon="977"/>-->
+			<!--</Branch>-->
+
+		</Branches>
+
+		<Branches Desc="终极挑战">
+			<Branch ID="10" Desc="强大的盖亚" SourceType="MILESTONE"
+					introl="盖亚是精灵世界的战斗大师，掌握着许许多多原创的战斗技巧，颇具霸者风范，战胜盖亚无疑是强者的表现！"
+					proicon="10" type="2" isShowPro="1" SourceKey="BossGaiYa">
+				<Rule ID="2" Threshold="7" AchievementPoint="30" Desc="完胜盖亚" proicon="10" icon="3" SpeNameBonus="14"
+					  title="狂傲战栗者" isClick="1">
+					<children Desc="以周五规则战胜盖亚" SourceKey="BossGaiYa0"/>
+					<children Desc="以周六规则战胜盖亚" SourceKey="BossGaiYa1"/>
+					<children Desc="以周日规则战胜盖亚" SourceKey="BossGaiYa2"/>
+				</Rule>
+			</Branch>
+			<Branch ID="21" Desc="星系守护神" introl="在遇到这些强者之后，你能以雷霆的手段击败他们吗？" proicon="21"
+					type="2" isShowPro="0" SourceType="MILESTONE">
+				<Rule ID="1" Threshold="145" AchievementPoint="30" Desc="击败巴斯特" proicon="21" icon="3"
+					  SpeNameBonus="18" title="玄武终结者" SourceKey="BossTortoise"/>
+				<Rule ID="2" Threshold="146" AchievementPoint="30" Desc="击败朵拉格" proicon="26" icon="3"
+					  SpeNameBonus="19" title="青龙终结者" SourceKey="BossDragon"/>
+				<Rule ID="3" Threshold="147" AchievementPoint="30" Desc="击败泰格尔" proicon="54" icon="3"
+					  SpeNameBonus="40" title="白虎终结者"/>
+				<Rule ID="4" Threshold="148" AchievementPoint="30" Desc="击败菲尼克斯" proicon="71" icon="3"
+					  SpeNameBonus="54" title="朱雀终结者"/>
+				<Rule ID="5" Threshold="1785" AchievementPoint="30" Desc="击败麒麟" proicon="105" icon="3"
+					  SpeNameBonus="128" title="麒麟终结者"/>
+			</Branch>
+			<Branch ID="20" Desc="强大的厄尔塞拉"
+					introl="身披七色光羽的精灵出现在我们面前，在一个星期的7天里，厄尔塞拉有7种不同的姿态，你能一一击败它吗？"
+					proicon="20" type="2" isShowPro="0">
+				<Rule ID="1" Threshold="127" AchievementPoint="30" Desc="完胜厄尔塞拉" proicon="20" icon="3"
+					  SpeNameBonus="17" title="七色光羽" isClick="1" SourceType="MILESTONE">
+					<children Desc="以周一规则战胜厄尔塞拉" SourceKey="BossGuangMuJi1"/>
+					<children Desc="以周二规则战胜厄尔塞拉" SourceKey="BossGuangMuJi2"/>
+					<children Desc="以周三规则战胜厄尔塞拉" SourceKey="BossGuangMuJi3"/>
+					<children Desc="以周四规则战胜厄尔塞拉" SourceKey="BossGuangMuJi4"/>
+					<children Desc="以周五规则战胜厄尔塞拉" SourceKey="BossGuangMuJi5"/>
+					<children Desc="以周六规则战胜厄尔塞拉" SourceKey="BossGuangMuJi6"/>
+					<children Desc="以周日规则战胜厄尔塞拉" SourceKey="BossGuangMuJi0"/>
+				</Rule>
+			</Branch>
+			<Branch ID="31" Desc="传说中的谱尼" introl="这只是一个传说……" proicon="36" type="2" isShowPro="0"
+					SourceType="MILESTONE">
+				<Rule ID="1" Threshold="1" AchievementPoint="50" Desc="战胜谱尼" proicon="36" icon="6"
+					  SpeNameBonus="25" title="传说" SourceKey="BossPuNiZhenShen"/>
+			</Branch>
+			<!--<Branch ID="50" Desc="伏魔空间"  introl="魔界三巨头就在伏魔空间中，你有信心击败他们吗？" proicon="53" type="2" isShowPro="0">-->
+			<!--	<Rule ID="1" Threshold="612" AchievementPoint="15" Desc="击败梦魔狄修斯" proicon="53" icon="2"/>-->
+			<!--	<Rule ID="2" Threshold="671" AchievementPoint="15" Desc="击败魔龙王加布" proicon="61" icon="2"/>-->
+			<!--	<Rule ID="3" Threshold="676" AchievementPoint="15" Desc="击败血魔泰沃斯" proicon="72" icon="2"/>-->
+			<!--</Branch>-->
+		</Branches>
+
+		<!--<Branches Desc="大师杯">-->
+		<!--	<Branch ID="37" Desc="元素之战击败10次元素精灵">-->
+		<!--		<Rule ID="1" Threshold="10" AchievementPoint="15" Desc="元素之战击败10次元素精灵" proicon="42" icon="2"/>-->
+		<!--    </Branch>-->
+
+		<!--	<Branch ID="38" Desc="元素之战被元素精灵击败10次">-->
+		<!--		<Rule ID="1" Threshold="10" AchievementPoint="15" Desc="元素之战被元素精灵击败10次" proicon="43" icon="2"/>-->
+		<!--    </Branch>-->
+
+		<!--	<Branch ID="39" Desc="击败元素精灵" introl="元素之战，一个不一样的擂台，谁能坚持到最后？" proicon="44"  type="5" isShowPro="0">-->
+		<!--		<Rule ID="1" Threshold="550" AchievementPoint="20"  Desc="元素之战战胜元素精灵" proicon="44" icon="4" />-->
+		<!--	</Branch>-->
+		<!--</Branches>-->
+
+	</type>
+
+	<type ID="3" Desc="闯关类">
+		<Branches Desc="闯塔勇者">
+			<Branch ID="6" Desc="试炼之塔" introl="精灵与你的默契，在试炼中不断升华！" proicon="6" type="2" isShowPro="1"
+					SourceType="STATISTIC" SourceKey="FreshTowerMaxLevel" StatisticType="COUNT">
+				<Rule ID="1" Threshold="10" AchievementPoint="10" Desc="试炼之塔10层" proicon="6" icon="1"/>
+				<Rule ID="2" Threshold="30" AchievementPoint="10" Desc="试炼之塔30层" proicon="6" icon="1"
+					  SpeNameBonus="9" title="新人"/>
+			</Branch>
+
+			<Branch ID="7" Desc="勇者之塔" introl="不断攀登，经过千锤百炼的考验，步向勇者之路。" proicon="7" type="2"
+					isShowPro="1" SourceType="STATISTIC" SourceKey="BraveTowerMaxLevel" StatisticType="COUNT">
+				<Rule ID="1" Threshold="10" AchievementPoint="10" Desc="勇者之塔10层" proicon="7" icon="1"/>
+				<Rule ID="2" Threshold="30" AchievementPoint="15" Desc="勇者之塔30层" proicon="7" icon="2"/>
+				<Rule ID="3" Threshold="40" AchievementPoint="10" Desc="勇者之塔40层" proicon="7" icon="1"/>
+				<Rule ID="4" Threshold="50" AchievementPoint="10" Desc="勇者之塔50层" proicon="7" icon="1"/>
+				<Rule ID="5" Threshold="60" AchievementPoint="20" SpeNameBonus="10" title="勇者" Desc="勇者之塔60层"
+					  proicon="7" icon="4"/>
+				<Rule ID="6" Threshold="70" AchievementPoint="20" Desc="勇者之塔70层" proicon="7" icon="4"/>
+				<Rule ID="7" Threshold="80" AchievementPoint="20" Desc="勇者之塔80层" proicon="7" icon="4"/>
+				<Rule ID="8" Threshold="90" AchievementPoint="20" Desc="勇者之塔90层" proicon="7" icon="4"/>
+				<Rule ID="9" Threshold="100" AchievementPoint="20" Desc="勇者之塔100层" proicon="7" icon="4"
+					  title="未来继承者" SpeNameBonus="1011" />
+			</Branch>
+
+			<!--<Branch ID="24" Desc="战斗阶梯" introl="战斗阶梯，正如它的名字，永无止境的向上攀爬。精灵的选择、战术、作战能力、运气，这些都是战斗阶梯中不可或缺的因素！" proicon="23"  type="2" isShowPro="0">-->
+			<!--	<Rule ID="1" Threshold="101" AchievementPoint="10"  Desc="恐怖的深渊" proicon="24" icon="1"/>-->
+			<!--	<Rule ID="2" Threshold="201" AchievementPoint="15"  Desc="魔火战斗家" proicon="25" icon="2"/>-->
+			<!--	<Rule ID="3" Threshold="202" AchievementPoint="30"  Desc="主宰冰雪世界" proicon="31" icon="3" SpeNameBonus="21" title="冰雪主宰"/>-->
+			<!--</Branch>-->
+
+			<!--<Branch ID="27" Desc="掌控深渊" introl="战斗阶梯，正如它的名字，永无止境的向上攀爬。精灵的选择、战术、作战能力、运气，这些都是战斗阶梯中不可或缺的因素！" proicon="32"  type="2" isShowPro="1">-->
+			<!--	<Rule ID="1" Threshold="5" AchievementPoint="10"  Desc="战胜深渊BOSS 5 次" proicon="32" icon="1"/>-->
+			<!--	<Rule ID="2" Threshold="10" AchievementPoint="15"  Desc="战胜深渊BOSS 10 次" proicon="32" icon="2"/>-->
+			<!--	<Rule ID="3" Threshold="30" AchievementPoint="20"  Desc="战胜深渊BOSS 30 次" proicon="32" icon="4"  SpeNameBonus="22" title="深渊掌控者"/>-->
+			<!--</Branch>-->
+
+			<!--<Branch ID="25" Desc="命运之轮" introl="命运之轮始终在转动着，当命运之轮停止转动时，那是好事还是坏事呢？哼哼，一切都是未知数……" proicon="27"  type="2" isShowPro="0">-->
+			<!--	<Rule ID="1" Threshold="506" AchievementPoint="10"  Desc="战斗切割者" proicon="28" icon="1"/>-->
+			<!--	<Rule ID="2" Threshold="513" AchievementPoint="10"  Desc="火焰魔术师" proicon="30" icon="1"/>-->
+			<!--	<Rule ID="3" Threshold="569" AchievementPoint="20"  Desc="空间枷锁" proicon="49" icon="4"/>-->
+			<!--	<Rule ID="4" Threshold="668" AchievementPoint="20"  Desc="爆裂闪电" proicon="59" icon="4"/>-->
+			<!--	<Rule ID="5" Threshold="669" AchievementPoint="10"  Desc="全新命运开始" proicon="1043" icon="4"/>-->
+			<!--	<Rule ID="6" Threshold="670" AchievementPoint="10"  Desc="未来命运降临" proicon="1112" icon="4"/>&lt;!&ndash; 7.13日最新配表，之后添加时，请注意将目前proicon变化 &ndash;&gt;-->
+			<!--</Branch>-->
+		</Branches>
+	</type>
+
+	<type ID="4" Desc="对抗类">
+
+		<Branches Desc="精灵对抗赛">
+			<Branch ID="3" Desc="精灵王之战" SourceType="STATISTIC" SourceKey="PetKingVictoryCount" StatisticType="COUNT"
+					introl="在同水平精灵训练师的团队中，你能不能成为佼佼者，角逐精灵王来证明自己的实力吧！" proicon="3"
+					type="2" isShowPro="1">
+				<Rule ID="1" Threshold="1" AchievementPoint="10" Desc="精灵王之战1胜" proicon="3" icon="1"/>
+				<Rule ID="2" Threshold="10" AchievementPoint="10" Desc="精灵王之战10胜" proicon="3" icon="1"/>
+				<Rule ID="3" Threshold="30" AchievementPoint="10" Desc="精灵王之战30胜" proicon="3" icon="1"/>
+				<Rule ID="4" Threshold="50" AchievementPoint="10" Desc="精灵王之战50胜" proicon="3" icon="1"/>
+				<Rule ID="5" Threshold="100" AchievementPoint="15" Desc="精灵王之战100胜" proicon="3" SpeNameBonus="5"
+					  title="对战专家" icon="2"/>
+				<Rule ID="6" Threshold="200" AchievementPoint="15" Desc="精灵王之战200胜" proicon="3" icon="2"/>
+				<Rule ID="7" Threshold="300" AchievementPoint="15" Desc="精灵王之战300胜" proicon="3" icon="2"/>
+				<Rule ID="8" Threshold="500" AchievementPoint="15" Desc="精灵王之战500胜" proicon="3" icon="2"/>
+			</Branch>
+
+			<Branch ID="5" Desc="精灵大乱斗" SourceType="STATISTIC" SourceKey="PetWarVictoryCount" StatisticType="COUNT"
+					introl="真正掌握精灵能力的训练员，使用任何精灵，在任何战斗环境下都能游刃有余。"
+					proicon="5" type="2" isShowPro="1">
+				<Rule ID="1" Threshold="1" AchievementPoint="10" Desc="精灵大乱斗1胜" proicon="5" icon="1"/>
+				<Rule ID="2" Threshold="10" AchievementPoint="10" Desc="精灵大乱斗10胜" proicon="5" icon="1"/>
+				<Rule ID="3" Threshold="30" AchievementPoint="10" Desc="精灵大乱斗30胜" proicon="5" icon="1"/>
+				<Rule ID="4" Threshold="50" AchievementPoint="10" Desc="精灵大乱斗50胜" proicon="5" icon="1"/>
+				<Rule ID="5" Threshold="100" AchievementPoint="15" Desc="精灵大乱斗100胜" proicon="5" icon="2"
+					  SpeNameBonus="8" title="乱斗专家"/>
+			</Branch>
+		</Branches>
+	</type>
+
+	<type ID="5" Desc="其他">
+		<!--<Branches Desc="基地互动">-->
+		<!--	<Branch ID="53" Desc="挑战好友精灵" introl="经常与你好友的精灵比试，可以使你在朋友圈中的知名度大大提升哦！" proicon="57" type="2" isShowPro="1">-->
+		<!--		<Rule ID="1" Threshold="5" AchievementPoint="10"  Desc="基地挑战5次胜利" proicon="57" icon="1" />-->
+		<!--		<Rule ID="2" Threshold="20" AchievementPoint="10"  Desc="基地挑战20次胜利" proicon="57" icon="1" />-->
+		<!--		<Rule ID="3" Threshold="50" AchievementPoint="10"  Desc="基地挑战50次胜利" proicon="57" icon="1" />-->
+		<!--		<Rule ID="4" Threshold="100" AchievementPoint="10"  Desc="基地挑战100次胜利" proicon="57" icon="1" />-->
+		<!--		<Rule ID="5" Threshold="200" AchievementPoint="10"  Desc="基地挑战200次胜利" proicon="57" icon="1" />-->
+		<!--		<Rule ID="6" Threshold="500" AchievementPoint="15"  Desc="基地挑战500次胜利" proicon="57" icon="2" SpeNameBonus="42"  title="精武英雄" />-->
+		<!--	</Branch>-->
+		<!--</Branches>-->
+
+		<Branches Desc="军衔成就">
+			<Branch ID="58" Desc="军衔成就" introl="经过艰难的考核，获得军衔，是一个小赛尔至高无上的荣誉。" proicon="66"
+					type="0" isShowPro="0" SourceType="STATISTIC" SourceKey="AchievePointTotal" StatisticType="COUNT">
+				<Rule ID="1" Threshold="600" AchievementPoint="10" Desc="完成准尉授勋" proicon="69" icon="1"
+					  SpeNameBonus="47" title="准尉"/>
+				<Rule ID="2" Threshold="1000" AchievementPoint="10" Desc="完成少尉授勋" proicon="68" icon="1"
+					  SpeNameBonus="48" title="少尉"/>
+				<Rule ID="3" Threshold="1800" AchievementPoint="10" Desc="完成中尉授勋" proicon="67" icon="1"
+					  SpeNameBonus="49" title="中尉"/>
+				<Rule ID="4" Threshold="3000" AchievementPoint="15" Desc="完成上尉授勋" proicon="66" icon="2"
+					  SpeNameBonus="50" title="上尉"/>
+				<Rule ID="5" Threshold="4200" AchievementPoint="15" Desc="完成少校授勋" proicon="101" icon="2"
+					  SpeNameBonus="67" title="少校"/>
+				<Rule ID="6" Threshold="6000" AchievementPoint="20" Desc="完成中校授勋" proicon="1144" icon="4"
+					  SpeNameBonus="318" title="中校"/>
+				<Rule ID="7" Threshold="8100" AchievementPoint="20" Desc="完成上校授勋" proicon="1145" icon="4"
+					  SpeNameBonus="319" title="上校"/>
+				<Rule ID="8" Threshold="10500" AchievementPoint="25" Desc="完成大校授勋" proicon="1146" icon="7"
+					  SpeNameBonus="320" title="大校"/>
+			</Branch>
+		</Branches>
+
+		<!--<Branches Desc="赛尔纪念日">-->
+		<!--	<Branch ID="72" Desc="赛尔纪念日" introl="陪伴赛尔号一起走过值得纪念的重要时刻吧！" proicon="100" type="0" isShowPro="0">-->
+		<!--		<Rule ID="1" Threshold="1" AchievementPoint="20"  Desc="赛尔号起航1000天" proicon="100" icon="4" SpeNameBonus="64"  title="千日见证者"/>-->
+		<!--		<Rule ID="2" Threshold="2" AchievementPoint="20"  Desc="赛尔号三周年庆典" proicon="419" icon="4" SpeNameBonus="72"  title="周年庆典|大使"/>-->
+		<!--		<Rule ID="3" Threshold="3" AchievementPoint="20"  Desc="赛尔号四周年庆典"  proicon="479"  icon="4" SpeNameBonus="112"  title="庆典先锋官"/>-->
+		<!--		<Rule ID="4" Threshold="4" AchievementPoint="20"  Desc="赛尔号五周年庆典"  proicon="600"  icon="4" SpeNameBonus="155"  title="庆典大使"/>-->
+		<!--	</Branch>-->
+		<!--</Branches>-->
+
+
+		<Branches Desc="其他">
+			<Branch ID="81" Desc="称号" introl="" proicon="" type="0" isShowPro="0" SourceType="TITLE">
+				<Rule ID="1" Threshold="1" AchievementPoint="20" Desc="端午“粽”动员" proicon="427" icon="4"
+					  SpeNameBonus="76" title="端午节大使"/>
+				<Rule ID="2" Threshold="2" AchievementPoint="15" Desc="获得100只末日圣诞袜" proicon="456" icon="2"
+					  SpeNameBonus="102" title="圣诞怪杰"/>
+				<Rule ID="3" Threshold="3" AchievementPoint="10" Desc="所有祝福达到1000万次" proicon="487" icon="1"
+					  SpeNameBonus="124" title="中秋幸运星"/>
+				<Rule ID="4" Threshold="4" AchievementPoint="20" Desc="兜比请来的救兵" proicon="967" icon="4"
+					  SpeNameBonus="142" title="兜比请来的|救兵"/>
+				<Rule ID="5" Threshold="5" AchievementPoint="20" Desc="爱国者" proicon="980" icon="4"
+					  SpeNameBonus="164" title="爱国者" AbilityTitle="1"/>
+			</Branch>
+		</Branches>
+
+	</type>
+</AchievementRules>

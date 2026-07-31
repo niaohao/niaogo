@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>尼尔号 GM · 仪表盘</title>
+  <link rel="stylesheet" href="/common.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1><span class="brand-mark"></span>尼尔号 GM</h1>
+    <div class="top-meta">
+      <span id="onlineHint">在线 —</span>
+      <span id="who"></span>
+      <a href="#" onclick="logout();return false">退出</a>
+    </div>
+  </header>
+  <div class="layout">
+    <nav><div class="nav-title">MODULES</div><div id="gm-nav"></div></nav>
+    <main>
+      <section class="card">
+        <h2>服务器实时状态</h2>
+        <div class="grid2" id="stats">
+          <div>在线人数：<b id="sOnline">—</b></div>
+          <div>数据库：<b id="sDb">—</b></div>
+          <div>运行时长：<b id="sUptime">—</b></div>
+          <div>今日注册：<b id="sReg">—</b></div>
+          <div>今日活跃：<b id="sActive">—</b></div>
+          <div>今日发放：<b id="sGrant">—</b></div>
+        </div>
+        <p class="hint">接口：GET /api/dashboard（P4 落地）；当前先拉 /api/online + /api/health</p>
+      </section>
+      <section class="card">
+        <h2>最近操作</h2>
+        <table><thead><tr><th>时间</th><th>操作人</th><th>动作</th><th>目标</th><th>详情</th></tr></thead>
+        <tbody id="auditBody"><tr><td colspan="5" class="hint">加载中…</td></tr></tbody></table>
+      </section>
+    </main>
+  </div>
+  <script src="/common.js"></script>
+  <script>
+    (async () => {
+      await ensureAuth();
+      renderShell('dashboard');
+      try {
+        const o = await (await fetch('/api/online')).json();
+        if (o.ok) {
+          document.getElementById('sOnline').textContent = (o.list || o.players || []).length;
+          document.getElementById('onlineHint').textContent = '在线 ' + document.getElementById('sOnline').textContent;
+        }
+      } catch (_) {}
+      try {
+        const h = await (await fetch('/api/health')).json();
+        document.getElementById('sDb').textContent = h.ok ? '正常' : '异常';
+      } catch (_) { document.getElementById('sDb').textContent = '未知'; }
+      const a = await (await fetch('/api/audit?limit=15')).json();
+      const tb = document.getElementById('auditBody');
+      if (!a.ok || !(a.list || a.rows || []).length) {
+        tb.innerHTML = '<tr><td colspan="5" class="hint">暂无审计</td></tr>';
+        return;
+      }
+      const rows = a.list || a.rows;
+      tb.innerHTML = rows.map((r) =>
+        `<tr><td>${r.created_at || r.CreatedAt || ''}</td><td>${r.admin || ''}</td><td>${r.action || ''}</td><td>${r.target_user || r.TargetUser || 0}</td><td><code>${typeof r.detail_json === 'string' ? r.detail_json : JSON.stringify(r.detail_json || r.Detail || {})}</code></td></tr>`
+      ).join('');
+    })();
+  </script>
+</body>
+</html>

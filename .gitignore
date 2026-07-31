@@ -1,0 +1,28 @@
+# 编译产物
+bin/
+output/
+*.exe
+*.test
+
+# 运行时 / 本地
+tmp/
+configs/ip.txt
+
+# 玩家存档（JSON 回落）
+data/saves/
+
+# Go / IDE / Python
+vendor/
+.idea/
+.vscode/
+*.swp
+*~
+__pycache__/
+*.pyc
+*.bak
+*.bak_*
+
+# 杂项
+nul
+Thumbs.db
+.DS_Store

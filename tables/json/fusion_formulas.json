@@ -1,0 +1,57 @@
+{
+  "comment": "主宠多为终阶；副宠覆盖进化链各形态；ResultID 为融合初生形态（与 items.xml TransmuteMon 一致）",
+  "formulas": [
+    {"MainID": 3, "SubID": 27, "BeadItemID": 1000001, "ResultID": 301, "Prob": 100},
+    {"MainID": 3, "SubID": 28, "BeadItemID": 1000001, "ResultID": 301, "Prob": 100},
+    {"MainID": 3, "SubID": 29, "BeadItemID": 1000001, "ResultID": 301, "Prob": 100},
+
+    {"MainID": 6, "SubID": 198, "BeadItemID": 1000002, "ResultID": 304, "Prob": 100},
+    {"MainID": 6, "SubID": 199, "BeadItemID": 1000002, "ResultID": 304, "Prob": 100},
+    {"MainID": 6, "SubID": 200, "BeadItemID": 1000002, "ResultID": 304, "Prob": 100},
+
+    {"MainID": 9, "SubID": 35, "BeadItemID": 1000003, "ResultID": 307, "Prob": 100},
+    {"MainID": 9, "SubID": 36, "BeadItemID": 1000003, "ResultID": 307, "Prob": 100},
+    {"MainID": 9, "SubID": 37, "BeadItemID": 1000003, "ResultID": 307, "Prob": 100},
+
+    {"MainID": 210, "SubID": 38, "BeadItemID": 1000003, "ResultID": 332, "Prob": 100},
+    {"MainID": 210, "SubID": 39, "BeadItemID": 1000003, "ResultID": 332, "Prob": 100},
+    {"MainID": 210, "SubID": 40, "BeadItemID": 1000003, "ResultID": 332, "Prob": 100},
+
+    {"MainID": 180, "SubID": 53, "BeadItemID": 1000004, "ResultID": 316, "Prob": 100},
+    {"MainID": 180, "SubID": 54, "BeadItemID": 1000004, "ResultID": 316, "Prob": 100},
+    {"MainID": 180, "SubID": 55, "BeadItemID": 1000004, "ResultID": 316, "Prob": 100},
+
+    {"MainID": 118, "SubID": 190, "BeadItemID": 1000005, "ResultID": 322, "Prob": 100},
+    {"MainID": 118, "SubID": 191, "BeadItemID": 1000005, "ResultID": 322, "Prob": 100},
+    {"MainID": 118, "SubID": 192, "BeadItemID": 1000005, "ResultID": 322, "Prob": 100},
+
+    {"MainID": 155, "SubID": 25, "BeadItemID": 1000006, "ResultID": 319, "Prob": 100},
+    {"MainID": 155, "SubID": 26, "BeadItemID": 1000006, "ResultID": 319, "Prob": 100},
+
+    {"MainID": 79, "SubID": 164, "BeadItemID": 1000008, "ResultID": 310, "Prob": 95},
+    {"MainID": 79, "SubID": 165, "BeadItemID": 1000008, "ResultID": 310, "Prob": 95},
+    {"MainID": 79, "SubID": 166, "BeadItemID": 1000008, "ResultID": 310, "Prob": 95},
+    {"MainID": 79, "SubID": 164, "BeadItemID": 1000009, "ResultID": 313, "Prob": 5},
+    {"MainID": 79, "SubID": 165, "BeadItemID": 1000009, "ResultID": 313, "Prob": 5},
+    {"MainID": 79, "SubID": 166, "BeadItemID": 1000009, "ResultID": 313, "Prob": 5},
+
+    {"MainID": 61, "SubID": 102, "BeadItemID": 1000010, "ResultID": 338, "Prob": 100},
+    {"MainID": 61, "SubID": 103, "BeadItemID": 1000010, "ResultID": 338, "Prob": 100},
+    {"MainID": 61, "SubID": 104, "BeadItemID": 1000010, "ResultID": 338, "Prob": 100},
+
+    {"MainID": 138, "SubID": 128, "BeadItemID": 1000011, "ResultID": 341, "Prob": 100},
+    {"MainID": 138, "SubID": 129, "BeadItemID": 1000011, "ResultID": 341, "Prob": 100},
+    {"MainID": 138, "SubID": 130, "BeadItemID": 1000011, "ResultID": 341, "Prob": 100},
+
+    {"MainID": 15, "SubID": 97, "BeadItemID": 1000012, "ResultID": 401, "Prob": 100},
+    {"MainID": 15, "SubID": 98, "BeadItemID": 1000012, "ResultID": 401, "Prob": 100},
+    {"MainID": 15, "SubID": 99, "BeadItemID": 1000012, "ResultID": 401, "Prob": 100},
+
+    {"MainID": 189, "SubID": 228, "BeadItemID": 1000013, "ResultID": 404, "Prob": 100},
+    {"MainID": 189, "SubID": 229, "BeadItemID": 1000013, "ResultID": 404, "Prob": 100},
+
+    {"MainID": 251, "SubID": 232, "BeadItemID": 1000014, "ResultID": 427, "Prob": 100},
+    {"MainID": 251, "SubID": 233, "BeadItemID": 1000014, "ResultID": 427, "Prob": 100},
+    {"MainID": 251, "SubID": 234, "BeadItemID": 1000014, "ResultID": 427, "Prob": 100}
+  ]
+}

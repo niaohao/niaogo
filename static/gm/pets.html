@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>尼尔号 GM · 精灵管控</title>
+  <link rel="stylesheet" href="/common.css" />
+  <style>
+    .modal.wide { max-width: 760px; min-width: 420px; width: min(92vw, 760px); }
+    .ev-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 10px; margin: 8px 0 4px;
+    }
+    .ev-grid label { min-width: 0; display: block; margin-bottom: 2px; }
+    .ev-grid input { width: 100%; min-width: 0; }
+    .form-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px; margin: 8px 0;
+    }
+    .form-grid label { display: block; margin-bottom: 2px; min-width: 0; }
+    .form-grid input, .form-grid select { width: 100%; min-width: 0; }
+    .skill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 10px; }
+    .ev-sum { font-size: 12px; color: var(--muted); margin-top: 4px; }
+    .ev-sum.warn { color: var(--danger); }
+    .gm-tag {
+      font-size: 11px; padding: 1px 6px; border-radius: 4px;
+      border: 1px solid var(--danger); color: var(--danger); margin-left: 6px;
+    }
+    .pet-card {
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px;
+      margin-bottom: 8px; cursor: pointer; background: #0d121a;
+    }
+    .pet-card:hover { border-color: var(--accent); }
+    .pet-card .info { font-size: 13px; line-height: 1.45; }
+    .pet-card .info strong { font-size: 14px; }
+    .pet-card .sub { color: var(--muted); font-size: 12px; }
+    .pet-card .ops { display: flex; flex-wrap: wrap; gap: 6px; flex-shrink: 0; }
+    .section-title { font-size: 14px; margin: 0 0 10px; display: flex; align-items: center; gap: 8px; }
+    .section-title .cnt { color: var(--muted); font-size: 12px; font-weight: 400; }
+    main { max-width: 1200px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <h1><span class="brand-mark"></span>尼尔号 GM</h1>
+    <div class="top-meta"><span id="who"></span><a href="#" onclick="logout();return false">退出</a></div>
+  </header>
+  <div class="layout">
+    <nav><div class="nav-title">MODULES</div><div id="gm-nav"></div></nav>
+    <main>
+      <section class="card">
+        <h2>精灵管控</h2>
+        <div class="hint">点选账号 → 背包/仓库分开（分页）→ 点卡片或「编辑」改等级/个体/性格/特性/技能/学习力。</div>
+      </section>
+
+      <div class="player-split">
+        <section class="card">
+          <h2>玩家账号</h2>
+          <div class="row">
+            <input class="wide" id="userQ" placeholder="UID / 昵称 / 邮箱" onkeydown="if(event.key==='Enter')searchUsers()" />
+            <button type="button" onclick="searchUsers()">搜索</button>
+          </div>
+          <div class="user-list" id="userList"><div class="hint" style="padding:12px">搜索或留空查最近玩家</div></div>
+          <div class="pager" id="userPager"></div>
+        </section>
+
+        <div style="display:grid;gap:14px">
+          <section class="card" id="accountCard">
+            <h2>当前账号</h2>
+            <div class="hint" id="accountEmpty">请在左侧点选玩家</div>
+            <div id="accountWrap"></div>
+            <div class="row" id="accountActions" style="display:none;margin-top:8px">
+              <button type="button" data-perm="pet.grant" onclick="openGrant()">发放精灵</button>
+              <button type="button" data-perm="pet.grant" onclick="openGrantAll()">一键全精灵</button>
+              <button type="button" class="danger" data-perm="pet.clear" onclick="clearAll()">清空全部</button>
+              <button type="button" class="ghost" onclick="loadPets()">刷新</button>
+            </div>
+          </section>
+
+          <section class="card">
+            <h3 class="section-title">背包精灵 <span class="cnt" id="bagCnt">0</span></h3>
+            <div id="bagList"><div class="hint">点选玩家后显示</div></div>
+            <div class="pager" id="bagPager"></div>
+          </section>
+          <section class="card">
+            <h3 class="section-title">仓库精灵 <span class="cnt" id="storageCnt">0</span></h3>
+            <div id="storageList"><div class="hint">点选玩家后显示</div></div>
+            <div class="pager" id="storagePager"></div>
+          </section>
+          <section class="card">
+            <h3 class="section-title">放生仓 <span class="cnt" id="roweiCnt">0</span></h3>
+            <div id="roweiList"><div class="hint">点选玩家后显示</div></div>
+            <div class="pager" id="roweiPager"></div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="grantModal" class="modal-mask hidden">
+    <div class="modal">
+      <h3>发放精灵</h3>
+      <div class="row"><label>检索</label><input class="wide" id="petQ" /><button type="button" class="ghost" onclick="searchPetsCatalog()">搜</button></div>
+      <div class="hits" id="petHits"></div>
+      <div class="row"><label>种族ID</label><input id="petId" type="number" /></div>
+      <div class="row"><label>等级</label><input id="level" type="number" value="5" />
+        <label>个体DV</label><input id="dv" type="number" value="31" />
+        <label>性格</label><input id="nature" type="number" value="0" /></div>
+      <div class="actions">
+        <button type="button" class="ghost" onclick="hideModal('grantModal')">取消</button>
+        <button type="button" data-perm="pet.grant" onclick="submitGrant()">发放</button>
+      </div>
+      <div class="msg" id="grantMsg"></div>
+    </div>
+  </div>
+
+  <div id="grantAllModal" class="modal-mask hidden">
+    <div class="modal">
+      <h3>一键发放全部精灵</h3>
+      <div class="hint">仅发放<strong>前端 PetXMLInfo 有名字</strong>且 pets.xml 有数值的种族（约两千只，不含无名 ID）。背包满后进仓库。</div>
+      <div class="row"><label>等级</label><input id="allLevel" type="number" value="100" style="min-width:70px" />
+        <label>个体DV</label><input id="allDv" type="number" value="31" style="min-width:70px" />
+        <label>性格</label><input id="allNature" type="number" value="0" style="min-width:70px" /></div>
+      <div class="row" style="align-items:center">
+        <label style="display:flex;align-items:center;gap:8px;cursor:pointer">
+          <input type="checkbox" id="allPerfect" checked />
+          极品（强制 DV=31 + 学习力六维均分 510）
+        </label>
+      </div>
+      <div class="actions">
+        <button type="button" class="ghost" onclick="hideModal('grantAllModal')">取消</button>
+        <button type="button" data-perm="pet.grant" onclick="submitGrantAll()">开始发放</button>
+      </div>
+      <div class="msg" id="grantAllMsg"></div>
+    </div>
+  </div>
+
+  <div id="editModal" class="modal-mask hidden">
+    <div class="modal wide">
+      <h3>编辑精灵属性</h3>
+      <div class="hint" id="editMeta"></div>
+      <div class="form-grid">
+        <div><label>catchTime</label><input id="editCatchDisp" readonly /></div>
+        <div><label>种族编号</label><input id="editPetId" readonly /></div>
+        <div><label>名称</label><input id="editName" /></div>
+        <div><label>等级</label><input id="editLevel" type="number" min="1" max="100" /></div>
+        <div><label>经验</label><input id="editExp" type="number" min="0" /></div>
+        <div><label>个体值 DV</label><input id="editDv" type="number" min="0" max="31" /></div>
+        <div><label>性格</label><select id="editNature"></select></div>
+        <div><label>特性</label><select id="editTrait"></select></div>
+      </div>
+      <div class="hint" style="margin-top:4px">技能（4 槽）</div>
+      <div class="skill-grid">
+        <input id="editSkill0" type="number" placeholder="槽1" />
+        <input id="editSkill1" type="number" placeholder="槽2" />
+        <input id="editSkill2" type="number" placeholder="槽3" />
+        <input id="editSkill3" type="number" placeholder="槽4" />
+      </div>
+      <div style="margin-top:10px"><strong>学习力（EV）</strong> <span class="hint">单项 0–255 · 总和 ≤510</span></div>
+      <div class="ev-grid">
+        <div><label>体力</label><input id="ev0" type="number" min="0" max="255" oninput="updEvSum()" /></div>
+        <div><label>攻击</label><input id="ev1" type="number" min="0" max="255" oninput="updEvSum()" /></div>
+        <div><label>防御</label><input id="ev2" type="number" min="0" max="255" oninput="updEvSum()" /></div>
+        <div><label>特攻</label><input id="ev3" type="number" min="0" max="255" oninput="updEvSum()" /></div>
+        <div><label>特防</label><input id="ev4" type="number" min="0" max="255" oninput="updEvSum()" /></div>
+        <div><label>速度</label><input id="ev5" type="number" min="0" max="255" oninput="updEvSum()" /></div>
+      </div>
+      <div class="row">
+        <button type="button" class="ghost" onclick="fillEV([255,255,0,0,0,0])">物攻型</button>
+        <button type="button" class="ghost" onclick="fillEV([255,0,0,255,0,0])">特攻型</button>
+        <button type="button" class="ghost" onclick="fillEV([0,0,0,0,0,0])">清零</button>
+        <span class="ev-sum" id="evSum">合计 0 / 510</span>
+      </div>
+      <div class="actions">
+        <a class="ghost" id="editStatsLink" href="#" style="padding:7px 14px;text-decoration:none;border:1px solid var(--line);border-radius:8px;color:var(--text);margin-right:auto">面板能力值 →</a>
+        <button type="button" class="ghost" onclick="closeEdit()">取消</button>
+        <button type="button" data-perm="pet.edit" onclick="submitEdit()">保存</button>
+      </div>
+      <div class="msg" id="editMsg"></div>
+    </div>
+  </div>
+
+  <script src="/common.js"></script>
+  <script>
+    const NATURES = [
+      [0,'孤独 - 攻击↑ 防御↓'],[1,'勇敢 - 攻击↑ 速度↓'],[2,'固执 - 攻击↑ 特攻↓'],[3,'调皮 - 攻击↑ 特防↓'],
+      [4,'胆小 - 速度↑ 攻击↓'],[5,'急躁 - 速度↑ 防御↓'],[6,'开朗 - 速度↑ 特攻↓'],[7,'天真 - 速度↑ 特防↓'],
+      [8,'大胆 - 防御↑ 攻击↓'],[9,'悠闲 - 防御↑ 速度↓'],[10,'顽皮 - 防御↑ 特攻↓'],[11,'无虑 - 防御↑ 特防↓'],
+      [12,'保守 - 特攻↑ 攻击↓'],[13,'稳重 - 特攻↑ 防御↓'],[14,'冷静 - 特攻↑ 速度↓'],[15,'马虎 - 特攻↑ 特防↓'],
+      [16,'沉着 - 特防↑ 攻击↓'],[17,'温顺 - 特防↑ 防御↓'],[18,'狂妄 - 特防↑ 速度↓'],[19,'慎重 - 特防↑ 特攻↓'],
+      [20,'害羞 - 平衡'],[21,'浮躁 - 平衡'],[22,'坦率 - 平衡'],[23,'实干 - 平衡'],[24,'认真 - 平衡'],
+    ];
+    const TRAITS = [
+      [0,'无'],[-1,'随机'],
+      [1006,'叶绿'],[1007,'流水'],[1008,'炎火'],[1009,'飞空'],[1010,'蓄电'],[1011,'机能'],[1012,'碎裂'],[1013,'平衡'],
+      [1014,'冰霜'],[1015,'魔幻'],[1016,'战意'],[1017,'光环'],[1018,'黑夜'],[1019,'奇异'],[1020,'威严'],[1021,'圣灵'],
+      [1022,'精准'],[1023,'会心'],[1024,'坚硬'],[1025,'回避'],[1026,'顽强'],[1027,'瞬杀'],[1028,'回神'],[1029,'带电'],
+      [1030,'中毒'],[1031,'高热'],[1032,'冰冷'],[1033,'阴森'],[1034,'睡眠'],[1035,'反抗'],[1036,'反驳'],[1037,'忽略'],
+      [1038,'草率'],[1039,'汲取'],[1040,'慌张'],[1041,'反击'],[1042,'抵抗'],[1043,'反攻'],[1044,'坚韧'],[1045,'借风'],
+    ];
+    const TRAIT_NAME = Object.fromEntries(TRAITS.filter((x) => x[0] > 0).map((x) => [x[0], x[1]]));
+    const NATURE_NAME = Object.fromEntries(NATURES);
+
+    let editCatchKey = '';
+    let petCache = {};
+    let currentUid = 0;
+    let usersCache = [];
+    let userPageState = { page: 0, pageSize: 12 };
+    let bagAll = [], storageAll = [], roweiAll = [];
+    let bagPage = 0, storagePage = 0, roweiPage = 0;
+    const PET_PAGE_SIZE = 8;
+
+    (async () => {
+      await ensureAuth();
+      renderShell('pets');
+      fillSelects();
+      const q = new URLSearchParams(location.search);
+      await searchUsers(q.get('q') || '');
+      if (q.get('uid')) selectUser(+q.get('uid'));
+    })();
+
+    function fillSelects() {
+      document.getElementById('editNature').innerHTML = NATURES.map(([id, n]) =>
+        `<option value="${id}">${id} - ${n}</option>`).join('');
+      document.getElementById('editTrait').innerHTML = TRAITS.map(([id, n]) =>
+        `<option value="${id}">${id < 0 ? n : (id === 0 ? '无' : id + ' - ' + n)}</option>`).join('');
+    }
+
+    function fmtEV(ev) {
+      const a = Array.isArray(ev) ? ev.slice(0, 6) : [0,0,0,0,0,0];
+      while (a.length < 6) a.push(0);
+      const sum = a.reduce((s, v) => s + (+v || 0), 0);
+      return a.map((v) => +v || 0).join('/') + ' (' + sum + ')';
+    }
+
+    function fmtStats(arr, locked) {
+      if (!Array.isArray(arr) || arr.length < 6) return '—';
+      return arr.slice(0, 6).join('/') + (locked ? '<span class="gm-tag">GM</span>' : '');
+    }
+
+    function natureLabel(n) {
+      const s = NATURE_NAME[n];
+      return s ? n + ' - ' + s : String(n ?? 0);
+    }
+
+    function traitLabel(t) {
+      if (!t) return '无';
+      return TRAIT_NAME[t] ? t + ' - ' + TRAIT_NAME[t] : String(t);
+    }
+
+    async function searchUsers(preset) {
+      const q = preset != null ? preset : document.getElementById('userQ').value.trim();
+      if (preset != null) document.getElementById('userQ').value = q;
+      const r = await searchUsersAPI(q);
+      usersCache = r.list || [];
+      userPageState.page = 0;
+      paintUsers();
+    }
+
+    function paintUsers() {
+      renderUserList(
+        document.getElementById('userList'), usersCache, currentUid, selectUser,
+        document.getElementById('userPager'), userPageState
+      );
+    }
+
+    async function selectUser(uid) {
+      currentUid = uid;
+      history.replaceState(null, '', '?uid=' + uid);
+      paintUsers();
+      bagPage = storagePage = roweiPage = 0;
+      await loadPets();
+    }
+
+    function renderPetSection(listEl, pagerEl, all, where, pageRef) {
+      const page = pageRef.get();
+      const pg = paginateList(all, page, PET_PAGE_SIZE);
+      pageRef.set(pg.page);
+      if (!all.length) {
+        listEl.innerHTML = '<div class="hint">空</div>';
+        pagerEl.innerHTML = '';
+        return;
+      }
+      listEl.innerHTML = pg.slice.map((p) => {
+        const key = String(p.catchTime);
+        petCache[key] = { ...p, where };
+        const name = escapeHtml(p.label || p.name || '');
+        const statsHref = '/pet-stats.html?uid=' + currentUid + '&catchTime=' + encodeURIComponent(key);
+        return `<div class="pet-card" data-catch="${escapeHtml(key)}" onclick="openEdit('${escapeHtml(key)}')">
+          <div class="info">
+            <strong>${name}</strong> <span class="sub">#${p.petId || ''} · catch ${escapeHtml(key)}</span>
+            ${p.hasGMStats ? '<span class="gm-tag">能力值覆盖</span>' : ''}<br>
+            <span class="sub">Lv${p.level || 0} · DV ${p.dv || 0} · ${natureLabel(p.nature)} · 特性 ${traitLabel(p.trait)}</span><br>
+            <span class="sub">学习力 ${fmtEV(p.ev)} · 面板 ${fmtStats(p.stats, p.hasGMStats)}</span>
+          </div>
+          <div class="ops" onclick="event.stopPropagation()">
+            <button type="button" class="ghost" data-perm="pet.edit" onclick="openEdit('${escapeHtml(key)}')">编辑</button>
+            <a class="ghost" data-perm="pet.edit" href="${statsHref}" style="padding:7px 10px;text-decoration:none;border:1px solid var(--line);border-radius:8px;color:var(--text)">能力值</a>
+            <button type="button" class="danger" data-perm="pet.delete" onclick="delPet(${currentUid},'${escapeHtml(key)}')">删除</button>
+          </div>
+        </div>`;
+      }).join('');
+
+      renderPager(pagerEl, pg.page, pg.pages, pg.total, (delta) => {
+        pageRef.set(Math.max(0, Math.min(pg.pages - 1, pageRef.get() + delta)));
+        renderPetSection(listEl, pagerEl, all, where, pageRef);
+        applyPermUI();
+      }, { unit: '只' });
+    }
+
+    async function loadPets() {
+      const uid = currentUid;
+      petCache = {};
+      if (!uid) {
+        document.getElementById('accountEmpty').classList.remove('hidden');
+        document.getElementById('accountWrap').innerHTML = '';
+        document.getElementById('accountActions').style.display = 'none';
+        ['bag','storage','rowei'].forEach((k) => {
+          document.getElementById(k + 'List').innerHTML = '<div class="hint">点选玩家后显示</div>';
+          document.getElementById(k + 'Cnt').textContent = '0';
+          document.getElementById(k + 'Pager').innerHTML = '';
+        });
+        return;
+      }
+      const d = await (await fetch('/api/user/detail?uid=' + uid)).json();
+      if (!d.ok) {
+        document.getElementById('accountWrap').innerHTML = '<div class="err">' + (d.error || '加载失败') + '</div>';
+        return;
+      }
+      const u = d.user || {};
+      document.getElementById('accountEmpty').classList.add('hidden');
+      document.getElementById('accountWrap').innerHTML = accountBarHTML({
+        userId: u.userId || uid, nickname: u.nickname, email: u.email,
+        coins: u.coins, gold: u.gold,
+      }, { online: d.online, liveMapId: d.liveMapId });
+      document.getElementById('accountActions').style.display = 'flex';
+
+      bagAll = d.pets?.bag || [];
+      storageAll = d.pets?.storage || [];
+      roweiAll = d.pets?.rowei || [];
+      document.getElementById('bagCnt').textContent = String(bagAll.length);
+      document.getElementById('storageCnt').textContent = String(storageAll.length);
+      document.getElementById('roweiCnt').textContent = String(roweiAll.length);
+
+      renderPetSection(
+        document.getElementById('bagList'), document.getElementById('bagPager'),
+        bagAll, '背包', { get: () => bagPage, set: (v) => { bagPage = v; } }
+      );
+      renderPetSection(
+        document.getElementById('storageList'), document.getElementById('storagePager'),
+        storageAll, '仓库', { get: () => storagePage, set: (v) => { storagePage = v; } }
+      );
+      renderPetSection(
+        document.getElementById('roweiList'), document.getElementById('roweiPager'),
+        roweiAll, '放生仓', { get: () => roweiPage, set: (v) => { roweiPage = v; } }
+      );
+      applyPermUI();
+    }
+
+    function openGrant() {
+      if (!currentUid) return alert('请先选择玩家');
+      showModal('grantModal');
+    }
+
+    function openEdit(catchKey) {
+      const key = String(catchKey || '');
+      let p = petCache[key];
+      if (!p) {
+        // 兜底：在当前列表里再找一遍（避免分页缓存 miss）
+        const all = [...bagAll, ...storageAll, ...roweiAll];
+        p = all.find((x) => String(x.catchTime) === key);
+        if (p) petCache[key] = p;
+      }
+      if (!p) {
+        alert('未找到该精灵（catchTime=' + key + '），请刷新后重试');
+        return;
+      }
+      editCatchKey = key;
+      document.getElementById('editMeta').textContent =
+        (p.label || p.name || '') + ' · ' + (p.where || (p.inBag ? '背包' : '仓库')) + ' · UID ' + currentUid;
+      document.getElementById('editCatchDisp').value = key;
+      document.getElementById('editPetId').value = p.petId || '';
+      document.getElementById('editName').value = p.name || p.label || '';
+      document.getElementById('editLevel').value = p.level || 1;
+      document.getElementById('editExp').value = p.exp != null ? p.exp : 0;
+      document.getElementById('editDv').value = p.dv != null ? p.dv : 0;
+      document.getElementById('editNature').value = String(p.nature != null ? p.nature : 0);
+      document.getElementById('editTrait').value = (p.trait && p.trait > 0) ? String(p.trait) : '0';
+      const skills = Array.isArray(p.skills) ? p.skills : [];
+      for (let i = 0; i < 4; i++) document.getElementById('editSkill' + i).value = skills[i] || '';
+      const ev = Array.isArray(p.ev) ? p.ev : [0,0,0,0,0,0];
+      for (let i = 0; i < 6; i++) document.getElementById('ev' + i).value = ev[i] || 0;
+      document.getElementById('editStatsLink').href =
+        '/pet-stats.html?uid=' + currentUid + '&catchTime=' + encodeURIComponent(key);
+      document.getElementById('editMsg').textContent = '';
+      updEvSum();
+      showModal('editModal');
+      applyPermUI();
+    }
+
+    function closeEdit() {
+      hideModal('editModal');
+      editCatchKey = '';
+    }
+
+    function fillEV(arr) {
+      for (let i = 0; i < 6; i++) document.getElementById('ev' + i).value = arr[i] || 0;
+      updEvSum();
+    }
+
+    function readEV() {
+      return [0,1,2,3,4,5].map((i) => +document.getElementById('ev' + i).value || 0);
+    }
+
+    function updEvSum() {
+      const ev = readEV();
+      const sum = ev.reduce((a, b) => a + b, 0);
+      const el = document.getElementById('evSum');
+      el.textContent = '合计 ' + sum + ' / 510';
+      el.className = 'ev-sum' + (sum > 510 ? ' warn' : '');
+    }
+
+    async function submitEdit() {
+      const ev = readEV();
+      if (ev.reduce((a, b) => a + b, 0) > 510) {
+        document.getElementById('editMsg').textContent = '学习力总和不能超过 510';
+        document.getElementById('editMsg').className = 'msg err';
+        return;
+      }
+      const skills = [0,1,2,3].map((i) => +document.getElementById('editSkill' + i).value || 0);
+      const catchTime = Number(editCatchKey);
+      if (!Number.isFinite(catchTime) || catchTime <= 0) {
+        document.getElementById('editMsg').textContent = 'catchTime 无效';
+        document.getElementById('editMsg').className = 'msg err';
+        return;
+      }
+      const body = {
+        userId: currentUid,
+        catchTime,
+        name: document.getElementById('editName').value.trim(),
+        level: +document.getElementById('editLevel').value,
+        exp: +document.getElementById('editExp').value,
+        dv: +document.getElementById('editDv').value,
+        nature: +document.getElementById('editNature').value,
+        trait: +document.getElementById('editTrait').value,
+        skills,
+        ev,
+      };
+      const j = await postJSON('/api/pet/update', body);
+      document.getElementById('editMsg').textContent = j.ok ? '已保存' : (j.error || JSON.stringify(j));
+      document.getElementById('editMsg').className = 'msg ' + (j.ok ? 'ok' : 'err');
+      if (j.ok) { closeEdit(); loadPets(); }
+    }
+
+    async function searchPetsCatalog() {
+      const q = document.getElementById('petQ').value.trim();
+      const j = await (await fetch('/api/catalog/pets?q=' + encodeURIComponent(q))).json();
+      const hits = j.list || j.hits || [];
+      document.getElementById('petHits').innerHTML = hits.map((h) => {
+        const id = h.id || h.ID; const label = h.label || h.name || id;
+        return `<span class="hit" onclick="document.getElementById('petId').value=${id}">${label}</span>`;
+      }).join('');
+    }
+
+    async function submitGrant() {
+      const uid = currentUid;
+      const petId = +document.getElementById('petId').value;
+      const level = +document.getElementById('level').value;
+      const dv = +document.getElementById('dv').value;
+      const nature = +document.getElementById('nature').value;
+      if (!uid || !petId) return;
+      if (!dangerConfirm('向 UID ' + uid + ' 发放精灵 ' + petId + ' Lv' + level + '？')) return;
+      const j = await postJSON('/api/grant/pet', { userId: uid, petId, level, dv, nature });
+      document.getElementById('grantMsg').textContent = j.ok ? '已发放 · catchTime=' + (j.catchTime || '') : (j.error || JSON.stringify(j));
+      document.getElementById('grantMsg').className = 'msg ' + (j.ok ? 'ok' : 'err');
+      if (j.ok) { hideModal('grantModal'); loadPets(); }
+    }
+
+    function openGrantAll() {
+      if (!currentUid) return;
+      document.getElementById('grantAllMsg').textContent = '';
+      showModal('grantAllModal');
+    }
+
+    async function submitGrantAll() {
+      const uid = currentUid;
+      if (!uid) return;
+      const level = +document.getElementById('allLevel').value || 1;
+      const dv = +document.getElementById('allDv').value || 0;
+      const nature = +document.getElementById('allNature').value || 0;
+      const perfect = !!document.getElementById('allPerfect').checked;
+      const tip = perfect
+        ? ('向 UID ' + uid + ' 发放前端表有名精灵（极品 Lv' + level + '）？')
+        : ('向 UID ' + uid + ' 发放前端表有名精灵（Lv' + level + ' DV' + dv + '）？');
+      if (!dangerConfirm(tip)) return;
+      const msg = document.getElementById('grantAllMsg');
+      msg.className = 'msg';
+      msg.textContent = '发放中，请稍候…';
+      const j = await postJSON('/api/grant/pets-all', {
+        userId: uid, level, dv, nature, perfect, confirm: true,
+      });
+      if (j.ok) {
+        msg.className = 'msg ok';
+        msg.textContent = '完成：' + j.granted + '/' + j.total + '（audit#' + j.auditId + '）' + (j.hint ? ' · ' + j.hint : '');
+        loadPets();
+      } else {
+        msg.className = 'msg err';
+        msg.textContent = j.error || JSON.stringify(j);
+      }
+    }
+
+    async function delPet(uid, catchKey) {
+      if (!dangerConfirm('删除精灵 catchTime=' + catchKey + '？')) return;
+      const j = await postJSON('/api/pet/update', { userId: uid, catchTime: Number(catchKey), delete: true });
+      if (!j.ok) alert(j.error || '删除接口未实现');
+      loadPets();
+    }
+
+    async function clearAll() {
+      if (!currentUid) return;
+      if (!dangerConfirm('清空 UID ' + currentUid + ' 全部精灵？不可恢复')) return;
+      alert('清空全部接口规划中（pet.clear）');
+    }
+
+    // 点击遮罩空白处关闭
+    document.getElementById('editModal').addEventListener('click', (e) => {
+      if (e.target.id === 'editModal') closeEdit();
+    });
+    document.getElementById('grantModal').addEventListener('click', (e) => {
+      if (e.target.id === 'grantModal') hideModal('grantModal');
+    });
+    document.getElementById('grantAllModal').addEventListener('click', (e) => {
+      if (e.target.id === 'grantAllModal') hideModal('grantAllModal');
+    });
+    // 供内联 onclick 使用
+    window.openEdit = openEdit;
+    window.closeEdit = closeEdit;
+    window.delPet = delPet;
+    window.hideModal = hideModal;
+    window.showModal = showModal;
+    window.openGrantAll = openGrantAll;
+    window.submitGrantAll = submitGrantAll;
+  </script>
+</body>
+</html>

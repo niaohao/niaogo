@@ -1,0 +1,14 @@
+<Eggs>
+	<Egg Id="1" MaleMon="450" FemaleMon="447" OutputMons="445 448 512" Probs="35 35 30" />
+	<Egg Id="2" MaleMon="253" FemaleMon="256" OutputMons="252 254 519" Probs="35 35 30" />
+	<Egg Id="3" MaleMon="516" FemaleMon="470" OutputMons="515 469 517" Probs="35 35 30" />
+	<Egg Id="4" MaleMon="525" FemaleMon="295" OutputMons="523 293 533" Probs="35 35 30" />
+	<Egg Id="5" MaleMon="337" FemaleMon="549" OutputMons="335 547 550" Probs="35 35 30" />
+	<Egg Id="6" MaleMon="597" FemaleMon="599" OutputMons="596 598 600" Probs="50 45 5" />
+	<Egg Id="7" MaleMon="67" FemaleMon="606" OutputMons="65 604 607" Probs="30 30 40" />
+	<Egg Id="8" MaleMon="962" FemaleMon="965" OutputMons="960 963 977" Probs="5 5 90" />
+	<Egg Id="9" MaleMon="1043" FemaleMon="1786" OutputMons="1042 1785 1787" Probs="35 35 30" />
+	<Egg Id="10" MaleMon="1310" FemaleMon="1517" OutputMons="1309 1516 2182" Probs="30 30 40" />
+	<Egg Id="11" MaleMon="0" FemaleMon="0" OutputMons="0 0 0" Probs="0 0 0" />
+	<Egg Id="13" MaleMon="0" FemaleMon="0" OutputMons="0 0 0" Probs="0 0 0" />
+</Eggs>

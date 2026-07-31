@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>尼尔号 GM · 操作日志</title>
+  <link rel="stylesheet" href="/common.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1><span class="brand-mark"></span>尼尔号 GM</h1>
+    <div class="top-meta"><span id="who"></span><a href="#" onclick="logout();return false">退出</a></div>
+  </header>
+  <div class="layout">
+    <nav><div class="nav-title">MODULES</div><div id="gm-nav"></div></nav>
+    <main>
+      <section class="card">
+        <h2>筛选</h2>
+        <div class="row">
+          <input id="admin" placeholder="操作人" />
+          <input id="action" placeholder="动作" />
+          <input id="uid" type="number" placeholder="目标UID" />
+          <button type="button" onclick="load()">查询</button>
+        </div>
+        <p class="hint">审计不可删除，仅供追溯</p>
+      </section>
+      <section class="card">
+        <h2>流水</h2>
+        <table>
+          <thead><tr><th>时间</th><th>操作人</th><th>动作</th><th>目标</th><th>详情</th></tr></thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+  <script src="/common.js"></script>
+  <script>
+    (async () => { await ensureAuth(); renderShell('audit'); load(); })();
+    async function load() {
+      const qs = new URLSearchParams();
+      const a = document.getElementById('admin').value.trim();
+      const act = document.getElementById('action').value.trim();
+      const uid = document.getElementById('uid').value;
+      if (a) qs.set('admin', a);
+      if (act) qs.set('action', act);
+      if (uid) qs.set('uid', uid);
+      qs.set('limit', '50');
+      const j = await (await fetch('/api/audit?' + qs)).json();
+      const rows = j.list || j.rows || [];
+      document.getElementById('tbody').innerHTML = rows.map((r) =>
+        `<tr><td>${r.created_at || ''}</td><td>${r.admin || ''}</td><td>${r.action || ''}</td>
+         <td>${r.target_user || 0}</td><td><code>${typeof r.detail_json === 'string' ? r.detail_json : JSON.stringify(r.detail_json || {})}</code></td></tr>`
+      ).join('') || '<tr><td colspan="5" class="hint">无数据</td></tr>';
+    }
+  </script>
+</body>
+</html>

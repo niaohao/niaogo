@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>GM 登录</title>
+  <style>
+    body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+      font-family:"Segoe UI","Microsoft YaHei",sans-serif; background:#0f1419; color:#e7eef8; }
+    .box { background:#1a2332; border:1px solid #2a3648; border-radius:12px; padding:28px; width:320px; }
+    h1 { margin:0 0 8px; font-size:18px; }
+    .sub { color:#8b9bb4; font-size:12px; margin-bottom:16px; }
+    label { display:block; font-size:12px; color:#8b9bb4; margin:10px 0 4px; }
+    input { width:100%; padding:8px 10px; border-radius:8px; border:1px solid #2a3648; background:#0d121a; color:#e7eef8; }
+    button { margin-top:16px; width:100%; padding:10px; border:0; border-radius:8px; background:#3d8bfd; color:#fff; cursor:pointer; }
+    .err { color:#f07178; font-size:13px; margin-top:10px; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>尼尔号 GM</h1>
+    <div class="sub">默认 admin / admin（configs/gm_auth.json）</div>
+    <label>账号</label>
+    <input id="user" value="admin" />
+    <label>密码</label>
+    <input id="pass" type="password" value="admin" />
+    <button type="button" onclick="doLogin()">登录</button>
+    <div class="err" id="err"></div>
+  </div>
+  <script>
+    async function doLogin() {
+      const r = await fetch('/api/login', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: document.getElementById('user').value,
+          password: document.getElementById('pass').value,
+        }),
+      });
+      const j = await r.json();
+      if (!j.ok) { document.getElementById('err').textContent = j.error || '失败'; return; }
+      location.href = '/';
+    }
+    fetch('/api/me').then(r => r.json()).then(j => { if (j.ok) location.href = '/'; });
+  </script>
+</body>
+</html>

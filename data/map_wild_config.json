@@ -1,0 +1,2076 @@
+{
+  "shinyRate": 0,
+  "rareEmptySlots": 20,
+  "comment": "由 scripts/gen_map_wild_config.py 从参考 mapogres.go 生成；canCatch=false 当 EvolvesFrom>0；shinyRate=0 因本客户端 2004 无异色字段",
+  "maps": {
+    "8": {
+      "common": [],
+      "rare": [
+        {
+          "petId": 459,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        }
+      ]
+    },
+    "10": {
+      "common": [
+        {
+          "petId": 10,
+          "levelMin": 1,
+          "levelMax": 2,
+          "canCatch": true
+        }
+      ],
+      "rare": [
+        {
+          "petId": 164,
+          "levelMin": 1,
+          "levelMax": 2,
+          "canCatch": true
+        }
+      ]
+    },
+    "11": {
+      "common": [
+        {
+          "petId": 16,
+          "levelMin": 11,
+          "levelMax": 12,
+          "canCatch": true
+        }
+      ],
+      "rare": [
+        {
+          "petId": 27,
+          "levelMin": 11,
+          "levelMax": 12,
+          "canCatch": true
+        },
+        {
+          "petId": 122,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        }
+      ]
+    },
+    "12": {
+      "common": [
+        {
+          "petId": 83,
+          "levelMin": 1,
+          "levelMax": 6,
+          "canCatch": true
+        },
+        {
+          "petId": 84,
+          "levelMin": 1,
+          "levelMax": 6,
+          "canCatch": false
+        }
+      ],
+      "rare": [
+        {
+          "petId": 83,
+          "levelMin": 1,
+          "levelMax": 6,
+          "canCatch": true
+        },
+        {
+          "petId": 442,
+          "levelMin": 1,
+          "levelMax": 6,
+          "canCatch": true
+        }
+      ]
+    },
+    "13": {
+      "common": [
+        {
+          "petId": 19,
+          "levelMin": 12,
+          "levelMax": 13,
+          "canCatch": true
+        },
+        {
+          "petId": 480,
+          "levelMin": 13,
+          "levelMax": 14,
+          "canCatch": true
+        },
+        {
+          "petId": 348,
+          "levelMin": 12,
+          "levelMax": 13,
+          "canCatch": true
+        }
+      ],
+      "rare": []
+    },
+    "15": {
+      "common": [
+        {
+          "petId": 38,
+          "levelMin": 13,
+          "levelMax": 14,
+          "canCatch": true
+        }
+      ],
+      "rare": [
+        {
+          "petId": 62,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        }
+      ]
+    },
+    "16": {
+      "common": [
+        {
+          "petId": 35,
+          "levelMin": 17,
+          "levelMax": 18,
+          "canCatch": true
+        }
+      ],
+      "rare": [
+        {
+          "petId": 133,
+          "levelMin": 15,
+          "levelMax": 15,
+          "canCatch": true
+        }
+      ]
+    },
+    "17": {
+      "common": [
+        {
+          "petId": 335,
+          "levelMin": 15,
+          "levelMax": 15,
+          "canCatch": true
+        },
+        {
+          "petId": 337,
+          "levelMin": 38,
+          "levelMax": 38,
+          "canCatch": false
+        }
+      ],
+      "rare": [
+        {
+          "petId": 62,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        }
+      ]
+    },
+    "20": {
+      "common": [
+        {
+          "petId": 30,
+          "levelMin": 5,
+          "levelMax": 6,
+          "canCatch": true
+        }
+      ],
+      "rare": []
+    },
+    "21": {
+      "common": [
+        {
+          "petId": 33,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        }
+      ],
+      "rare": [
+        {
+          "petId": 108,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        }
+      ]
+    },
+    "22": {
+      "common": [
+        {
+          "petId": 198,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        }
+      ],
+      "rare": [
+        {
+          "petId": 108,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        }
+      ]
+    },
+    "25": {
+      "common": [
+        {
+          "petId": 22,
+          "levelMin": 3,
+          "levelMax": 4,
+          "canCatch": true
+        }
+      ],
+      "rare": [
+        {
+          "petId": 53,
+          "levelMin": 3,
+          "levelMax": 4,
+          "canCatch": true
+        }
+      ]
+    },
+    "26": {
+      "common": [
+        {
+          "petId": 25,
+          "levelMin": 13,
+          "levelMax": 14,
+          "canCatch": true
+        },
+        {
+          "petId": 26,
+          "levelMin": 13,
+          "levelMax": 14,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "27": {
+      "common": [
+        {
+          "petId": 250,
+          "levelMin": 4,
+          "levelMax": 10,
+          "canCatch": false
+        },
+        {
+          "petId": 249,
+          "levelMin": 4,
+          "levelMax": 10,
+          "canCatch": true
+        }
+      ],
+      "rare": []
+    },
+    "30": {
+      "common": [
+        {
+          "petId": 13,
+          "levelMin": 13,
+          "levelMax": 14,
+          "canCatch": true
+        }
+      ],
+      "rare": [
+        {
+          "petId": 59,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        },
+        {
+          "petId": 486,
+          "levelMin": 14,
+          "levelMax": 15,
+          "canCatch": true
+        }
+      ]
+    },
+    "31": {
+      "common": [
+        {
+          "petId": 43,
+          "levelMin": 19,
+          "levelMax": 20,
+          "canCatch": true
+        }
+      ],
+      "rare": [
+        {
+          "petId": 19,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        },
+        {
+          "petId": 284,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        }
+      ]
+    },
+    "32": {
+      "common": [
+        {
+          "petId": 70,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        }
+      ],
+      "rare": []
+    },
+    "34": {
+      "common": [
+        {
+          "petId": 74,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        },
+        {
+          "petId": 75,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": false
+        },
+        {
+          "petId": 76,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "36": {
+      "common": [
+        {
+          "petId": 145,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        }
+      ],
+      "rare": []
+    },
+    "40": {
+      "common": [
+        {
+          "petId": 116,
+          "levelMin": 5,
+          "levelMax": 10,
+          "canCatch": true
+        },
+        {
+          "petId": 117,
+          "levelMin": 5,
+          "levelMax": 10,
+          "canCatch": false
+        }
+      ],
+      "rare": [
+        {
+          "petId": 378,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 385,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        }
+      ]
+    },
+    "41": {
+      "common": [
+        {
+          "petId": 51,
+          "levelMin": 25,
+          "levelMax": 26,
+          "canCatch": true
+        }
+      ],
+      "rare": [
+        {
+          "petId": 65,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        }
+      ]
+    },
+    "43": {
+      "common": [
+        {
+          "petId": 51,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        },
+        {
+          "petId": 52,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "46": {
+      "common": [
+        {
+          "petId": 97,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        }
+      ],
+      "rare": []
+    },
+    "47": {
+      "common": [
+        {
+          "petId": 119,
+          "levelMin": 12,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 120,
+          "levelMin": 17,
+          "levelMax": 25,
+          "canCatch": false
+        }
+      ],
+      "rare": [
+        {
+          "petId": 1233,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 1702,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 799,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        }
+      ]
+    },
+    "48": {
+      "common": [
+        {
+          "petId": 184,
+          "levelMin": 15,
+          "levelMax": 26,
+          "canCatch": true
+        },
+        {
+          "petId": 185,
+          "levelMin": 27,
+          "levelMax": 35,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "49": {
+      "common": [
+        {
+          "petId": 105,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 106,
+          "levelMin": 17,
+          "levelMax": 25,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "51": {
+      "common": [
+        {
+          "petId": 161,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 163,
+          "levelMin": 44,
+          "levelMax": 45,
+          "canCatch": false
+        }
+      ],
+      "rare": [
+        {
+          "petId": 486,
+          "levelMin": 14,
+          "levelMax": 15,
+          "canCatch": true
+        }
+      ]
+    },
+    "52": {
+      "common": [
+        {
+          "petId": 158,
+          "levelMin": 10,
+          "levelMax": 11,
+          "canCatch": true
+        },
+        {
+          "petId": 156,
+          "levelMin": 11,
+          "levelMax": 12,
+          "canCatch": true
+        }
+      ],
+      "rare": []
+    },
+    "54": {
+      "common": [
+        {
+          "petId": 205,
+          "levelMin": 12,
+          "levelMax": 17,
+          "canCatch": true
+        },
+        {
+          "petId": 206,
+          "levelMin": 18,
+          "levelMax": 30,
+          "canCatch": false
+        }
+      ],
+      "rare": [
+        {
+          "petId": 604,
+          "levelMin": 16,
+          "levelMax": 17,
+          "canCatch": true
+        }
+      ]
+    },
+    "55": {
+      "common": [
+        {
+          "petId": 208,
+          "levelMin": 15,
+          "levelMax": 26,
+          "canCatch": true
+        },
+        {
+          "petId": 210,
+          "levelMin": 27,
+          "levelMax": 35,
+          "canCatch": false
+        }
+      ],
+      "rare": [
+        {
+          "petId": 203,
+          "levelMin": 15,
+          "levelMax": 15,
+          "canCatch": true
+        }
+      ]
+    },
+    "56": {
+      "common": [
+        {
+          "petId": 211,
+          "levelMin": 15,
+          "levelMax": 28,
+          "canCatch": true
+        }
+      ],
+      "rare": []
+    },
+    "57": {
+      "common": [
+        {
+          "petId": 235,
+          "levelMin": 15,
+          "levelMax": 25,
+          "canCatch": true
+        },
+        {
+          "petId": 236,
+          "levelMin": 26,
+          "levelMax": 40,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "58": {
+      "common": [
+        {
+          "petId": 228,
+          "levelMin": 15,
+          "levelMax": 28,
+          "canCatch": true
+        },
+        {
+          "petId": 229,
+          "levelMin": 29,
+          "levelMax": 40,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "60": {
+      "common": [
+        {
+          "petId": 232,
+          "levelMin": 12,
+          "levelMax": 17,
+          "canCatch": true
+        },
+        {
+          "petId": 234,
+          "levelMin": 18,
+          "levelMax": 35,
+          "canCatch": false
+        }
+      ],
+      "rare": [
+        {
+          "petId": 269,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 243,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        }
+      ]
+    },
+    "61": {
+      "common": [
+        {
+          "petId": 239,
+          "levelMin": 20,
+          "levelMax": 40,
+          "canCatch": false
+        }
+      ],
+      "rare": [
+        {
+          "petId": 237,
+          "levelMin": 15,
+          "levelMax": 25,
+          "canCatch": true
+        }
+      ]
+    },
+    "62": {
+      "common": [
+        {
+          "petId": 242,
+          "levelMin": 20,
+          "levelMax": 40,
+          "canCatch": false
+        }
+      ],
+      "rare": [
+        {
+          "petId": 240,
+          "levelMin": 15,
+          "levelMax": 25,
+          "canCatch": true
+        }
+      ]
+    },
+    "63": {
+      "common": [
+        {
+          "petId": 430,
+          "levelMin": 20,
+          "levelMax": 30,
+          "canCatch": true
+        }
+      ],
+      "rare": [
+        {
+          "petId": 445,
+          "levelMin": 20,
+          "levelMax": 30,
+          "canCatch": true
+        }
+      ]
+    },
+    "64": {
+      "common": [
+        {
+          "petId": 257,
+          "levelMin": 15,
+          "levelMax": 28,
+          "canCatch": true
+        }
+      ],
+      "rare": []
+    },
+    "101": {
+      "common": [
+        {
+          "petId": 230,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 201,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        }
+      ],
+      "rare": [
+        {
+          "petId": 148,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 351,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        }
+      ]
+    },
+    "105": {
+      "common": [
+        {
+          "petId": 89,
+          "levelMin": 14,
+          "levelMax": 15,
+          "canCatch": true
+        },
+        {
+          "petId": 90,
+          "levelMin": 31,
+          "levelMax": 32,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "106": {
+      "common": [
+        {
+          "petId": 188,
+          "levelMin": 18,
+          "levelMax": 19,
+          "canCatch": true
+        }
+      ],
+      "rare": []
+    },
+    "108": {
+      "common": [
+        {
+          "petId": 43,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        }
+      ],
+      "rare": []
+    },
+    "306": {
+      "common": [
+        {
+          "petId": 102,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        }
+      ],
+      "rare": []
+    },
+    "314": {
+      "common": [],
+      "rare": [
+        {
+          "petId": 217,
+          "levelMin": 12,
+          "levelMax": 13,
+          "canCatch": true
+        },
+        {
+          "petId": 509,
+          "levelMin": 13,
+          "levelMax": 14,
+          "canCatch": true
+        }
+      ]
+    },
+    "316": {
+      "common": [
+        {
+          "petId": 136,
+          "levelMin": 15,
+          "levelMax": 28,
+          "canCatch": true
+        },
+        {
+          "petId": 128,
+          "levelMin": 15,
+          "levelMax": 28,
+          "canCatch": true
+        }
+      ],
+      "rare": []
+    },
+    "320": {
+      "common": [
+        {
+          "petId": 143,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 144,
+          "levelMin": 38,
+          "levelMax": 39,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "323": {
+      "common": [],
+      "rare": [
+        {
+          "petId": 254,
+          "levelMin": 15,
+          "levelMax": 28,
+          "canCatch": true
+        },
+        {
+          "petId": 252,
+          "levelMin": 15,
+          "levelMax": 28,
+          "canCatch": true
+        }
+      ]
+    },
+    "325": {
+      "common": [
+        {
+          "petId": 265,
+          "levelMin": 15,
+          "levelMax": 25,
+          "canCatch": true
+        },
+        {
+          "petId": 266,
+          "levelMin": 26,
+          "levelMax": 40,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "326": {
+      "common": [
+        {
+          "petId": 267,
+          "levelMin": 15,
+          "levelMax": 25,
+          "canCatch": true
+        },
+        {
+          "petId": 268,
+          "levelMin": 26,
+          "levelMax": 40,
+          "canCatch": false
+        }
+      ],
+      "rare": [
+        {
+          "petId": 720,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        }
+      ]
+    },
+    "327": {
+      "common": [
+        {
+          "petId": 278,
+          "levelMin": 15,
+          "levelMax": 28,
+          "canCatch": true
+        },
+        {
+          "petId": 280,
+          "levelMin": 29,
+          "levelMax": 40,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "328": {
+      "common": [
+        {
+          "petId": 291,
+          "levelMin": 15,
+          "levelMax": 28,
+          "canCatch": true
+        },
+        {
+          "petId": 292,
+          "levelMin": 29,
+          "levelMax": 40,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "329": {
+      "common": [
+        {
+          "petId": 100,
+          "levelMin": 15,
+          "levelMax": 35,
+          "canCatch": true
+        }
+      ],
+      "rare": []
+    },
+    "330": {
+      "common": [
+        {
+          "petId": 422,
+          "levelMin": 15,
+          "levelMax": 25,
+          "canCatch": true
+        },
+        {
+          "petId": 293,
+          "levelMin": 15,
+          "levelMax": 25,
+          "canCatch": true
+        },
+        {
+          "petId": 295,
+          "levelMin": 26,
+          "levelMax": 40,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "331": {
+      "common": [
+        {
+          "petId": 344,
+          "levelMin": 15,
+          "levelMax": 28,
+          "canCatch": true
+        },
+        {
+          "petId": 345,
+          "levelMin": 29,
+          "levelMax": 40,
+          "canCatch": false
+        }
+      ],
+      "rare": [
+        {
+          "petId": 486,
+          "levelMin": 14,
+          "levelMax": 15,
+          "canCatch": true
+        }
+      ]
+    },
+    "333": {
+      "common": [
+        {
+          "petId": 395,
+          "levelMin": 15,
+          "levelMax": 35,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "334": {
+      "common": [
+        {
+          "petId": 373,
+          "levelMin": 15,
+          "levelMax": 28,
+          "canCatch": true
+        },
+        {
+          "petId": 374,
+          "levelMin": 29,
+          "levelMax": 38,
+          "canCatch": false
+        },
+        {
+          "petId": 375,
+          "levelMin": 39,
+          "levelMax": 45,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "338": {
+      "common": [
+        {
+          "petId": 399,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        }
+      ],
+      "rare": []
+    },
+    "350": {
+      "common": [
+        {
+          "petId": 677,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 678,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        },
+        {
+          "petId": 679,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "351": {
+      "common": [
+        {
+          "petId": 684,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 685,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "352": {
+      "common": [
+        {
+          "petId": 680,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 681,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "353": {
+      "common": [
+        {
+          "petId": 682,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 683,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "354": {
+      "common": [
+        {
+          "petId": 686,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 687,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "356": {
+      "common": [
+        {
+          "petId": 840,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 841,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "357": {
+      "common": [
+        {
+          "petId": 859,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 860,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "400": {
+      "common": [
+        {
+          "petId": 139,
+          "levelMin": 12,
+          "levelMax": 13,
+          "canCatch": true
+        },
+        {
+          "petId": 56,
+          "levelMin": 12,
+          "levelMax": 13,
+          "canCatch": true
+        },
+        {
+          "petId": 150,
+          "levelMin": 12,
+          "levelMax": 13,
+          "canCatch": true
+        }
+      ],
+      "rare": []
+    },
+    "404": {
+      "common": [
+        {
+          "petId": 491,
+          "levelMin": 15,
+          "levelMax": 28,
+          "canCatch": true
+        },
+        {
+          "petId": 493,
+          "levelMin": 29,
+          "levelMax": 40,
+          "canCatch": false
+        }
+      ],
+      "rare": [
+        {
+          "petId": 448,
+          "levelMin": 25,
+          "levelMax": 35,
+          "canCatch": true
+        }
+      ]
+    },
+    "405": {
+      "common": [],
+      "rare": [
+        {
+          "petId": 478,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        }
+      ]
+    },
+    "407": {
+      "common": [
+        {
+          "petId": 469,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        }
+      ],
+      "rare": [
+        {
+          "petId": 515,
+          "levelMin": 16,
+          "levelMax": 17,
+          "canCatch": true
+        }
+      ]
+    },
+    "411": {
+      "common": [
+        {
+          "petId": 463,
+          "levelMin": 15,
+          "levelMax": 35,
+          "canCatch": true
+        }
+      ],
+      "rare": []
+    },
+    "423": {
+      "common": [
+        {
+          "petId": 105,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 16,
+          "levelMin": 15,
+          "levelMax": 28,
+          "canCatch": true
+        }
+      ],
+      "rare": []
+    },
+    "424": {
+      "common": [
+        {
+          "petId": 494,
+          "levelMin": 15,
+          "levelMax": 35,
+          "canCatch": true
+        }
+      ],
+      "rare": []
+    },
+    "425": {
+      "common": [
+        {
+          "petId": 499,
+          "levelMin": 15,
+          "levelMax": 35,
+          "canCatch": true
+        }
+      ],
+      "rare": []
+    },
+    "429": {
+      "common": [
+        {
+          "petId": 523,
+          "levelMin": 15,
+          "levelMax": 28,
+          "canCatch": true
+        },
+        {
+          "petId": 525,
+          "levelMin": 29,
+          "levelMax": 40,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "432": {
+      "common": [
+        {
+          "petId": 544,
+          "levelMin": 15,
+          "levelMax": 35,
+          "canCatch": true
+        }
+      ],
+      "rare": []
+    },
+    "434": {
+      "common": [
+        {
+          "petId": 847,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 848,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "435": {
+      "common": [
+        {
+          "petId": 547,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        }
+      ],
+      "rare": []
+    },
+    "437": {
+      "common": [
+        {
+          "petId": 553,
+          "levelMin": 15,
+          "levelMax": 31,
+          "canCatch": true
+        },
+        {
+          "petId": 554,
+          "levelMin": 32,
+          "levelMax": 40,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "438": {
+      "common": [
+        {
+          "petId": 827,
+          "levelMin": 15,
+          "levelMax": 35,
+          "canCatch": true
+        }
+      ],
+      "rare": []
+    },
+    "439": {
+      "common": [
+        {
+          "petId": 557,
+          "levelMin": 15,
+          "levelMax": 28,
+          "canCatch": true
+        },
+        {
+          "petId": 559,
+          "levelMin": 29,
+          "levelMax": 40,
+          "canCatch": false
+        }
+      ],
+      "rare": [
+        {
+          "petId": 560,
+          "levelMin": 20,
+          "levelMax": 30,
+          "canCatch": true
+        }
+      ]
+    },
+    "445": {
+      "common": [
+        {
+          "petId": 766,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 767,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        },
+        {
+          "petId": 768,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "446": {
+      "common": [
+        {
+          "petId": 773,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 774,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "447": {
+      "common": [
+        {
+          "petId": 785,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 786,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "448": {
+      "common": [
+        {
+          "petId": 791,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 792,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        },
+        {
+          "petId": 793,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "449": {
+      "common": [
+        {
+          "petId": 801,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 802,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "451": {
+      "common": [
+        {
+          "petId": 805,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 806,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "452": {
+      "common": [
+        {
+          "petId": 805,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 806,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "453": {
+      "common": [
+        {
+          "petId": 822,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 823,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        },
+        {
+          "petId": 824,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "454": {
+      "common": [
+        {
+          "petId": 827,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 828,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "455": {
+      "common": [
+        {
+          "petId": 842,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 843,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        },
+        {
+          "petId": 844,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "459": {
+      "common": [
+        {
+          "petId": 574,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 575,
+          "levelMin": 58,
+          "levelMax": 59,
+          "canCatch": false
+        }
+      ],
+      "rare": [
+        {
+          "petId": 576,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        }
+      ]
+    },
+    "461": {
+      "common": [
+        {
+          "petId": 558,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": false
+        },
+        {
+          "petId": 553,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        },
+        {
+          "petId": 156,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        },
+        {
+          "petId": 158,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        },
+        {
+          "petId": 454,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        },
+        {
+          "petId": 95,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        },
+        {
+          "petId": 139,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        },
+        {
+          "petId": 211,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        },
+        {
+          "petId": 59,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        },
+        {
+          "petId": 257,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        },
+        {
+          "petId": 252,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        },
+        {
+          "petId": 254,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        },
+        {
+          "petId": 150,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        }
+      ],
+      "rare": [
+        {
+          "petId": 392,
+          "levelMin": 5,
+          "levelMax": 5,
+          "canCatch": true
+        }
+      ]
+    },
+    "476": {
+      "common": [
+        {
+          "petId": 742,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 743,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "478": {
+      "common": [
+        {
+          "petId": 764,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 765,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": [
+        {
+          "petId": 756,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        }
+      ]
+    },
+    "479": {
+      "common": [
+        {
+          "petId": 667,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 668,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        },
+        {
+          "petId": 701,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 702,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        },
+        {
+          "petId": 771,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 772,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": [
+        {
+          "petId": 646,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 647,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        },
+        {
+          "petId": 703,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 704,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ]
+    },
+    "481": {
+      "common": [
+        {
+          "petId": 690,
+          "levelMin": 30,
+          "levelMax": 40,
+          "canCatch": true
+        }
+      ],
+      "rare": [
+        {
+          "petId": 692,
+          "levelMin": 30,
+          "levelMax": 40,
+          "canCatch": true
+        }
+      ]
+    },
+    "484": {
+      "common": [
+        {
+          "petId": 706,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 707,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": [
+        {
+          "petId": 703,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 704,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ]
+    },
+    "486": {
+      "common": [
+        {
+          "petId": 716,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 717,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "487": {
+      "common": [
+        {
+          "petId": 716,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 717,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "494": {
+      "common": [],
+      "rare": [
+        {
+          "petId": 726,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 727,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        },
+        {
+          "petId": 728,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ]
+    },
+    "497": {
+      "common": [
+        {
+          "petId": 738,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 739,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "667": {
+      "common": [
+        {
+          "petId": 852,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 853,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "668": {
+      "common": [
+        {
+          "petId": 878,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 879,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        },
+        {
+          "petId": 880,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "669": {
+      "common": [
+        {
+          "petId": 884,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 885,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        },
+        {
+          "petId": 886,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "670": {
+      "common": [
+        {
+          "petId": 891,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 892,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "671": {
+      "common": [
+        {
+          "petId": 893,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 894,
+          "levelMin": 50,
+          "levelMax": 51,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    },
+    "693": {
+      "common": [
+        {
+          "petId": 1048,
+          "levelMin": 15,
+          "levelMax": 16,
+          "canCatch": true
+        },
+        {
+          "petId": 1049,
+          "levelMin": 28,
+          "levelMax": 30,
+          "canCatch": false
+        }
+      ],
+      "rare": []
+    }
+  }
+}

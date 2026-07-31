@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>尼尔号 GM · 能力值</title>
+  <link rel="stylesheet" href="/common.css" />
+  <style>
+    .stat-grid {
+      display: grid; grid-template-columns: 88px 1fr 1fr; gap: 8px 12px;
+      align-items: center; margin: 12px 0;
+    }
+    .stat-grid .head { color: var(--muted); font-size: 12px; }
+    .stat-grid input { width: 100%; min-width: 0; }
+    .badge {
+      display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px;
+      border: 1px solid var(--line); color: var(--muted);
+    }
+    .badge.on { border-color: var(--accent); color: var(--accent); }
+    .badge.warn { border-color: var(--danger); color: var(--danger); }
+    .compare { font-size: 12px; color: var(--muted); }
+    main { max-width: 1100px; }
+    .pick-split { display: grid; grid-template-columns: 240px 1fr; gap: 14px; }
+    @media (max-width: 900px) { .pick-split { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <h1><span class="brand-mark"></span>尼尔号 GM</h1>
+    <div class="top-meta"><span id="who"></span><a href="#" onclick="logout();return false">退出</a></div>
+  </header>
+  <div class="layout">
+    <nav><div class="nav-title">MODULES</div><div id="gm-nav"></div></nav>
+    <main>
+      <section class="card" id="pickCard">
+        <h2>选择账号与精灵</h2>
+        <div class="crumb">
+          <a href="/accounts.html">账号管理</a> ·
+          <a href="/pets.html" id="crumbPets">精灵管控</a> ·
+          能力值
+        </div>
+        <div class="pick-split">
+          <div>
+            <div class="row">
+              <input class="wide" id="userQ" placeholder="UID / 昵称 / 邮箱" onkeydown="if(event.key==='Enter')searchUsers()" />
+              <button type="button" onclick="searchUsers()">搜</button>
+            </div>
+            <div class="user-list" id="userList" style="max-height:280px"><div class="hint" style="padding:10px">搜索玩家</div></div>
+            <div class="pager" id="userPager"></div>
+          </div>
+          <div>
+            <div id="pickAccount"></div>
+            <h3 class="section-title" style="font-size:13px;margin:10px 0 6px">背包</h3>
+            <div id="pickBag"></div>
+            <div class="pager" id="pickBagPager"></div>
+            <h3 class="section-title" style="font-size:13px;margin:14px 0 6px">仓库</h3>
+            <div id="pickStorage"></div>
+            <div class="pager" id="pickStoragePager"></div>
+            <h3 class="section-title" style="font-size:13px;margin:14px 0 6px">放生仓</h3>
+            <div id="pickRowei"></div>
+            <div class="pager" id="pickRoweiPager"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card hidden" id="panel">
+        <div class="crumb">
+          <a href="/pets.html" id="backPets">← 返回该玩家精灵</a>
+          · <a href="/user.html" id="backUser">账号详情</a>
+        </div>
+        <div id="accountWrap"></div>
+
+        <div class="row" style="justify-content:space-between;align-items:flex-start">
+          <div>
+            <strong id="petTitle">—</strong>
+            <span class="badge" id="lockBadge">公式</span>
+            <div class="compare" id="petMeta"></div>
+          </div>
+          <button type="button" class="ghost" onclick="showPicker()">换一只</button>
+        </div>
+
+        <div class="stat-grid">
+          <div class="head"></div>
+          <div class="head">当前 / 编辑</div>
+          <div class="head">公式正常值</div>
+
+          <label>体力</label>
+          <input id="hp" type="number" min="1" />
+          <div class="compare" id="nat_hp">—</div>
+
+          <label>攻击</label>
+          <input id="atk" type="number" min="1" />
+          <div class="compare" id="nat_atk">—</div>
+
+          <label>防御</label>
+          <input id="def" type="number" min="1" />
+          <div class="compare" id="nat_def">—</div>
+
+          <label>特攻</label>
+          <input id="sa" type="number" min="1" />
+          <div class="compare" id="nat_sa">—</div>
+
+          <label>特防</label>
+          <input id="sd" type="number" min="1" />
+          <div class="compare" id="nat_sd">—</div>
+
+          <label>速度</label>
+          <input id="sp" type="number" min="1" />
+          <div class="compare" id="nat_sp">—</div>
+        </div>
+
+        <div class="row">
+          <button type="button" class="ghost" onclick="fillNatural()">填入正常值</button>
+          <button type="button" class="ghost" onclick="scaleAll(2)">×2</button>
+          <button type="button" class="ghost" onclick="scaleAll(5)">×5</button>
+          <button type="button" class="ghost" onclick="scaleAll(10)">×10</button>
+        </div>
+        <div class="actions" style="justify-content:flex-start;margin-top:10px">
+          <button type="button" data-perm="pet.edit" onclick="save()">保存能力值</button>
+          <button type="button" class="danger" data-perm="pet.edit" onclick="restore()">一键恢复正常</button>
+        </div>
+        <div class="msg" id="msg"></div>
+        <div class="hint">写入 extra_json.gmStats 持久覆盖面板六维；「恢复正常」清除覆盖，按种族+DV+学习力+性格+特训加成重算。</div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/common.js"></script>
+  <script>
+    const KEYS = ['hp','atk','def','sa','sd','sp'];
+    let natural = {};
+    let currentUid = 0;
+    let currentCatch = 0;
+    let usersCache = [];
+    let accountCache = null;
+    let userPageState = { page: 0, pageSize: 12 };
+    let pickBagAll = [], pickStorageAll = [], pickRoweiAll = [];
+    let pickBagPage = 0, pickStoragePage = 0, pickRoweiPage = 0;
+
+    (async () => {
+      await ensureAuth();
+      renderShell('pets');
+      const q = new URLSearchParams(location.search);
+      await searchUsers('');
+      if (q.get('uid') && q.get('catchTime')) {
+        await loadPet(+q.get('uid'), +q.get('catchTime'));
+      } else if (q.get('uid')) {
+        await pickUser(+q.get('uid'));
+      }
+    })();
+
+    function setMsg(text, ok) {
+      const el = document.getElementById('msg');
+      if (!el) return;
+      el.textContent = text || '';
+      el.className = 'msg ' + (ok ? 'ok' : 'err');
+    }
+
+    function showPicker() {
+      document.getElementById('pickCard').classList.remove('hidden');
+      document.getElementById('panel').classList.add('hidden');
+      if (currentUid) pickUser(currentUid);
+    }
+
+    function paintUserList() {
+      renderUserList(
+        document.getElementById('userList'), usersCache, currentUid, pickUser,
+        document.getElementById('userPager'), userPageState
+      );
+    }
+
+    async function searchUsers() {
+      const q = document.getElementById('userQ').value.trim();
+      const r = await searchUsersAPI(q);
+      usersCache = r.list || [];
+      userPageState.page = 0;
+      paintUserList();
+    }
+
+    function paintPickSection(listElId, pagerId, all, where, pageRef) {
+      const listEl = document.getElementById(listElId);
+      const pagerEl = document.getElementById(pagerId);
+      const pg = paginateList(all, pageRef.get(), 10);
+      pageRef.set(pg.page);
+      if (!all.length) {
+        listEl.innerHTML = '<div class="hint">空</div>';
+        pagerEl.innerHTML = '';
+        return;
+      }
+      listEl.innerHTML = '<table><thead><tr><th>精灵</th><th>Lv</th><th>面板</th><th></th></tr></thead><tbody>' +
+        pg.slice.map((p) => {
+          const name = escapeHtml(p.label || p.name || '');
+          const st = Array.isArray(p.stats) ? p.stats.slice(0, 6).join('/') : '—';
+          const gm = p.hasGMStats ? ' <span class="badge warn">GM</span>' : '';
+          const ct = String(p.catchTime);
+          return `<tr class="pet-row-click" data-catch="${escapeHtml(ct)}">
+            <td>${name} <span style="color:var(--muted);font-size:11px">${where}</span></td>
+            <td>${p.level || 0}</td>
+            <td>${st}${gm}</td>
+            <td><button type="button" class="ghost btn-pick" data-catch="${escapeHtml(ct)}">改能力值</button></td>
+          </tr>`;
+        }).join('') + '</tbody></table>';
+      listEl.querySelectorAll('[data-catch]').forEach((node) => {
+        const go = () => loadPet(currentUid, Number(node.getAttribute('data-catch')));
+        if (node.tagName === 'TR') node.onclick = (e) => { if (!e.target.closest('button')) go(); };
+        if (node.classList.contains('btn-pick')) node.onclick = (e) => { e.stopPropagation(); go(); };
+      });
+      renderPager(pagerEl, pg.page, pg.pages, pg.total, (delta) => {
+        pageRef.set(Math.max(0, Math.min(pg.pages - 1, pageRef.get() + delta)));
+        paintPickSection(listElId, pagerId, all, where, pageRef);
+      }, { unit: '只' });
+    }
+
+    async function pickUser(uid) {
+      currentUid = uid;
+      paintUserList();
+      document.getElementById('crumbPets').href = '/pets.html?uid=' + uid;
+      const d = await (await fetch('/api/user/detail?uid=' + uid)).json();
+      if (!d.ok) {
+        document.getElementById('pickAccount').innerHTML = '<div class="err">' + (d.error || '') + '</div>';
+        return;
+      }
+      const u = d.user || {};
+      accountCache = {
+        userId: u.userId || uid, nickname: u.nickname, email: u.email,
+        coins: u.coins, gold: u.gold,
+      };
+      document.getElementById('pickAccount').innerHTML = accountBarHTML(accountCache, {
+        online: d.online, liveMapId: d.liveMapId,
+      });
+      pickBagAll = d.pets?.bag || [];
+      pickStorageAll = d.pets?.storage || [];
+      pickRoweiAll = d.pets?.rowei || [];
+      pickBagPage = pickStoragePage = pickRoweiPage = 0;
+      paintPickSection('pickBag', 'pickBagPager', pickBagAll, '背包', {
+        get: () => pickBagPage, set: (v) => { pickBagPage = v; },
+      });
+      paintPickSection('pickStorage', 'pickStoragePager', pickStorageAll, '仓库', {
+        get: () => pickStoragePage, set: (v) => { pickStoragePage = v; },
+      });
+      paintPickSection('pickRowei', 'pickRoweiPager', pickRoweiAll, '放生仓', {
+        get: () => pickRoweiPage, set: (v) => { pickRoweiPage = v; },
+      });
+    }
+
+    function applyAccountBar(user, online, liveMapId) {
+      const u = user || accountCache || { userId: currentUid };
+      document.getElementById('accountWrap').innerHTML = accountBarHTML(u, { online, liveMapId });
+      document.getElementById('backPets').href = '/pets.html?uid=' + (u.userId || currentUid);
+      document.getElementById('backUser').href = '/user.html?uid=' + (u.userId || currentUid);
+      document.getElementById('crumbPets').href = '/pets.html?uid=' + (u.userId || currentUid);
+    }
+
+    function applyData(j) {
+      const p = j.pet || {};
+      document.getElementById('pickCard').classList.add('hidden');
+      document.getElementById('panel').classList.remove('hidden');
+      applyAccountBar(j.user, j.online, j.liveMapId);
+      if (j.user) accountCache = j.user;
+      document.getElementById('petTitle').textContent = (p.label || p.name || '') + ' · Lv' + (p.level || 0);
+      document.getElementById('petMeta').textContent =
+        'catchTime ' + (p.catchTime || '') + ' · ' + (p.where || '') +
+        ' · DV ' + (p.dv || 0) + ' · 性格 ' + (p.nature || 0) +
+        ' · 种族 #' + (p.petId || '');
+      const badge = document.getElementById('lockBadge');
+      if (j.gmLocked) {
+        badge.textContent = 'GM覆盖中（已持久）';
+        badge.className = 'badge warn';
+      } else {
+        badge.textContent = '公式计算';
+        badge.className = 'badge on';
+      }
+      natural = j.natural || {};
+      const cur = j.current || {};
+      KEYS.forEach((k) => {
+        document.getElementById(k).value = cur[k] ?? 1;
+        document.getElementById('nat_' + k).textContent = natural[k] ?? '—';
+      });
+    }
+
+    async function loadPet(uid, catchTime) {
+      currentUid = uid;
+      currentCatch = catchTime;
+      if (!uid || !catchTime) { setMsg('需要选中精灵', false); return; }
+      const j = await (await fetch('/api/pet/stats?uid=' + uid + '&catchTime=' + catchTime)).json();
+      if (!j.ok) { setMsg(j.error || '加载失败', false); showPicker(); return; }
+      history.replaceState(null, '', '?uid=' + uid + '&catchTime=' + catchTime);
+      applyData(j);
+      setMsg('已加载', true);
+      applyPermUI();
+    }
+
+    function readStats() {
+      const o = {};
+      KEYS.forEach((k) => { o[k] = +document.getElementById(k).value || 0; });
+      return o;
+    }
+
+    function fillNatural() {
+      KEYS.forEach((k) => {
+        if (natural[k] != null) document.getElementById(k).value = natural[k];
+      });
+    }
+
+    function scaleAll(n) {
+      KEYS.forEach((k) => {
+        const base = natural[k] != null ? natural[k] : (+document.getElementById(k).value || 1);
+        document.getElementById(k).value = Math.max(1, Math.floor(base * n));
+      });
+    }
+
+    async function save() {
+      const body = { userId: currentUid, catchTime: currentCatch, ...readStats() };
+      if (KEYS.some((k) => body[k] < 1)) { setMsg('各项须 ≥1', false); return; }
+      const j = await postJSON('/api/pet/stats', body);
+      if (!j.ok) { setMsg(j.error || '保存失败', false); return; }
+      await loadPet(currentUid, currentCatch);
+      setMsg('已保存并持久化 · ' + (j.label || ''), true);
+    }
+
+    async function restore() {
+      if (!dangerConfirm('清除 GM 能力值覆盖，恢复为公式正常值？')) return;
+      const j = await postJSON('/api/pet/stats/restore', { userId: currentUid, catchTime: currentCatch });
+      if (!j.ok) { setMsg(j.error || '恢复失败', false); return; }
+      await loadPet(currentUid, currentCatch);
+      setMsg('已恢复正常 · ' + (j.label || ''), true);
+    }
+  </script>
+</body>
+</html>

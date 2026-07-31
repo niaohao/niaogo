@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>尼尔号 GM · 在线玩家</title>
+  <link rel="stylesheet" href="/common.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1><span class="brand-mark"></span>尼尔号 GM</h1>
+    <div class="top-meta"><span id="who"></span><a href="#" onclick="logout();return false">退出</a></div>
+  </header>
+  <div class="layout">
+    <nav><div class="nav-title">MODULES</div><div id="gm-nav"></div></nav>
+    <main>
+      <section class="card">
+        <h2>在线列表</h2>
+        <div class="row">
+          <button type="button" onclick="refresh()">刷新</button>
+          <span class="hint" id="cnt"></span>
+        </div>
+        <div class="row" data-perm="server.double">
+          <label>全服双倍</label>
+          <button type="button" class="ghost" onclick="setFlag('exp_double',1)">开经验</button>
+          <button type="button" class="ghost" onclick="setFlag('exp_double',0)">关经验</button>
+          <button type="button" class="ghost" onclick="setFlag('drop_double',1)">开掉落</button>
+          <button type="button" class="ghost" onclick="setFlag('drop_double',0)">关掉落</button>
+        </div>
+        <table style="margin-top:10px">
+          <thead><tr><th>UID</th><th>昵称</th><th>地图</th><th>战斗</th><th>地址</th><th>操作</th></tr></thead>
+          <tbody id="tb"></tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+  <script src="/common.js"></script>
+  <script>
+    (async () => { await ensureAuth(); renderShell('online'); refresh(); })();
+
+    async function refresh() {
+      const j = await (await fetch('/api/online')).json();
+      document.getElementById('cnt').textContent = '共 ' + (j.count || 0) + ' 人';
+      const tb = document.getElementById('tb');
+      tb.innerHTML = '';
+      (j.players || []).forEach((p) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${p.userId}</td><td>${p.nickname || ''}</td><td>${p.mapId}</td>
+          <td>${p.inBattle ? '是' : ''}</td><td>${p.remote || ''}</td>
+          <td>
+            <a href="/user.html?uid=${p.userId}">详情</a>
+            <button type="button" class="ghost" data-perm="online.teleport" data-uid="${p.userId}">传送</button>
+            <button type="button" class="danger" data-perm="online.kick" data-uid="${p.userId}">踢</button>
+          </td>`;
+        const kick = tr.querySelector('button.danger');
+        kick.onclick = async () => {
+          if (!dangerConfirm('踢出玩家 ' + p.userId)) return;
+          await postJSON('/api/kick', { userId: p.userId, confirm: true });
+          refresh();
+        };
+        const tp = tr.querySelector('button.ghost');
+        tp.onclick = async () => {
+          const mapId = prompt('目标地图 ID', String(p.mapId || 1));
+          if (!mapId) return;
+          if (!dangerConfirm(`传送玩家 ${p.userId} → 地图 ${mapId}`)) return;
+          const r = await postJSON('/api/teleport', { uid: p.userId, mapId: +mapId, confirm: true });
+          alert(r.ok ? '已传送' : (r.error || '接口未落地'));
+        };
+        tb.appendChild(tr);
+      });
+      applyPermUI();
+    }
+
+    async function setFlag(key, val) {
+      if (!dangerConfirm(`设置 ${key}=${val}`)) return;
+      const j = await postJSON('/api/server/flags', { [key === 'exp_double' ? 'expDouble' : 'dropDouble']: !!val, confirm: true });
+      alert(j.ok ? '已更新' : (j.error || '接口未落地'));
+    }
+  </script>
+</body>
+</html>

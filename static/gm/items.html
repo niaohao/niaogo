@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>尼尔号 GM · 道具货币</title>
+  <link rel="stylesheet" href="/common.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1><span class="brand-mark"></span>尼尔号 GM</h1>
+    <div class="top-meta"><span id="who"></span><a href="#" onclick="logout();return false">退出</a></div>
+  </header>
+  <div class="layout">
+    <nav><div class="nav-title">MODULES</div><div id="gm-nav"></div></nav>
+    <main>
+      <div class="player-split">
+        <section class="card">
+          <h2>玩家账号</h2>
+          <div class="row">
+            <input class="wide" id="userQ" placeholder="UID / 昵称 / 邮箱" onkeydown="if(event.key==='Enter')searchUsers()" />
+            <button type="button" onclick="searchUsers()">搜索</button>
+          </div>
+          <div class="user-list" id="userList"><div class="hint" style="padding:12px">搜索玩家</div></div>
+          <div class="pager" id="userPager"></div>
+        </section>
+
+        <div style="display:grid;gap:14px">
+          <section class="card">
+            <h2>当前账号</h2>
+            <div id="accountWrap"><div class="hint">请在左侧点选玩家</div></div>
+            <div class="row" id="accountActions" style="display:none;margin-top:8px">
+              <button type="button" data-perm="item.grant" onclick="openGrantModal()">发放道具</button>
+              <button type="button" class="ghost" onclick="loadBag()">刷新背包</button>
+            </div>
+          </section>
+
+          <section class="card">
+            <h2>货币调整</h2>
+            <div class="row">
+              <label>赛尔豆 ±</label><input id="coins" type="number" value="0" />
+              <label>金豆 ±</label><input id="gold" type="number" value="0" />
+              <button type="button" data-perm="currency.edit" onclick="grantCur()">提交</button>
+            </div>
+            <div class="msg" id="curMsg"></div>
+          </section>
+
+          <section class="card">
+            <h2>背包道具 <span id="itemCnt" style="color:var(--muted);font-size:12px;font-weight:400"></span></h2>
+            <div class="hint">对齐原服：点格子可改数量/删除；点「发放道具」弹出可选列表。</div>
+            <div class="row">
+              <input class="wide" id="bagFilter" placeholder="筛选编号/名称" oninput="itemPage=0;paintItems()" />
+              <select id="itemPageSize" onchange="itemPage=0;paintItems()">
+                <option value="15">15/页</option>
+                <option value="24" selected>24/页</option>
+                <option value="48">48/页</option>
+              </select>
+            </div>
+            <div class="item-grid" id="itemGrid"><div class="hint">点选玩家后显示</div></div>
+            <div class="pager" id="itemPager"></div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- 发放道具：可搜索点选列表（对齐原服 addItemModal） -->
+  <div id="grantModal" class="modal-mask hidden" style="display:none">
+    <div class="modal wide">
+      <h3>发放道具</h3>
+      <div class="hint" id="grantMeta">先搜索，再点列表选中道具</div>
+      <div class="row">
+        <input class="wide" id="grantQ" placeholder="编号 / 名称，回车搜索" onkeydown="if(event.key==='Enter'){event.preventDefault();searchCatalog();}" />
+        <button type="button" class="ghost" onclick="searchCatalog()">搜索</button>
+      </div>
+      <div class="pick-list" id="grantPickList"><div class="hint" style="padding:12px">输入关键字搜索道具表</div></div>
+      <div class="pager" id="grantPickPager"></div>
+      <div class="row" style="margin-top:12px">
+        <label>已选</label>
+        <input class="wide" id="grantSelectedLabel" readonly placeholder="点击上方列表选择" />
+        <input type="hidden" id="grantItemId" value="" />
+      </div>
+      <div class="row">
+        <label>数量</label>
+        <input id="grantCount" type="number" value="1" min="1" style="min-width:100px" />
+      </div>
+      <div class="actions">
+        <button type="button" class="ghost" onclick="hideModal('grantModal')">取消</button>
+        <button type="button" data-perm="item.grant" onclick="submitGrant()">发放到背包</button>
+      </div>
+      <div class="msg" id="grantMsg"></div>
+    </div>
+  </div>
+
+  <!-- 编辑背包道具数量 -->
+  <div id="editItemModal" class="modal-mask hidden" style="display:none">
+    <div class="modal">
+      <h3 id="editItemTitle">编辑道具</h3>
+      <div class="hint" id="editItemCat"></div>
+      <div class="row"><label>当前数量</label><input id="editItemCur" type="number" readonly /></div>
+      <div class="row"><label>增加</label><input id="editItemDelta" type="number" value="1" min="1" />
+        <button type="button" data-perm="item.grant" onclick="editItemAdd()">增加</button></div>
+      <div class="row"><label>设为</label><input id="editItemNew" type="number" min="0" />
+        <button type="button" data-perm="item.grant" onclick="editItemSet()">保存数量</button></div>
+      <div class="actions">
+        <button type="button" class="ghost" onclick="hideModal('editItemModal')">关闭</button>
+        <button type="button" class="danger" data-perm="item.delete" onclick="editItemDelete()">从背包删除</button>
+      </div>
+      <div class="msg" id="editItemMsg"></div>
+    </div>
+  </div>
+
+  <script src="/common.js"></script>
+  <script>
+    let currentUid = 0;
+    let usersCache = [];
+    let userPageState = { page: 0, pageSize: 12 };
+    let allItems = [];
+    let itemPage = 0;
+    let catalogHits = [];
+    let catalogPage = 0;
+    let selectedItemId = 0;
+    let editingItemId = 0;
+
+    (async () => {
+      await ensureAuth();
+      renderShell('items');
+      const q = new URLSearchParams(location.search);
+      await searchUsers(q.get('q') || '');
+      if (q.get('uid')) selectUser(+q.get('uid'));
+    })();
+
+    async function searchUsers(preset) {
+      const q = preset != null ? preset : document.getElementById('userQ').value.trim();
+      if (preset != null) document.getElementById('userQ').value = q;
+      const r = await searchUsersAPI(q);
+      usersCache = r.list || [];
+      userPageState.page = 0;
+      renderUserList(
+        document.getElementById('userList'), usersCache, currentUid, selectUser,
+        document.getElementById('userPager'), userPageState
+      );
+    }
+
+    async function selectUser(uid) {
+      currentUid = uid;
+      history.replaceState(null, '', '?uid=' + uid);
+      renderUserList(
+        document.getElementById('userList'), usersCache, currentUid, selectUser,
+        document.getElementById('userPager'), userPageState
+      );
+      itemPage = 0;
+      document.getElementById('accountActions').style.display = 'flex';
+      await loadBag();
+    }
+
+    async function openGrantModal() {
+      if (!currentUid) return alert('请先选择玩家');
+      document.getElementById('grantMeta').textContent = '目标 UID ' + currentUid + ' · 搜索后点列表选中';
+      document.getElementById('grantMsg').textContent = '';
+      document.getElementById('grantCount').value = 1;
+      selectedItemId = 0;
+      document.getElementById('grantItemId').value = '';
+      document.getElementById('grantSelectedLabel').value = '';
+      showModal('grantModal');
+      applyPermUI();
+      // 默认拉一批常用/空搜结果
+      if (!catalogHits.length) await searchCatalog();
+      else paintCatalog();
+    }
+
+    async function searchCatalog() {
+      const q = document.getElementById('grantQ').value.trim();
+      const j = await (await fetch('/api/catalog/items?q=' + encodeURIComponent(q) + '&limit=100')).json();
+      catalogHits = (j.list || j.hits || []).map((h) => ({
+        id: h.id || h.ID,
+        label: h.label || h.name || String(h.id || h.ID),
+      }));
+      catalogPage = 0;
+      paintCatalog();
+    }
+
+    function paintCatalog() {
+      const el = document.getElementById('grantPickList');
+      const pg = paginateList(catalogHits, catalogPage, 12);
+      catalogPage = pg.page;
+      if (!pg.total) {
+        el.innerHTML = '<div class="hint" style="padding:12px">无匹配道具，换个关键字</div>';
+        document.getElementById('grantPickPager').innerHTML = '';
+        return;
+      }
+      el.innerHTML = pg.slice.map((h) => {
+        const sel = Number(selectedItemId) === Number(h.id) ? ' selected' : '';
+        return `<div class="pick-row${sel}" onclick="pickCatalogItem(${h.id}, '${escapeHtml(String(h.label)).replace(/'/g, '&#39;')}')">
+          <div><strong>${escapeHtml(String(h.label))}</strong><div class="id">ID ${h.id}</div></div>
+          <button type="button" class="ghost" onclick="event.stopPropagation();pickCatalogItem(${h.id}, '${escapeHtml(String(h.label)).replace(/'/g, '&#39;')}')">选择</button>
+        </div>`;
+      }).join('');
+      renderPager(document.getElementById('grantPickPager'), pg.page, pg.pages, pg.total, (delta) => {
+        catalogPage = Math.max(0, Math.min(pg.pages - 1, catalogPage + delta));
+        paintCatalog();
+      }, { unit: '种' });
+    }
+
+    function pickCatalogItem(id, label) {
+      selectedItemId = id;
+      document.getElementById('grantItemId').value = id;
+      document.getElementById('grantSelectedLabel').value = label + '（' + id + '）';
+      paintCatalog();
+    }
+
+    async function submitGrant() {
+      const uid = currentUid;
+      const itemId = +document.getElementById('grantItemId').value || selectedItemId;
+      const count = +document.getElementById('grantCount').value;
+      if (!uid) return alert('请先选择玩家');
+      if (!itemId) return alert('请先在列表中点选道具');
+      if (count < 1) return alert('数量须 ≥1');
+      if (!dangerConfirm('向 UID ' + uid + ' 发放 ' + document.getElementById('grantSelectedLabel').value + ' × ' + count + '？')) return;
+      const j = await postJSON('/api/grant/item', { userId: uid, uid, itemId, count, confirm: true });
+      document.getElementById('grantMsg').textContent = j.ok ? '已发放' : (j.error || JSON.stringify(j));
+      document.getElementById('grantMsg').className = 'msg ' + (j.ok ? 'ok' : 'err');
+      if (j.ok) { hideModal('grantModal'); loadBag(); }
+    }
+
+    async function grantCur() {
+      const uid = currentUid;
+      const coins = +document.getElementById('coins').value;
+      const gold = +document.getElementById('gold').value;
+      if (!uid) return alert('请先选择玩家');
+      if (!dangerConfirm('调整玩家 ' + uid + ' 货币 豆' + coins + ' 金' + gold)) return;
+      const j = await postJSON('/api/grant/currency', { userId: uid, uid, coins, gold, confirm: true });
+      document.getElementById('curMsg').textContent = j.ok ? '已调整' : (j.error || JSON.stringify(j));
+      document.getElementById('curMsg').className = 'msg ' + (j.ok ? 'ok' : 'err');
+      if (j.ok) loadBag();
+    }
+
+    async function loadBag() {
+      const uid = currentUid;
+      if (!uid) return;
+      const d = await (await fetch('/api/user/detail?uid=' + uid)).json();
+      if (!d.ok) {
+        document.getElementById('accountWrap').innerHTML = '<div class="err">' + (d.error || '') + '</div>';
+        return;
+      }
+      const u = d.user || {};
+      document.getElementById('accountWrap').innerHTML = accountBarHTML({
+        userId: u.userId || uid, nickname: u.nickname, email: u.email,
+        coins: u.coins, gold: u.gold,
+      }, { online: d.online, liveMapId: d.liveMapId });
+      document.getElementById('accountActions').style.display = 'flex';
+      allItems = (d.items || []).map((it) => ({
+        itemId: it.itemId || it.item_id || it.ItemID,
+        label: it.label || '',
+        count: it.count || it.Count || 0,
+      })).filter((it) => it.count > 0);
+      paintItems();
+      applyPermUI();
+    }
+
+    function filteredItems() {
+      const q = (document.getElementById('bagFilter').value || '').trim().toLowerCase();
+      if (!q) return allItems;
+      return allItems.filter((it) =>
+        String(it.itemId).includes(q) || String(it.label).toLowerCase().includes(q)
+      );
+    }
+
+    function paintItems() {
+      const list = filteredItems();
+      const size = +document.getElementById('itemPageSize').value || 24;
+      const pg = paginateList(list, itemPage, size);
+      itemPage = pg.page;
+      document.getElementById('itemCnt').textContent = '（' + list.length + (list.length !== allItems.length ? '/' + allItems.length : '') + '）';
+      const grid = document.getElementById('itemGrid');
+      if (!pg.total) {
+        grid.innerHTML = '<div class="hint">空背包</div>';
+        document.getElementById('itemPager').innerHTML = '';
+        return;
+      }
+      grid.innerHTML = pg.slice.map((it) =>
+        `<div class="item-box" onclick="openEditBagItem(${it.itemId})">
+          <div style="color:var(--muted)">${escapeHtml(it.label || '道具')}</div>
+          <div>ID ${it.itemId}</div>
+          <div class="cnt">×${it.count}</div>
+        </div>`
+      ).join('');
+      renderPager(document.getElementById('itemPager'), pg.page, pg.pages, pg.total, (delta) => {
+        itemPage = Math.max(0, Math.min(pg.pages - 1, itemPage + delta));
+        paintItems();
+      }, { unit: '种' });
+    }
+
+    function openEditBagItem(itemId) {
+      const it = allItems.find((x) => Number(x.itemId) === Number(itemId));
+      if (!it) return alert('物品数据已过期，请刷新');
+      editingItemId = it.itemId;
+      document.getElementById('editItemTitle').textContent = (it.label || '道具') + '（ID ' + it.itemId + '）';
+      document.getElementById('editItemCat').textContent = 'UID ' + currentUid;
+      document.getElementById('editItemCur').value = it.count;
+      document.getElementById('editItemDelta').value = 1;
+      document.getElementById('editItemNew').value = it.count;
+      document.getElementById('editItemMsg').textContent = '';
+      showModal('editItemModal');
+      applyPermUI();
+    }
+
+    async function editItemAdd() {
+      const delta = +document.getElementById('editItemDelta').value;
+      if (delta < 1) return;
+      const j = await postJSON('/api/grant/item', {
+        userId: currentUid, uid: currentUid, itemId: editingItemId, count: delta, confirm: true,
+      });
+      document.getElementById('editItemMsg').textContent = j.ok ? '已增加 ' + delta : (j.error || '');
+      document.getElementById('editItemMsg').className = 'msg ' + (j.ok ? 'ok' : 'err');
+      if (j.ok) { hideModal('editItemModal'); loadBag(); }
+    }
+
+    async function editItemSet() {
+      const cur = +document.getElementById('editItemCur').value;
+      const neu = +document.getElementById('editItemNew').value;
+      if (neu < 0) return;
+      if (neu === cur) { hideModal('editItemModal'); return; }
+      if (neu > cur) {
+        const j = await postJSON('/api/grant/item', {
+          userId: currentUid, uid: currentUid, itemId: editingItemId, count: neu - cur, confirm: true,
+        });
+        if (!j.ok) { document.getElementById('editItemMsg').textContent = j.error || '失败'; return; }
+      } else {
+        // 设更少：先删再发（无专用 setCount 时）
+        const del = await postJSON('/api/item/delete', { uid: currentUid, userId: currentUid, itemId: editingItemId, confirm: true });
+        if (!del.ok) {
+          document.getElementById('editItemMsg').textContent = del.error || '删除接口未落地，无法直接改少';
+          document.getElementById('editItemMsg').className = 'msg err';
+          return;
+        }
+        if (neu > 0) {
+          await postJSON('/api/grant/item', {
+            userId: currentUid, uid: currentUid, itemId: editingItemId, count: neu, confirm: true,
+          });
+        }
+      }
+      hideModal('editItemModal');
+      loadBag();
+    }
+
+    async function editItemDelete() {
+      if (!dangerConfirm('删除玩家 ' + currentUid + ' 道具 ' + editingItemId + '？')) return;
+      const j = await postJSON('/api/item/delete', { uid: currentUid, userId: currentUid, itemId: editingItemId, confirm: true });
+      if (!j.ok) {
+        document.getElementById('editItemMsg').textContent = j.error || '删除接口未落地';
+        document.getElementById('editItemMsg').className = 'msg err';
+        return;
+      }
+      hideModal('editItemModal');
+      loadBag();
+    }
+
+    document.getElementById('grantModal').addEventListener('click', (e) => {
+      if (e.target.id === 'grantModal') hideModal('grantModal');
+    });
+    document.getElementById('editItemModal').addEventListener('click', (e) => {
+      if (e.target.id === 'editItemModal') hideModal('editItemModal');
+    });
+
+    window.openGrantModal = openGrantModal;
+    window.pickCatalogItem = pickCatalogItem;
+    window.openEditBagItem = openEditBagItem;
+  </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>尼尔号 GM · 权限设置</title>
+  <link rel="stylesheet" href="/common.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1><span class="brand-mark"></span>尼尔号 GM</h1>
+    <div class="top-meta"><span id="who"></span><a href="#" onclick="logout();return false">退出</a></div>
+  </header>
+  <div class="layout">
+    <nav><div class="nav-title">MODULES</div><div id="gm-nav"></div></nav>
+    <main>
+      <section class="card">
+        <h2>GM 账号（仅超管）</h2>
+        <p class="hint">角色：super 超级管理员 · gm 正式GM · trainee 见习GM。接口 P5：/api/gm/accounts</p>
+        <div class="row" data-perm="gm.manage">
+          <input id="user" placeholder="用户名" />
+          <input id="pass" type="password" placeholder="密码" />
+          <select id="role"><option value="trainee">见习GM</option><option value="gm">正式GM</option><option value="super">超管</option></select>
+          <button type="button" onclick="createGm()">创建</button>
+        </div>
+        <div class="msg" id="msg"></div>
+        <table>
+          <thead><tr><th>ID</th><th>用户名</th><th>角色</th><th>启用</th><th>操作</th></tr></thead>
+          <tbody id="tbody"><tr><td colspan="5" class="hint">加载 /api/gm/accounts</td></tr></tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+  <script src="/common.js"></script>
+  <script>
+    (async () => {
+      await ensureAuth();
+      renderShell('gm');
+      if (!can('gm.manage')) {
+        document.getElementById('msg').textContent = '无权限查看本页';
+        document.getElementById('msg').className = 'msg err';
+        return;
+      }
+      loadList();
+    })();
+    async function loadList() {
+      const j = await (await fetch('/api/gm/accounts')).json();
+      const list = j.list || [];
+      const tb = document.getElementById('tbody');
+      if (!j.ok) { tb.innerHTML = '<tr><td colspan="5" class="hint">接口未落地</td></tr>'; return; }
+      tb.innerHTML = list.map((a) =>
+        `<tr><td>${a.id}</td><td>${a.username}</td><td>${a.role}</td><td>${a.enabled ? '是' : '否'}</td>
+         <td><button class="ghost" onclick="alert('编辑：PUT /api/gm/accounts/'+${a.id})">编辑</button></td></tr>`
+      ).join('') || '<tr><td colspan="5" class="hint">空</td></tr>';
+    }
+    async function createGm() {
+      const j = await postJSON('/api/gm/accounts', {
+        username: document.getElementById('user').value,
+        password: document.getElementById('pass').value,
+        role: document.getElementById('role').value,
+      });
+      document.getElementById('msg').textContent = j.ok ? '已创建' : (j.error || '接口未落地');
+      document.getElementById('msg').className = 'msg ' + (j.ok ? 'ok' : 'err');
+      if (j.ok) loadList();
+    }
+  </script>
+</body>
+</html>

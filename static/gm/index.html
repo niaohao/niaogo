@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>尼尔号 GM · 发放</title>
+  <link rel="stylesheet" href="/common.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1><span class="brand-mark"></span>尼尔号 GM</h1>
+    <div class="top-meta"><span id="who"></span><a href="#" onclick="logout();return false">退出</a></div>
+  </header>
+  <div class="layout">
+    <nav><div class="nav-title">MODULES</div><div id="gm-nav"></div></nav>
+    <main>
+      <section class="card">
+        <h2>目标玩家</h2>
+        <div class="row">
+          <label>搜索</label>
+          <input class="wide" id="userQ" placeholder="UID / 昵称 / 邮箱" />
+          <button type="button" class="ghost" onclick="searchUsers()">查找</button>
+          <button type="button" class="ghost" onclick="goDetail()">详情</button>
+        </div>
+        <div class="row">
+          <label>UID</label>
+          <input id="userId" type="number" placeholder="userId" />
+          <span class="hint" id="userHint">先搜索或手填 UID</span>
+        </div>
+        <div class="hits" id="userHits"></div>
+      </section>
+
+      <div class="grid2">
+        <section class="card">
+          <h2>货币</h2>
+          <div class="row"><label>赛尔豆 ±</label><input id="coins" type="number" value="10000" /></div>
+          <div class="row"><label>金豆 ±</label><input id="gold" type="number" value="10" /></div>
+          <div class="row"><label>积累经验 ±</label><input id="expPool" type="number" value="100000" /></div>
+          <p class="hint">积累经验=虚拟道具 ID3，进经验分配器（非背包）</p>
+          <button type="button" onclick="grantCurrency()">发放货币</button>
+          <div class="msg" id="currencyMsg"></div>
+        </section>
+        <section class="card">
+          <h2>联调礼包</h2>
+          <p class="hint">赛尔豆 5万 + 金豆 100 + 胶囊×20 + 体力药×20 + PP药×10</p>
+          <button type="button" class="ok" onclick="grantKit()">一键联调包</button>
+          <div class="msg" id="kitMsg"></div>
+        </section>
+      </div>
+
+      <section class="card">
+        <h2>发道具</h2>
+        <div class="row">
+          <label>检索</label>
+          <input class="wide" id="itemQ" placeholder="中文名或 ID" />
+          <button type="button" class="ghost" onclick="searchItems()">搜</button>
+        </div>
+        <div class="hits" id="itemHits"></div>
+        <div class="row">
+          <label>物品 ID</label>
+          <input id="itemId" type="number" value="300001" />
+          <label>数量</label>
+          <input id="itemCnt" type="number" value="5" style="min-width:80px" />
+          <button type="button" onclick="grantItem()">发放</button>
+        </div>
+        <div class="msg" id="itemMsg"></div>
+      </section>
+
+      <section class="card">
+        <h2>发精灵</h2>
+        <div class="row">
+          <label>检索</label>
+          <input class="wide" id="petQ" placeholder="中文名或 ID" />
+          <button type="button" class="ghost" onclick="searchPets()">搜</button>
+        </div>
+        <div class="hits" id="petHits"></div>
+        <div class="row">
+          <label>精灵 ID</label>
+          <input id="petId" type="number" value="1" />
+          <label>等级</label>
+          <input id="petLv" type="number" value="5" style="min-width:70px" />
+          <label>DV</label>
+          <input id="petDv" type="number" value="20" style="min-width:70px" />
+          <button type="button" onclick="grantPet()">发放</button>
+        </div>
+        <div class="msg" id="petMsg"></div>
+        <hr style="border:none;border-top:1px solid var(--line);margin:14px 0" />
+        <h3 style="font-size:14px;margin:0 0 8px">一键全部精灵</h3>
+        <div class="hint">仅前端 PetXMLInfo 有名 ∩ pets.xml；完整 UI 见「精灵管控」。</div>
+        <div class="row">
+          <label>等级</label>
+          <input id="allLv" type="number" value="100" style="min-width:70px" />
+          <label>DV</label>
+          <input id="allDv" type="number" value="31" style="min-width:70px" />
+          <label style="display:flex;align-items:center;gap:6px"><input type="checkbox" id="allPerfect" checked />极品</label>
+          <button type="button" onclick="grantPetsAll()">一键发放</button>
+        </div>
+        <div class="msg" id="allPetMsg"></div>
+      </section>
+
+      <section class="card" id="audit">
+        <h2>最近审计</h2>
+        <button type="button" class="ghost" onclick="loadAudit()">刷新</button>
+        <div style="overflow:auto;margin-top:8px">
+          <table>
+            <thead><tr><th>ID</th><th>操作者</th><th>动作</th><th>目标UID</th><th>详情</th><th>时间</th></tr></thead>
+            <tbody id="auditBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="/common.js"></script>
+  <script>
+    (async () => { await ensureAuth(); renderShell('grant'); })();
+    const uid = () => Number(document.getElementById('userId').value || 0);
+    function setMsg(id, ok, text) {
+      const el = document.getElementById(id);
+      el.className = 'msg ' + (ok ? 'ok' : 'err');
+      el.textContent = text;
+    }
+    function goDetail() {
+      if (!uid()) return alert('填 UID');
+      location.href = '/user.html?uid=' + uid();
+    }
+    async function searchUsers() {
+      const q = document.getElementById('userQ').value;
+      const j = await (await fetch('/api/users?q=' + encodeURIComponent(q))).json();
+      if (j.error) return setMsg('userHint', false, j.error);
+      const box = document.getElementById('userHits');
+      box.innerHTML = '';
+      (j.users || []).forEach(u => {
+        const a = document.createElement('span');
+        a.className = 'hit';
+        a.textContent = (u.nickname || '(无昵称)') + ' (' + u.userId + ')';
+        a.onclick = () => {
+          document.getElementById('userId').value = u.userId;
+          document.getElementById('userHint').textContent =
+            u.nickname + ' · 豆' + u.coins + ' · 金' + u.gold;
+        };
+        box.appendChild(a);
+      });
+    }
+    async function searchItems() {
+      const j = await (await fetch('/api/catalog/items?q=' + encodeURIComponent(document.getElementById('itemQ').value))).json();
+      const box = document.getElementById('itemHits');
+      box.innerHTML = '';
+      (j.hits || []).forEach(h => {
+        const a = document.createElement('span');
+        a.className = 'hit'; a.textContent = h.label;
+        a.onclick = () => { document.getElementById('itemId').value = h.id; };
+        box.appendChild(a);
+      });
+    }
+    async function searchPets() {
+      const j = await (await fetch('/api/catalog/pets?q=' + encodeURIComponent(document.getElementById('petQ').value))).json();
+      const box = document.getElementById('petHits');
+      box.innerHTML = '';
+      (j.hits || []).forEach(h => {
+        const a = document.createElement('span');
+        a.className = 'hit'; a.textContent = h.label;
+        a.onclick = () => { document.getElementById('petId').value = h.id; };
+        box.appendChild(a);
+      });
+    }
+    async function grantCurrency() {
+      if (!uid()) return setMsg('currencyMsg', false, '请填 UID');
+      const j = await postJSON('/api/grant/currency', {
+        userId: uid(),
+        coins: Number(document.getElementById('coins').value || 0),
+        gold: Number(document.getElementById('gold').value || 0),
+        expPool: Number(document.getElementById('expPool').value || 0),
+      });
+      setMsg('currencyMsg', j.ok, j.ok ? ('完成 audit#' + j.auditId + ' 豆=' + j.coins + ' 金=' + j.gold + ' 经验池=' + j.expPool) : (j.error || '失败'));
+      loadAudit();
+    }
+    async function grantItem() {
+      if (!uid()) return setMsg('itemMsg', false, '请填 UID');
+      const j = await postJSON('/api/grant/item', {
+        userId: uid(), itemId: Number(document.getElementById('itemId').value),
+        count: Number(document.getElementById('itemCnt').value || 1),
+      });
+      setMsg('itemMsg', j.ok, j.ok ? ('已发 ' + j.label + ' audit#' + j.auditId) : (j.error || '失败'));
+      loadAudit();
+    }
+    async function grantPet() {
+      if (!uid()) return setMsg('petMsg', false, '请填 UID');
+      const j = await postJSON('/api/grant/pet', {
+        userId: uid(), petId: Number(document.getElementById('petId').value),
+        level: Number(document.getElementById('petLv').value || 1),
+        dv: Number(document.getElementById('petDv').value || 0),
+      });
+      setMsg('petMsg', j.ok, j.ok ? ('已发 ' + j.label + ' catch=' + j.catchTime) : (j.error || '失败'));
+      loadAudit();
+    }
+    async function grantPetsAll() {
+      if (!uid()) return setMsg('allPetMsg', false, '请填 UID');
+      const level = Number(document.getElementById('allLv').value || 1);
+      const dv = Number(document.getElementById('allDv').value || 0);
+      const perfect = !!document.getElementById('allPerfect').checked;
+      if (!dangerConfirm('向 UID ' + uid() + ' 一键发放全部实装精灵？可能数千条')) return;
+      setMsg('allPetMsg', true, '发放中…');
+      const j = await postJSON('/api/grant/pets-all', {
+        userId: uid(), level, dv, nature: 0, perfect, confirm: true,
+      });
+      setMsg('allPetMsg', j.ok, j.ok
+        ? ('完成 ' + j.granted + '/' + j.total + ' audit#' + j.auditId)
+        : (j.error || '失败'));
+      loadAudit();
+    }
+    async function grantKit() {
+      if (!uid()) return setMsg('kitMsg', false, '请填 UID');
+      const j = await postJSON('/api/grant/kit', { userId: uid() });
+      setMsg('kitMsg', j.ok, j.ok ? ((j.summary || []).join('；')) : (j.error || '失败'));
+      loadAudit();
+    }
+    async function loadAudit() {
+      const j = await (await fetch('/api/audit')).json();
+      const tb = document.getElementById('auditBody');
+      tb.innerHTML = '';
+      (j.rows || []).forEach(row => {
+        const tr = document.createElement('tr');
+        let detail = row.detail;
+        if (typeof detail === 'object') detail = JSON.stringify(detail);
+        tr.innerHTML = '<td>' + row.id + '</td><td>' + row.admin + '</td><td>' + row.action +
+          '</td><td>' + row.targetUser + '</td><td>' + (detail || '') + '</td><td>' + (row.createdAt || '') + '</td>';
+        tb.appendChild(tr);
+      });
+    }
+    loadAudit();
+  </script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>尼尔号 GM · 玩家详情</title>
+  <link rel="stylesheet" href="/common.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1><span class="brand-mark"></span>尼尔号 GM</h1>
+    <div class="top-meta"><span id="who"></span><a href="#" onclick="logout();return false">退出</a></div>
+  </header>
+  <div class="layout">
+    <nav><div class="nav-title">MODULES</div><div id="gm-nav"></div></nav>
+    <main>
+      <section class="card">
+        <h2>玩家详情</h2>
+        <div class="crumb">
+          <a href="/accounts.html">← 账号管理</a>
+          · <a href="#" id="linkPets">精灵管控</a>
+        </div>
+        <div id="accountWrap"><div class="hint">加载中…</div></div>
+        <div class="row" style="margin-top:8px">
+          <button type="button" class="ghost" data-perm="online.kick" onclick="kick()">踢下线</button>
+          <button type="button" class="ghost" onclick="load()">刷新</button>
+          <span class="hint" id="status"></span>
+        </div>
+      </section>
+      <div class="tabs" id="tabs"></div>
+      <section class="card" id="panel"><div class="hint">加载中…</div></section>
+    </main>
+  </div>
+  <script src="/common.js"></script>
+  <script>
+    let data = null;
+    let uid = 0;
+    let activeTab = 0;
+    let petPages = { bag: 0, storage: 0, rowei: 0 };
+    let itemPage = 0;
+    const tabNames = ['概要','精灵','道具','邮件','任务','塔/NoNo','换装'];
+    const PET_PS = 10;
+    const ITEM_PS = 20;
+
+    (async () => {
+      await ensureAuth();
+      renderShell('accounts');
+      const params = new URLSearchParams(location.search);
+      uid = +(params.get('uid') || 0);
+      if (!uid) {
+        document.getElementById('accountWrap').innerHTML = '<div class="err">缺少 uid，请从 <a href="/accounts.html">账号管理</a> 进入</div>';
+        return;
+      }
+      document.getElementById('linkPets').href = '/pets.html?uid=' + uid;
+      await load();
+    })();
+
+    async function load() {
+      if (!uid) return;
+      const j = await (await fetch('/api/user/detail?uid=' + uid)).json();
+      if (!j.ok) {
+        document.getElementById('panel').innerHTML = '<div class="err">'+(j.error||'')+'</div>';
+        return;
+      }
+      data = j;
+      const u = j.user || {};
+      document.getElementById('accountWrap').innerHTML = accountBarHTML({
+        userId: u.userId || uid, nickname: u.nickname, email: u.email,
+        coins: u.coins, gold: u.gold,
+      }, { online: j.online, liveMapId: j.liveMapId });
+      document.getElementById('status').textContent =
+        (j.online ? '在线' : '离线') + (j.inBattle ? ' · 战斗中' : '');
+      const tabs = document.getElementById('tabs');
+      tabs.innerHTML = '';
+      tabNames.forEach((n, i) => {
+        const b = document.createElement('button');
+        b.className = 'ghost tab' + (i === activeTab ? ' active' : '');
+        b.textContent = n;
+        b.onclick = () => {
+          document.querySelectorAll('.tab').forEach((x) => x.classList.remove('active'));
+          b.classList.add('active');
+          activeTab = i;
+          show(i);
+        };
+        tabs.appendChild(b);
+      });
+      show(activeTab);
+      applyPermUI();
+    }
+
+    function petBlock(title, key, rows) {
+      const pg = paginateList(rows, petPages[key], PET_PS);
+      petPages[key] = pg.page;
+      const body = pg.total ? pg.slice.map((x) => {
+        const ev = (x.ev||[]).join('/') || '-';
+        const st = Array.isArray(x.stats) ? x.stats.slice(0,6).join('/') : '—';
+        const href = '/pet-stats.html?uid='+uid+'&catchTime='+x.catchTime;
+        const petsHref = '/pets.html?uid='+uid;
+        return `<tr>
+          <td>${escapeHtml(x.label||'')}</td><td>${x.level}</td><td>${x.dv}</td>
+          <td>${x.nature}</td><td>${x.trait||'无'}</td><td>${ev}</td><td>${st}</td>
+          <td><a href="${petsHref}">编辑</a> · <a href="${href}">能力值</a></td>
+        </tr>`;
+      }).join('') : '<tr><td colspan="8" class="hint">空</td></tr>';
+      return `<h3 style="font-size:14px;margin:12px 0 6px">${title} (${rows.length})</h3>
+        <table><tr><th>精灵</th><th>Lv</th><th>DV</th><th>性格</th><th>特性</th><th>学习力</th><th>面板</th><th>操作</th></tr>${body}</table>
+        <div class="pager" id="pager_${key}"></div>`;
+    }
+
+    function show(i) {
+      const p = document.getElementById('panel');
+      if (!data) return;
+      if (i === 0) {
+        const u = data.user;
+        p.innerHTML = `<table><tr><th>字段</th><th>值</th></tr>
+          <tr><td>UID</td><td>${u.userId}</td></tr>
+          <tr><td>昵称</td><td>${escapeHtml(u.nickname||'')}</td></tr>
+          <tr><td>邮箱</td><td>${escapeHtml(u.email||'')}</td></tr>
+          <tr><td>赛尔豆</td><td>${u.coins}</td></tr>
+          <tr><td>金豆</td><td>${u.gold}</td></tr>
+          <tr><td>积累经验</td><td>${u.expPool||0}</td></tr>
+          <tr><td>荣誉点</td><td>${u.honor||0}</td></tr>
+          <tr><td>巅峰积分</td><td id="topLevelVal">${u.curTopLevel||0}</td></tr>
+          <tr><td>体力</td><td>${u.energy}</td></tr>
+          <tr><td>存档地图</td><td>${u.mapId} (${u.posX},${u.posY})</td></tr>
+          <tr><td>登录次数</td><td>${u.loginCnt}</td></tr></table>
+          <div class="row" style="margin-top:12px;gap:8px;flex-wrap:wrap;align-items:center">
+            <label class="hint">巅峰积分</label>
+            <input id="topLevelScore" type="number" min="0" max="999999" value="${u.curTopLevel||0}" style="width:120px" />
+            <button type="button" class="ghost" onclick="setTopLevel()">设分</button>
+            <input id="topLevelDelta" type="number" value="100" style="width:100px" />
+            <button type="button" class="ghost" onclick="addTopLevel()">加减分</button>
+            <span class="hint" id="topLevelHint"></span>
+          </div>`;
+      } else if (i === 1) {
+        const bag = data.pets.bag || [];
+        const storage = data.pets.storage || [];
+        const rowei = data.pets.rowei || [];
+        p.innerHTML = '<div class="row" style="margin-bottom:8px"><a class="ghost" href="/pets.html?uid='+uid+'" style="padding:7px 10px;text-decoration:none;border:1px solid var(--line);border-radius:8px;color:var(--text)">打开精灵管控</a></div>' +
+          petBlock('背包', 'bag', bag) + petBlock('仓库', 'storage', storage) + petBlock('放生仓', 'rowei', rowei);
+        ['bag','storage','rowei'].forEach((key) => {
+          const rows = data.pets[key] || [];
+          const pg = paginateList(rows, petPages[key], PET_PS);
+          renderPager(document.getElementById('pager_' + key), pg.page, pg.pages, pg.total, (delta) => {
+            petPages[key] = Math.max(0, Math.min(pg.pages - 1, petPages[key] + delta));
+            show(1);
+          }, { unit: '只' });
+        });
+      } else if (i === 2) {
+        const items = data.items || [];
+        const pg = paginateList(items, itemPage, ITEM_PS);
+        itemPage = pg.page;
+        p.innerHTML = '<div class="row" style="margin-bottom:8px"><a class="ghost" href="/items.html?uid='+uid+'" style="padding:7px 10px;text-decoration:none;border:1px solid var(--line);border-radius:8px;color:var(--text)">打开道具页</a></div>' +
+          '<table><tr><th>物品</th><th>数量</th></tr>' +
+          (pg.total ? pg.slice.map((x)=>`<tr><td>${escapeHtml(x.label)}</td><td>${x.count}</td></tr>`).join('') : '<tr><td colspan="2" class="hint">空</td></tr>') +
+          '</table><div class="pager" id="itemPager"></div>';
+        renderPager(document.getElementById('itemPager'), pg.page, pg.pages, pg.total, (delta) => {
+          itemPage = Math.max(0, Math.min(pg.pages - 1, itemPage + delta));
+          show(2);
+        }, { unit: '种' });
+      } else if (i === 3) {
+        p.innerHTML = '<table><tr><th>ID</th><th>发件</th><th>已读</th><th>已领</th><th>附件</th></tr>' +
+          (data.mails||[]).map(x=>`<tr><td>${x.id}</td><td>${escapeHtml(x.from||'')}</td><td>${x.read}</td><td>${x.claimed}</td><td>${x.hasReward}</td></tr>`).join('') + '</table>';
+      } else if (i === 4) {
+        p.innerHTML = '<table><tr><th>任务ID</th><th>状态</th></tr>' +
+          (data.tasks||[]).map(x=>`<tr><td>${x.taskId}</td><td>${x.status}</td></tr>`).join('') + '</table>';
+      } else if (i === 5) {
+        const pr = data.progress||{}, n = data.nono||{};
+        p.innerHTML = `<pre>${JSON.stringify({progress:pr, nono:n}, null, 2)}</pre>`;
+      } else {
+        p.innerHTML = '<table><tr><th>槽</th><th>装扮</th><th>等级</th></tr>' +
+          (data.clothes||[]).map(x=>`<tr><td>${x.slot}</td><td>${escapeHtml(x.label)}</td><td>${x.level}</td></tr>`).join('') + '</table>';
+      }
+    }
+
+    async function kick() {
+      const j = await postJSON('/api/kick', { userId: uid });
+      alert(j.kicked ? '已踢下线' : (j.error || '不在线'));
+      load();
+    }
+
+    async function setTopLevel() {
+      const score = +document.getElementById('topLevelScore').value;
+      const j = await postJSON('/api/top-level/set', { userId: uid, score });
+      const hint = document.getElementById('topLevelHint');
+      if (!j.ok) { hint.textContent = j.error || '失败'; return; }
+      hint.textContent = '已设为 ' + j.curTopLevel;
+      if (data && data.user) data.user.curTopLevel = j.curTopLevel;
+      const v = document.getElementById('topLevelVal');
+      if (v) v.textContent = j.curTopLevel;
+    }
+
+    async function addTopLevel() {
+      const delta = +document.getElementById('topLevelDelta').value;
+      const j = await postJSON('/api/top-level/add', { userId: uid, delta });
+      const hint = document.getElementById('topLevelHint');
+      if (!j.ok) { hint.textContent = j.error || '失败'; return; }
+      hint.textContent = '当前 ' + j.curTopLevel;
+      if (data && data.user) data.user.curTopLevel = j.curTopLevel;
+      const v = document.getElementById('topLevelVal');
+      if (v) v.textContent = j.curTopLevel;
+      const inp = document.getElementById('topLevelScore');
+      if (inp) inp.value = j.curTopLevel;
+    }
+  </script>
+</body>
+</html>

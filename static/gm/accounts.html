@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>尼尔号 GM · 账号管理</title>
+  <link rel="stylesheet" href="/common.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1><span class="brand-mark"></span>尼尔号 GM</h1>
+    <div class="top-meta"><span id="who"></span><a href="#" onclick="logout();return false">退出</a></div>
+  </header>
+  <div class="layout">
+    <nav><div class="nav-title">MODULES</div><div id="gm-nav"></div></nav>
+    <main>
+      <section class="card">
+        <h2>搜索玩家</h2>
+        <div class="row">
+          <input class="wide" id="q" placeholder="UID / 昵称 / 邮箱" onkeydown="if(event.key==='Enter')search()" />
+          <input id="from" type="date" title="注册起" />
+          <input id="to" type="date" title="注册止" />
+          <button type="button" onclick="search()">查询</button>
+        </div>
+      </section>
+      <section class="card">
+        <h2>账号列表</h2>
+        <div class="row">
+          <label>每页</label>
+          <select id="pageSize" onchange="page=0;paint()">
+            <option value="10">10</option>
+            <option value="20" selected>20</option>
+            <option value="50">50</option>
+          </select>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>UID</th><th>昵称</th><th>邮箱</th><th>豆/金</th>
+              <th>地图</th><th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"><tr><td colspan="6" class="hint">输入条件后查询（可留空查最近）</td></tr></tbody>
+        </table>
+        <div class="pager" id="pager"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="banModal" class="modal-mask hidden">
+    <div class="modal danger-border">
+      <h3>封禁账号</h3>
+      <div class="row"><label>UID</label><input id="banUid" type="number" readonly /></div>
+      <div class="row">
+        <label>类型</label>
+        <select id="banType"><option value="temp">临时</option><option value="perm">永久</option></select>
+      </div>
+      <div class="row" id="banHoursRow"><label>时长(小时)</label><input id="banHours" type="number" value="24" /></div>
+      <div class="row"><label>原因</label><input class="wide" id="banReason" placeholder="必填" /></div>
+      <div class="actions">
+        <button type="button" class="ghost" onclick="closeBan()">取消</button>
+        <button type="button" class="danger" data-perm="player.ban" onclick="submitBan()">确认封禁</button>
+      </div>
+      <div class="msg" id="banMsg"></div>
+    </div>
+  </div>
+
+  <script src="/common.js"></script>
+  <script>
+    let allUsers = [];
+    let page = 0;
+
+    (async () => {
+      await ensureAuth();
+      renderShell('accounts');
+      search();
+    })();
+
+    document.getElementById('banType').onchange = () => {
+      document.getElementById('banHoursRow').classList.toggle('hidden', document.getElementById('banType').value === 'perm');
+    };
+
+    async function search() {
+      const q = document.getElementById('q').value.trim();
+      const r = await searchUsersAPI(q);
+      allUsers = (r.list || []).map(userBriefFields);
+      page = 0;
+      paint();
+    }
+
+    function paint() {
+      const size = +document.getElementById('pageSize').value || 20;
+      const pg = paginateList(allUsers, page, size);
+      page = pg.page;
+      const tb = document.getElementById('tbody');
+      if (!pg.total) {
+        tb.innerHTML = '<tr><td colspan="6" class="hint">无结果</td></tr>';
+        document.getElementById('pager').innerHTML = '';
+        return;
+      }
+      tb.innerHTML = pg.slice.map((u) => {
+        const uid = u.userId;
+        return `<tr>
+          <td>${uid}</td>
+          <td>${escapeHtml(u.nickname || '')}</td>
+          <td>${escapeHtml(u.email || '—')}</td>
+          <td>${u.coins} / ${u.gold}</td>
+          <td>${u.mapId || 0}</td>
+          <td>
+            <button type="button" class="ghost" onclick="location.href='/user.html?uid=${uid}'">详情</button>
+            <button type="button" class="ghost" onclick="location.href='/pets.html?uid=${uid}'">精灵</button>
+            <button type="button" class="ghost" onclick="location.href='/items.html?uid=${uid}'">道具</button>
+            <button type="button" class="danger" data-perm="player.ban" onclick="openBan(${uid})">封禁</button>
+            <button type="button" class="ghost" data-perm="player.password" onclick="resetPwd(${uid})">改密码</button>
+          </td>
+        </tr>`;
+      }).join('');
+      renderPager(document.getElementById('pager'), pg.page, pg.pages, pg.total, (delta) => {
+        page = Math.max(0, Math.min(pg.pages - 1, page + delta));
+        paint();
+      }, { unit: '人' });
+      applyPermUI();
+    }
+
+    function openBan(uid) {
+      document.getElementById('banUid').value = uid;
+      document.getElementById('banReason').value = '';
+      document.getElementById('banMsg').textContent = '';
+      document.getElementById('banModal').classList.remove('hidden');
+    }
+    function closeBan() { document.getElementById('banModal').classList.add('hidden'); }
+
+    async function submitBan() {
+      const uid = +document.getElementById('banUid').value;
+      const type = document.getElementById('banType').value;
+      const reason = document.getElementById('banReason').value.trim();
+      if (!reason) { document.getElementById('banMsg').textContent = '请填写原因'; return; }
+      if (!dangerConfirm(`封禁玩家 ${uid}（${type === 'perm' ? '永久' : '临时'}）\n原因：${reason}`)) return;
+      const body = { uid, type, reason, confirm: true };
+      if (type === 'temp') body.hours = +document.getElementById('banHours').value || 24;
+      const j = await postJSON('/api/user/ban', body);
+      document.getElementById('banMsg').textContent = j.ok ? '已提交（接口落地后生效）' : (j.error || JSON.stringify(j));
+      document.getElementById('banMsg').className = 'msg ' + (j.ok ? 'ok' : 'err');
+      if (j.ok) setTimeout(closeBan, 800);
+    }
+
+    async function resetPwd(uid) {
+      const p = prompt('新密码（玩家 UID ' + uid + '）');
+      if (!p) return;
+      if (!dangerConfirm(`重置玩家 ${uid} 登录密码`)) return;
+      const j = await postJSON('/api/user/password', { uid, newPassword: p, confirm: true });
+      alert(j.ok ? '已重置' : (j.error || '接口未落地或失败'));
+    }
+  </script>
+</body>
+</html>

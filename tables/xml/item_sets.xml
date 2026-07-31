@@ -1,0 +1,1161 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ItemSets>
+    <Set Name="SR-02套装">
+        <ItemRef ID="100305" Type="foot" Name="SR-02战靴" />
+        <ItemRef ID="100302" Type="head" Name="SR-02头盔" />
+        <ItemRef ID="100304" Type="waist" Name="SR-02腰甲" />
+    </Set>
+    <Set Name="上尉套装">
+        <ItemRef ID="100656" Type="foot" Name="上尉战靴" />
+        <ItemRef ID="100653" Type="head" Name="上尉战盔" />
+        <ItemRef ID="100071" Type="waist" Name="上尉腰带" />
+        <ItemRef ID="100655" Type="waist" Name="上尉腰甲" />
+    </Set>
+    <Set Name="不灭套装">
+        <ItemRef ID="100459" Type="eye" Name="不灭面罩" />
+        <ItemRef ID="100902" Type="eye" Name="不灭面罩" />
+        <ItemRef ID="100462" Type="foot" Name="不灭战靴" />
+        <ItemRef ID="100905" Type="foot" Name="不灭战靴" />
+        <ItemRef ID="100458" Type="head" Name="不灭战盔" />
+        <ItemRef ID="100901" Type="head" Name="不灭战盔" />
+    </Set>
+    <Set Name="中尉套装">
+        <ItemRef ID="100515" Type="foot" Name="中尉战靴" />
+        <ItemRef ID="100512" Type="head" Name="中尉头盔" />
+        <ItemRef ID="100070" Type="waist" Name="中尉腰带" />
+    </Set>
+    <Set Name="丰饶祥瑞套装">
+        <ItemRef ID="1300803" Type="foot" Name="丰饶祥瑞战靴" />
+        <ItemRef ID="1300801" Type="hand" Name="丰饶祥瑞护手" />
+        <ItemRef ID="1300800" Type="head" Name="丰饶祥瑞战盔" />
+        <ItemRef ID="1300802" Type="waist" Name="丰饶祥瑞腰带" />
+    </Set>
+    <Set Name="伊优套装">
+        <ItemRef ID="100398" Type="foot" Name="伊优鞋" />
+        <ItemRef ID="100395" Type="head" Name="伊优帽" />
+        <ItemRef ID="100397" Type="waist" Name="伊优腰带" />
+    </Set>
+    <Set Name="伯爵套装">
+        <ItemRef ID="1300090" Type="foot" Name="伯爵战靴" />
+        <ItemRef ID="1300087" Type="head" Name="伯爵战盔" />
+        <ItemRef ID="1300089" Type="waist" Name="伯爵腰带" />
+    </Set>
+    <Set Name="光之虎王套装">
+        <ItemRef ID="1300482" Type="foot" Name="光之虎王战靴" />
+        <ItemRef ID="1300480" Type="hand" Name="光之虎王护手" />
+        <ItemRef ID="1300479" Type="head" Name="光之虎王战盔" />
+        <ItemRef ID="1300481" Type="waist" Name="光之虎王腰带" />
+    </Set>
+    <Set Name="光旋风套装">
+        <ItemRef ID="100968" Type="foot" Name="光旋风战靴" />
+        <ItemRef ID="100965" Type="head" Name="光旋风战盔" />
+        <ItemRef ID="100967" Type="waist" Name="光旋风腰带" />
+    </Set>
+    <Set Name="光明套装">
+        <ItemRef ID="100592" Type="eye" Name="光明面具" />
+        <ItemRef ID="100595" Type="foot" Name="光明战靴" />
+        <ItemRef ID="1300237" Type="foot" Name="光明战靴" />
+        <ItemRef ID="100591" Type="head" Name="光明头盔" />
+        <ItemRef ID="100594" Type="waist" Name="光明腰带" />
+        <ItemRef ID="1300236" Type="waist" Name="光明腰带" />
+    </Set>
+    <Set Name="光能套装">
+        <ItemRef ID="100154" Type="foot" Name="光能靴" />
+        <ItemRef ID="100152" Type="hand" Name="光能手臂" />
+        <ItemRef ID="100151" Type="head" Name="光能护额" />
+        <ItemRef ID="100153" Type="waist" Name="光能腰带" />
+    </Set>
+    <Set Name="典狱官套装">
+        <ItemRef ID="1300543" Type="hand" Name="典狱官手套" />
+        <ItemRef ID="1300542" Type="head" Name="典狱官头盔" />
+        <ItemRef ID="1300540" Type="waist" Name="典狱官腰带" />
+    </Set>
+    <Set Name="冰旋风套装">
+        <ItemRef ID="100956" Type="foot" Name="冰旋风战靴" />
+        <ItemRef ID="100953" Type="head" Name="冰旋风战盔" />
+        <ItemRef ID="100955" Type="waist" Name="冰旋风腰带" />
+    </Set>
+    <Set Name="冰月套装">
+        <ItemRef ID="1300149" Type="foot" Name="冰月战靴" />
+        <ItemRef ID="1300146" Type="head" Name="冰月战盔" />
+        <ItemRef ID="1300148" Type="waist" Name="冰月腰带" />
+    </Set>
+    <Set Name="准尉套装">
+        <ItemRef ID="100420" Type="foot" Name="准尉战靴" />
+        <ItemRef ID="100417" Type="head" Name="准尉头盔" />
+        <ItemRef ID="100419" Type="waist" Name="准尉腰带" />
+    </Set>
+    <Set Name="创世套装">
+        <ItemRef ID="100434" Type="foot" Name="创世战靴" />
+        <ItemRef ID="100431" Type="head" Name="创世战盔" />
+        <ItemRef ID="100433" Type="waist" Name="创世腰带" />
+    </Set>
+    <Set Name="利爪套装">
+        <ItemRef ID="100265" Type="eye" Name="利爪面罩" />
+        <ItemRef ID="100264" Type="foot" Name="利爪重靴" />
+        <ItemRef ID="100262" Type="hand" Name="利爪手臂" />
+        <ItemRef ID="100261" Type="head" Name="利爪重盔" />
+        <ItemRef ID="100263" Type="waist" Name="利爪腰带" />
+    </Set>
+    <Set Name="刺蜂套装">
+        <ItemRef ID="100349" Type="foot" Name="刺蜂滚轮" />
+        <ItemRef ID="100347" Type="hand" Name="刺蜂护肩" />
+        <ItemRef ID="100346" Type="head" Name="刺蜂重盔" />
+        <ItemRef ID="100348" Type="waist" Name="刺蜂腰带" />
+    </Set>
+    <Set Name="劲旋风套装">
+        <ItemRef ID="100992" Type="foot" Name="劲旋风战靴" />
+        <ItemRef ID="100989" Type="head" Name="劲旋风战盔" />
+        <ItemRef ID="100991" Type="waist" Name="劲旋风腰带" />
+    </Set>
+    <Set Name="勇士套装">
+        <ItemRef ID="100301" Type="foot" Name="勇士战靴" />
+        <ItemRef ID="100298" Type="head" Name="勇士头盔" />
+        <ItemRef ID="100300" Type="waist" Name="勇士腰甲" />
+    </Set>
+    <Set Name="勘察套装">
+        <ItemRef ID="100181" Type="foot" Name="勘察军靴" />
+        <ItemRef ID="100179" Type="hand" Name="勘察护腕" />
+        <ItemRef ID="100178" Type="head" Name="勘察头盔" />
+        <ItemRef ID="100180" Type="waist" Name="勘察腰带" />
+    </Set>
+    <Set Name="南瓜套装">
+        <ItemRef ID="100185" Type="foot" Name="南瓜战靴" />
+        <ItemRef ID="100182" Type="head" Name="南瓜头盔" />
+        <ItemRef ID="100184" Type="waist" Name="南瓜腰带" />
+    </Set>
+    <Set Name="卫兵套装">
+        <ItemRef ID="100035" Type="foot" Name="卫兵鞋" />
+        <ItemRef ID="100034" Type="head" Name="卫兵帽子" />
+        <ItemRef ID="100033" Type="waist" Name="卫兵腰带" />
+    </Set>
+    <Set Name="原始苍魂套装">
+        <ItemRef ID="1300721" Type="hand" Name="原始苍魂护手" />
+        <ItemRef ID="1300720" Type="head" Name="原始苍魂头盔" />
+        <ItemRef ID="1300722" Type="waist" Name="原始苍魂护腰" />
+    </Set>
+    <Set Name="合金战甲套装">
+        <ItemRef ID="1300557" Type="hand" Name="合金战甲手套" />
+        <ItemRef ID="1300556" Type="head" Name="合金战甲头盔" />
+        <ItemRef ID="1300558" Type="waist" Name="合金战甲腰带" />
+    </Set>
+    <Set Name="合金重生套装">
+        <ItemRef ID="1300341" Type="foot" Name="合金重生战靴" />
+        <ItemRef ID="1300339" Type="hand" Name="合金重生肩甲" />
+        <ItemRef ID="1300338" Type="head" Name="合金重生战盔" />
+        <ItemRef ID="1300340" Type="waist" Name="合金重生腰带" />
+    </Set>
+    <Set Name="哪咤套装">
+        <ItemRef ID="1300080" Type="foot" Name="哪咤战靴" />
+        <ItemRef ID="1300077" Type="head" Name="哪咤战盔" />
+        <ItemRef ID="1300079" Type="waist" Name="哪咤腰带" />
+    </Set>
+    <Set Name="四九圣尊套装">
+        <ItemRef ID="1300681" Type="hand" Name="四九圣尊利爪" />
+        <ItemRef ID="1300679" Type="head" Name="四九圣尊圣盔" />
+        <ItemRef ID="1300682" Type="waist" Name="四九圣尊护腰" />
+    </Set>
+    <Set Name="团战之王套装">
+        <ItemRef ID="1300181" Type="foot" Name="团战之王战靴" />
+        <ItemRef ID="1300179" Type="hand" Name="团战之王护手" />
+        <ItemRef ID="1300178" Type="head" Name="团战之王战盔" />
+        <ItemRef ID="1300180" Type="waist" Name="团战之王腰带" />
+    </Set>
+    <Set Name="圣光天马套装">
+        <ItemRef ID="1300139" Type="hand" Name="圣光天马护手" />
+        <ItemRef ID="1300138" Type="head" Name="圣光天马头盔" />
+        <ItemRef ID="1300140" Type="waist" Name="圣光天马腰带" />
+    </Set>
+    <Set Name="圣堂套装">
+        <ItemRef ID="100244" Type="foot" Name="圣堂战靴" />
+        <ItemRef ID="100242" Type="hand" Name="圣堂利爪" />
+        <ItemRef ID="100241" Type="head" Name="圣堂兜帽" />
+        <ItemRef ID="100243" Type="waist" Name="圣堂护带" />
+    </Set>
+    <Set Name="圣灵祝福套装">
+        <ItemRef ID="1300587" Type="hand" Name="圣灵祝福护手" />
+        <ItemRef ID="1300586" Type="head" Name="圣灵祝福头盔" />
+        <ItemRef ID="1300588" Type="waist" Name="圣灵祝福腰带" />
+    </Set>
+    <Set Name="大地之重套装">
+        <ItemRef ID="1300737" Type="hand" Name="大地之重护手" />
+        <ItemRef ID="1300736" Type="head" Name="大地之重头盔" />
+        <ItemRef ID="1300738" Type="waist" Name="大地之重护腰" />
+    </Set>
+    <Set Name="大帝套装">
+        <ItemRef ID="100490" Type="eye" Name="大帝面罩" />
+        <ItemRef ID="100862" Type="eye" Name="大帝面罩" />
+        <ItemRef ID="100493" Type="foot" Name="大帝战靴" />
+        <ItemRef ID="100865" Type="foot" Name="大帝战靴" />
+        <ItemRef ID="100489" Type="head" Name="大帝战盔" />
+        <ItemRef ID="100861" Type="head" Name="大帝战盔" />
+    </Set>
+    <Set Name="大校套装">
+        <ItemRef ID="1300817" Type="eye" Name="大校面具" />
+        <ItemRef ID="1300816" Type="foot" Name="大校战靴" />
+        <ItemRef ID="1300813" Type="head" Name="大校头盔" />
+    </Set>
+    <Set Name="天命套装">
+        <ItemRef ID="100454" Type="eye" Name="天命面具" />
+        <ItemRef ID="100871" Type="eye" Name="天命面具" />
+        <ItemRef ID="100457" Type="foot" Name="天命战靴" />
+        <ItemRef ID="100874" Type="foot" Name="天命战靴" />
+        <ItemRef ID="100453" Type="head" Name="天命头盔" />
+        <ItemRef ID="100870" Type="head" Name="天命头盔" />
+    </Set>
+    <Set Name="天幕主神套装">
+        <ItemRef ID="1300453" Type="foot" Name="天幕主神战靴" />
+        <ItemRef ID="1300451" Type="hand" Name="天幕主神护手" />
+        <ItemRef ID="1300450" Type="head" Name="天幕主神战盔" />
+        <ItemRef ID="1300452" Type="waist" Name="天幕主神腰带" />
+    </Set>
+    <Set Name="天神套装">
+        <ItemRef ID="1300049" Type="foot" Name="天神战靴" />
+        <ItemRef ID="1300046" Type="head" Name="天神战盔" />
+        <ItemRef ID="1300048" Type="waist" Name="天神腰带" />
+    </Set>
+    <Set Name="天虎套装">
+        <ItemRef ID="1300112" Type="foot" Name="天虎战靴" />
+        <ItemRef ID="1300109" Type="head" Name="天虎战盔" />
+        <ItemRef ID="1300111" Type="waist" Name="天虎腰带" />
+    </Set>
+    <Set Name="奥金套装">
+        <ItemRef ID="100315" Type="foot" Name="奥金战靴" />
+        <ItemRef ID="100311" Type="head" Name="奥金兜帽" />
+        <ItemRef ID="100314" Type="waist" Name="奥金腰带" />
+    </Set>
+    <Set Name="宇宙海盗套装">
+        <ItemRef ID="100511" Type="foot" Name="宇宙海盗战靴" />
+        <ItemRef ID="100508" Type="head" Name="宇宙海盗头盔" />
+        <ItemRef ID="100510" Type="waist" Name="宇宙海盗腰带" />
+    </Set>
+    <Set Name="守护者套装">
+        <ItemRef ID="1300437" Type="foot" Name="守护者战靴" />
+        <ItemRef ID="1300435" Type="hand" Name="守护者护手" />
+        <ItemRef ID="1300434" Type="head" Name="守护者战盔" />
+    </Set>
+    <Set Name="室女套装">
+        <ItemRef ID="100156" Type="hand" Name="室女肩甲" />
+        <ItemRef ID="100155" Type="head" Name="室女头盔" />
+        <ItemRef ID="100157" Type="waist" Name="室女腰封" />
+    </Set>
+    <Set Name="室女座白银套装">
+        <ItemRef ID="1300478" Type="foot" Name="室女座白银战靴" />
+        <ItemRef ID="1300476" Type="hand" Name="室女座白银护手" />
+        <ItemRef ID="1300475" Type="head" Name="室女座白银战盔" />
+        <ItemRef ID="1300477" Type="waist" Name="室女座白银腰带" />
+    </Set>
+    <Set Name="室女座黄金套装">
+        <ItemRef ID="1300474" Type="foot" Name="室女座黄金战靴" />
+        <ItemRef ID="1300472" Type="hand" Name="室女座黄金护手" />
+        <ItemRef ID="1300471" Type="head" Name="室女座黄金战盔" />
+        <ItemRef ID="1300473" Type="waist" Name="室女座黄金腰带" />
+    </Set>
+    <Set Name="寒冰套装">
+        <ItemRef ID="1300116" Type="foot" Name="寒冰战靴" />
+        <ItemRef ID="1300114" Type="hand" Name="寒冰护手" />
+        <ItemRef ID="1300113" Type="head" Name="寒冰头盔" />
+        <ItemRef ID="1300115" Type="waist" Name="寒冰腰带" />
+    </Set>
+    <Set Name="小息套装">
+        <ItemRef ID="100898" Type="hand" Name="小息手臂" />
+        <ItemRef ID="100896" Type="head" Name="小息头盔" />
+        <ItemRef ID="100899" Type="waist" Name="小息腰带" />
+    </Set>
+    <Set Name="少尉套装">
+        <ItemRef ID="100443" Type="foot" Name="少尉战靴" />
+        <ItemRef ID="100440" Type="head" Name="少尉战盔" />
+        <ItemRef ID="100069" Type="waist" Name="少尉腰带" />
+    </Set>
+    <Set Name="少校套装">
+        <ItemRef ID="100996" Type="foot" Name="少校战靴" />
+        <ItemRef ID="100993" Type="head" Name="少校战盔" />
+        <ItemRef ID="100995" Type="waist" Name="少校腰甲" />
+    </Set>
+    <Set Name="尤尼卡套装">
+        <ItemRef ID="1300171" Type="foot" Name="尤尼卡战靴" />
+        <ItemRef ID="1300169" Type="hand" Name="尤尼卡护手" />
+        <ItemRef ID="1300168" Type="head" Name="尤尼卡战盔" />
+        <ItemRef ID="1300170" Type="waist" Name="尤尼卡腰带" />
+    </Set>
+    <Set Name="尤米娜套装">
+        <ItemRef ID="1300160" Type="foot" Name="尤米娜战靴" />
+        <ItemRef ID="1300158" Type="hand" Name="尤米娜护手" />
+        <ItemRef ID="1300157" Type="head" Name="尤米娜战盔" />
+        <ItemRef ID="1300159" Type="waist" Name="尤米娜腰带" />
+    </Set>
+    <Set Name="岁暮寒冰套装">
+        <ItemRef ID="1300825" Type="foot" Name="岁暮寒冰战靴" />
+        <ItemRef ID="1300823" Type="hand" Name="岁暮寒冰肩甲" />
+        <ItemRef ID="1300822" Type="head" Name="岁暮寒冰头盔" />
+        <ItemRef ID="1300824" Type="waist" Name="岁暮寒冰腰带" />
+    </Set>
+    <Set Name="巨石灵王套装">
+        <ItemRef ID="1300145" Type="foot" Name="巨石灵王战靴" />
+        <ItemRef ID="1300143" Type="hand" Name="巨石灵王护手" />
+        <ItemRef ID="1300142" Type="head" Name="巨石灵王战盔" />
+        <ItemRef ID="1300144" Type="waist" Name="巨石灵王腰带" />
+    </Set>
+    <Set Name="巨蟹座套装">
+        <ItemRef ID="100095" Type="foot" Name="巨蟹座靴子" />
+        <ItemRef ID="100094" Type="hand" Name="巨蟹座钳子" />
+        <ItemRef ID="100092" Type="head" Name="巨蟹座头套" />
+        <ItemRef ID="100093" Type="waist" Name="巨蟹座护腰" />
+    </Set>
+    <Set Name="巨蟹白银套装">
+        <ItemRef ID="1300381" Type="hand" Name="巨蟹白银护手" />
+        <ItemRef ID="1300380" Type="head" Name="巨蟹白银头盔" />
+        <ItemRef ID="1300382" Type="waist" Name="巨蟹白银腰带" />
+    </Set>
+    <Set Name="巨蟹黄金套装">
+        <ItemRef ID="1300385" Type="hand" Name="巨蟹黄金护手" />
+        <ItemRef ID="1300384" Type="head" Name="巨蟹黄金头盔" />
+        <ItemRef ID="1300386" Type="waist" Name="巨蟹黄金腰带" />
+    </Set>
+    <Set Name="布布套装">
+        <ItemRef ID="100141" Type="foot" Name="布布鞋" />
+        <ItemRef ID="100138" Type="head" Name="布布帽" />
+        <ItemRef ID="100140" Type="waist" Name="布布腰带" />
+    </Set>
+    <Set Name="帕罗狄亚套装">
+        <ItemRef ID="1300167" Type="foot" Name="帕罗狄亚战靴" />
+        <ItemRef ID="1300165" Type="hand" Name="帕罗狄亚护手" />
+        <ItemRef ID="1300164" Type="head" Name="帕罗狄亚战盔" />
+        <ItemRef ID="1300166" Type="waist" Name="帕罗狄亚腰带" />
+    </Set>
+    <Set Name="帕诺海啸套装">
+        <ItemRef ID="100116" Type="foot" Name="帕诺海啸靴子" />
+        <ItemRef ID="100114" Type="head" Name="帕诺海啸帽子" />
+        <ItemRef ID="100115" Type="waist" Name="帕诺海啸腰带" />
+    </Set>
+    <Set Name="帕诺烈焰套装">
+        <ItemRef ID="100119" Type="foot" Name="帕诺烈焰靴子" />
+        <ItemRef ID="100117" Type="head" Name="帕诺烈焰帽子" />
+        <ItemRef ID="100118" Type="waist" Name="帕诺烈焰腰带" />
+    </Set>
+    <Set Name="帕诺绿光套装">
+        <ItemRef ID="100113" Type="foot" Name="帕诺绿光靴子" />
+        <ItemRef ID="100111" Type="head" Name="帕诺绿光帽子" />
+        <ItemRef ID="100112" Type="waist" Name="帕诺绿光腰带" />
+    </Set>
+    <Set Name="幻银魔装套装">
+        <ItemRef ID="1300752" Type="hand" Name="幻银魔装护手" />
+        <ItemRef ID="1300751" Type="head" Name="幻银魔装头盔" />
+        <ItemRef ID="1300753" Type="waist" Name="幻银魔装护腰" />
+    </Set>
+    <Set Name="幽兰套装">
+        <ItemRef ID="100240" Type="foot" Name="幽兰火焰靴" />
+        <ItemRef ID="100238" Type="hand" Name="幽兰肩甲" />
+        <ItemRef ID="100237" Type="head" Name="幽兰头盔" />
+        <ItemRef ID="100239" Type="waist" Name="幽兰腰带" />
+    </Set>
+    <Set Name="庆典套装">
+        <ItemRef ID="1300337" Type="foot" Name="庆典战靴" />
+        <ItemRef ID="1300334" Type="head" Name="庆典战盔" />
+        <ItemRef ID="1300336" Type="waist" Name="庆典腰带" />
+    </Set>
+    <Set Name="影之虎王套装">
+        <ItemRef ID="1300486" Type="foot" Name="影之虎王战靴" />
+        <ItemRef ID="1300484" Type="hand" Name="影之虎王护手" />
+        <ItemRef ID="1300483" Type="head" Name="影之虎王战盔" />
+        <ItemRef ID="1300485" Type="waist" Name="影之虎王腰带" />
+    </Set>
+    <Set Name="御龙战将套装">
+        <ItemRef ID="1300404" Type="foot" Name="御龙战将重靴" />
+        <ItemRef ID="1300402" Type="hand" Name="御龙战将护手" />
+        <ItemRef ID="1300401" Type="head" Name="御龙战将头盔" />
+        <ItemRef ID="1300403" Type="waist" Name="御龙战将腰带" />
+    </Set>
+    <Set Name="忍魂套装">
+        <ItemRef ID="100814" Type="eye" Name="忍魂面罩" />
+        <ItemRef ID="100817" Type="foot" Name="忍魂战靴" />
+        <ItemRef ID="100813" Type="head" Name="忍魂重盔" />
+    </Set>
+    <Set Name="恶灵套装">
+        <ItemRef ID="1300299" Type="foot" Name="恶灵战靴" />
+        <ItemRef ID="1300297" Type="hand" Name="恶灵护手" />
+        <ItemRef ID="1300296" Type="head" Name="恶灵战盔" />
+    </Set>
+    <Set Name="战虎套装">
+        <ItemRef ID="100532" Type="eye" Name="战虎面具" />
+        <ItemRef ID="100535" Type="foot" Name="战虎战靴" />
+        <ItemRef ID="100531" Type="head" Name="战虎头盔" />
+    </Set>
+    <Set Name="战队荣耀套装">
+        <ItemRef ID="1300072" Type="foot" Name="战队荣耀战靴" />
+        <ItemRef ID="1300069" Type="head" Name="战队荣耀头盔" />
+        <ItemRef ID="1300071" Type="waist" Name="战队荣耀腰带" />
+    </Set>
+    <Set Name="托鲁克套装">
+        <ItemRef ID="1300223" Type="foot" Name="托鲁克战靴" />
+        <ItemRef ID="1300220" Type="head" Name="托鲁克头盔" />
+        <ItemRef ID="1300222" Type="waist" Name="托鲁克腰带" />
+    </Set>
+    <Set Name="护卫队制式套装">
+        <ItemRef ID="1300641" Type="foot" Name="护卫队制式战靴" />
+        <ItemRef ID="1300639" Type="hand" Name="护卫队制式护手" />
+        <ItemRef ID="1300638" Type="head" Name="护卫队制式头盔" />
+        <ItemRef ID="1300640" Type="waist" Name="护卫队制式腰甲" />
+    </Set>
+    <Set Name="招募官套装">
+        <ItemRef ID="100503" Type="foot" Name="招募官战靴" />
+        <ItemRef ID="100500" Type="head" Name="招募官头盔" />
+        <ItemRef ID="100502" Type="waist" Name="招募官腰带" />
+    </Set>
+    <Set Name="擎天柱套装">
+        <ItemRef ID="100781" Type="eye" Name="擎天柱面罩" />
+        <ItemRef ID="100782" Type="hand" Name="擎天柱手臂" />
+        <ItemRef ID="100780" Type="head" Name="擎天柱头盔" />
+        <ItemRef ID="100783" Type="waist" Name="擎天柱腰带" />
+    </Set>
+    <Set Name="斗旋风套装">
+        <ItemRef ID="1300017" Type="foot" Name="斗旋风战靴" />
+        <ItemRef ID="1300014" Type="head" Name="斗旋风战盔" />
+        <ItemRef ID="1300016" Type="waist" Name="斗旋风腰带" />
+    </Set>
+    <Set Name="新春套装">
+        <ItemRef ID="1300532" Type="eye" Name="新春面罩" />
+        <ItemRef ID="1300535" Type="foot" Name="新春重靴" />
+        <ItemRef ID="1300531" Type="head" Name="新春头盔" />
+        <ItemRef ID="1300534" Type="waist" Name="新春腰带" />
+    </Set>
+    <Set Name="新月套装">
+        <ItemRef ID="1300603" Type="foot" Name="新月战靴" />
+        <ItemRef ID="1300599" Type="head" Name="新月战盔" />
+        <ItemRef ID="1300602" Type="waist" Name="新月腰带" />
+    </Set>
+    <Set Name="无双套装">
+        <ItemRef ID="100485" Type="eye" Name="无双面罩" />
+        <ItemRef ID="100857" Type="eye" Name="无双面罩" />
+        <ItemRef ID="100488" Type="foot" Name="无双战靴" />
+        <ItemRef ID="100860" Type="foot" Name="无双战靴" />
+        <ItemRef ID="100484" Type="head" Name="无双战盔" />
+        <ItemRef ID="100856" Type="head" Name="无双战盔" />
+    </Set>
+    <Set Name="时空战甲套装">
+        <ItemRef ID="1300787" Type="hand" Name="时空战甲护手" />
+        <ItemRef ID="1300786" Type="head" Name="时空战甲头盔" />
+        <ItemRef ID="1300788" Type="waist" Name="时空战甲护腰" />
+    </Set>
+    <Set Name="星校套装">
+        <ItemRef ID="100599" Type="foot" Name="星校靴" />
+        <ItemRef ID="100596" Type="head" Name="星校头盔" />
+        <ItemRef ID="100598" Type="waist" Name="星校腰带" />
+    </Set>
+    <Set Name="晶蓝之铠套装">
+        <ItemRef ID="1300741" Type="hand" Name="晶蓝之铠护手" />
+        <ItemRef ID="1300740" Type="head" Name="晶蓝之铠头盔" />
+        <ItemRef ID="1300742" Type="waist" Name="晶蓝之铠护腰" />
+    </Set>
+    <Set Name="暗影裂岩套装">
+        <ItemRef ID="1300553" Type="hand" Name="暗影裂岩手套" />
+        <ItemRef ID="1300552" Type="head" Name="暗影裂岩头盔" />
+        <ItemRef ID="1300554" Type="waist" Name="暗影裂岩腰带" />
+    </Set>
+    <Set Name="暗旋风套装">
+        <ItemRef ID="100952" Type="foot" Name="暗旋风战靴" />
+        <ItemRef ID="100949" Type="head" Name="暗旋风战盔" />
+        <ItemRef ID="100951" Type="waist" Name="暗旋风腰带" />
+    </Set>
+    <Set Name="暗晶套装">
+        <ItemRef ID="1300349" Type="foot" Name="暗晶战靴" />
+        <ItemRef ID="1300346" Type="head" Name="暗晶战盔" />
+        <ItemRef ID="1300348" Type="waist" Name="暗晶腰带" />
+    </Set>
+    <Set Name="暗曜之星套装">
+        <ItemRef ID="1300783" Type="hand" Name="暗曜之星护手" />
+        <ItemRef ID="1300782" Type="head" Name="暗曜之星头盔" />
+        <ItemRef ID="1300784" Type="waist" Name="暗曜之星护腰" />
+    </Set>
+    <Set Name="暗金套装">
+        <ItemRef ID="100730" Type="foot" Name="暗金掌" />
+        <ItemRef ID="100728" Type="hand" Name="暗金肩甲" />
+        <ItemRef ID="1300022" Type="head" Name="暗金头盔" />
+        <ItemRef ID="100729" Type="waist" Name="暗金腰带" />
+        <ItemRef ID="1300023" Type="waist" Name="暗金腰带" />
+    </Set>
+    <Set Name="暗黑炫彩套装">
+        <ItemRef ID="1300400" Type="foot" Name="暗黑炫彩战靴" />
+        <ItemRef ID="1300397" Type="head" Name="暗黑炫彩战盔" />
+        <ItemRef ID="1300399" Type="waist" Name="暗黑炫彩腰带" />
+    </Set>
+    <Set Name="未来套装">
+        <ItemRef ID="100819" Type="hand" Name="未来护手" />
+        </Set>
+    <Set Name="机甲龙骑士套装">
+        <ItemRef ID="1300291" Type="foot" Name="机甲龙骑士战靴" />
+        <ItemRef ID="1300288" Type="head" Name="机甲龙骑士头盔" />
+        <ItemRef ID="1300290" Type="waist" Name="机甲龙骑士腰带" />
+    </Set>
+    <Set Name="极寒套装">
+        <ItemRef ID="1300092" Type="eye" Name="极寒面罩" />
+        <ItemRef ID="1300095" Type="foot" Name="极寒战靴" />
+        <ItemRef ID="1300091" Type="head" Name="极寒战盔" />
+    </Set>
+    <Set Name="极暗梦魇套装">
+        <ItemRef ID="1300717" Type="hand" Name="极暗梦魇护手" />
+        <ItemRef ID="1300716" Type="head" Name="极暗梦魇头盔" />
+        <ItemRef ID="1300718" Type="waist" Name="极暗梦魇护腰" />
+    </Set>
+    <Set Name="果灵套装">
+        <ItemRef ID="100604" Type="eye" Name="果灵面罩" />
+        <ItemRef ID="100605" Type="hand" Name="果灵护肩" />
+        <ItemRef ID="100606" Type="waist" Name="果灵腰带" />
+    </Set>
+    <Set Name="梦龙套装">
+        <ItemRef ID="1300211" Type="foot" Name="梦龙战靴" />
+        <ItemRef ID="1300208" Type="head" Name="梦龙战盔" />
+        <ItemRef ID="1300210" Type="waist" Name="梦龙护腰" />
+    </Set>
+    <Set Name="梦龙合金套装">
+        <ItemRef ID="1300212" Type="head" Name="梦龙合金战盔" />
+        <ItemRef ID="1300214" Type="waist" Name="梦龙合金护腰" />
+    </Set>
+    <Set Name="武士套装">
+        <ItemRef ID="100712" Type="foot" Name="武士鞋" />
+        <ItemRef ID="100709" Type="head" Name="武士头盔" />
+        <ItemRef ID="100711" Type="waist" Name="武士腰甲" />
+    </Set>
+    <Set Name="武神套装">
+        <ItemRef ID="100635" Type="eye" Name="武神面具" />
+        <ItemRef ID="100638" Type="foot" Name="武神战靴" />
+        <ItemRef ID="100634" Type="head" Name="武神战盔" />
+    </Set>
+    <Set Name="毒刺套装">
+        <ItemRef ID="100495" Type="eye" Name="毒刺面具" />
+        <ItemRef ID="100498" Type="foot" Name="毒刺战靴" />
+        <ItemRef ID="100494" Type="head" Name="毒刺头盔" />
+    </Set>
+    <Set Name="海啸套装">
+        <ItemRef ID="100665" Type="foot" Name="海啸战靴" />
+        <ItemRef ID="100663" Type="head" Name="海啸战盔" />
+        <ItemRef ID="100664" Type="waist" Name="海啸腰甲" />
+    </Set>
+    <Set Name="海盗套装">
+        <ItemRef ID="100169" Type="eye" Name="海盗面罩" />
+        <ItemRef ID="100171" Type="foot" Name="海盗鞋" />
+        <ItemRef ID="100168" Type="head" Name="海盗头盔" />
+        <ItemRef ID="100170" Type="waist" Name="海盗腰带" />
+    </Set>
+    <Set Name="海魂套装">
+        <ItemRef ID="100652" Type="foot" Name="海魂靴" />
+        <ItemRef ID="100650" Type="hand" Name="海魂肩甲" />
+        <ItemRef ID="100651" Type="waist" Name="海魂腰带" />
+    </Set>
+    <Set Name="深寒套装">
+        <ItemRef ID="100563" Type="foot" Name="深寒重靴" />
+        <ItemRef ID="100559" Type="head" Name="深寒头盔" />
+        <ItemRef ID="100562" Type="waist" Name="深寒腰带" />
+    </Set>
+    <Set Name="深雷套装">
+        <ItemRef ID="100406" Type="foot" Name="深雷重靴" />
+        <ItemRef ID="100404" Type="hand" Name="深雷护手" />
+        <ItemRef ID="100403" Type="head" Name="深雷头盔" />
+        <ItemRef ID="100405" Type="waist" Name="深雷腰带" />
+    </Set>
+    <Set Name="混元套装">
+        <ItemRef ID="1300569" Type="foot" Name="混元战靴" />
+        <ItemRef ID="1300567" Type="hand" Name="混元护手" />
+        <ItemRef ID="1300565" Type="head" Name="混元头盔" />
+        <ItemRef ID="1300568" Type="waist" Name="混元腰带" />
+    </Set>
+    <Set Name="清风套装">
+        <ItemRef ID="1300564" Type="foot" Name="清风战靴" />
+        <ItemRef ID="1300562" Type="hand" Name="清风护手" />
+        <ItemRef ID="1300560" Type="head" Name="清风头盔" />
+        <ItemRef ID="1300563" Type="waist" Name="清风腰带" />
+    </Set>
+    <Set Name="漩涡套装">
+        <ItemRef ID="1300687" Type="foot" Name="漩涡重靴" />
+        <ItemRef ID="1300684" Type="head" Name="漩涡头盔" />
+        <ItemRef ID="1300686" Type="waist" Name="漩涡腰带" />
+    </Set>
+    <Set Name="激撞炮套装">
+        <ItemRef ID="100507" Type="foot" Name="激撞炮战靴" />
+        <ItemRef ID="100504" Type="head" Name="激撞炮头盔" />
+        <ItemRef ID="100506" Type="waist" Name="激撞炮腰带" />
+    </Set>
+    <Set Name="瀚海套装">
+        <ItemRef ID="1300837" Type="foot" Name="瀚海战靴" />
+        <ItemRef ID="1300835" Type="hand" Name="瀚海肩甲" />
+        <ItemRef ID="1300834" Type="head" Name="瀚海战盔" />
+        <ItemRef ID="1300836" Type="waist" Name="瀚海腰带" />
+    </Set>
+    <Set Name="火云套装">
+        <ItemRef ID="1300455" Type="hand" Name="火云护手" />
+        <ItemRef ID="1300454" Type="head" Name="火云战盔" />
+        <ItemRef ID="1300456" Type="waist" Name="火云腰带" />
+    </Set>
+    <Set Name="炫龙套装">
+        <ItemRef ID="100916" Type="foot" Name="炫龙战靴" />
+        <ItemRef ID="100913" Type="head" Name="炫龙头盔" />
+        <ItemRef ID="100915" Type="waist" Name="炫龙腰带" />
+    </Set>
+    <Set Name="烈焰套装">
+        <ItemRef ID="100394" Type="foot" Name="烈焰鞋" />
+        <ItemRef ID="100659" Type="foot" Name="烈焰战靴" />
+        <ItemRef ID="100391" Type="head" Name="烈焰帽" />
+        <ItemRef ID="100657" Type="head" Name="烈焰战盔" />
+        <ItemRef ID="100393" Type="waist" Name="烈焰腰带" />
+        <ItemRef ID="100658" Type="waist" Name="烈焰腰带" />
+    </Set>
+    <Set Name="烈焰火拳套装">
+        <ItemRef ID="1300303" Type="foot" Name="烈焰火拳战靴" />
+        <ItemRef ID="1300301" Type="hand" Name="烈焰火拳手套" />
+        <ItemRef ID="1300300" Type="head" Name="烈焰火拳头盔" />
+    </Set>
+    <Set Name="热血勇者套装">
+        <ItemRef ID="1300793" Type="foot" Name="热血勇者战靴" />
+        <ItemRef ID="1300790" Type="head" Name="热血勇者战盔" />
+        <ItemRef ID="1300792" Type="waist" Name="热血勇者腰带" />
+    </Set>
+    <Set Name="焰龙套装">
+        <ItemRef ID="100939" Type="foot" Name="焰龙圣靴" />
+        <ItemRef ID="100936" Type="head" Name="焰龙圣盔" />
+        <ItemRef ID="100938" Type="waist" Name="焰龙腰甲" />
+    </Set>
+    <Set Name="焱武套装">
+        <ItemRef ID="1300504" Type="foot" Name="焱武战靴" />
+        <ItemRef ID="1300505" Type="head" Name="焱武战盔" />
+        <ItemRef ID="1300503" Type="waist" Name="焱武圣甲" />
+    </Set>
+    <Set Name="犄角套装">
+        <ItemRef ID="100530" Type="foot" Name="犄角战靴" />
+        <ItemRef ID="100527" Type="head" Name="犄角战盔" />
+        <ItemRef ID="100529" Type="waist" Name="犄角腰带" />
+    </Set>
+    <Set Name="狡兔套装">
+        <ItemRef ID="100583" Type="eye" Name="狡兔面具" />
+        <ItemRef ID="100586" Type="foot" Name="狡兔战靴" />
+        <ItemRef ID="100582" Type="head" Name="狡兔头盔" />
+        <ItemRef ID="100585" Type="waist" Name="狡兔腰带" />
+    </Set>
+    <Set Name="狮子座套装">
+        <ItemRef ID="100107" Type="foot" Name="狮子座靴子" />
+        <ItemRef ID="100105" Type="hand" Name="狮子座翅膀" />
+        <ItemRef ID="100104" Type="head" Name="狮子座头盔" />
+        <ItemRef ID="100106" Type="waist" Name="狮子座护腰" />
+    </Set>
+    <Set Name="狮子白银套装">
+        <ItemRef ID="1300424" Type="foot" Name="狮子白银战靴" />
+        <ItemRef ID="1300422" Type="hand" Name="狮子白银护手" />
+        <ItemRef ID="1300421" Type="head" Name="狮子白银战盔" />
+    </Set>
+    <Set Name="狮子黄金套装">
+        <ItemRef ID="1300420" Type="foot" Name="狮子黄金战靴" />
+        <ItemRef ID="1300418" Type="hand" Name="狮子黄金护手" />
+        <ItemRef ID="1300417" Type="head" Name="狮子黄金战盔" />
+    </Set>
+    <Set Name="玄武先锋套装">
+        <ItemRef ID="1300193" Type="foot" Name="玄武先锋圣靴" />
+        <ItemRef ID="1300190" Type="head" Name="玄武先锋圣盔" />
+        <ItemRef ID="1300192" Type="waist" Name="玄武先锋腰甲" />
+    </Set>
+    <Set Name="玄武守卫套装">
+        <ItemRef ID="1300189" Type="foot" Name="玄武守卫圣靴" />
+        <ItemRef ID="1300186" Type="head" Name="玄武守卫圣盔" />
+        <ItemRef ID="1300188" Type="waist" Name="玄武守卫腰甲" />
+    </Set>
+    <Set Name="王者套装">
+        <ItemRef ID="100297" Type="foot" Name="王者战靴" />
+        <ItemRef ID="100590" Type="foot" Name="王者战靴" />
+        <ItemRef ID="100294" Type="head" Name="王者头盔" />
+        <ItemRef ID="100587" Type="head" Name="王者头盔" />
+        <ItemRef ID="100296" Type="waist" Name="王者腰甲" />
+        <ItemRef ID="100589" Type="waist" Name="王者腰带" />
+    </Set>
+    <Set Name="璐璐套装">
+        <ItemRef ID="100924" Type="hand" Name="璐璐手臂" />
+        <ItemRef ID="100922" Type="head" Name="璐璐头盔" />
+        <ItemRef ID="100925" Type="waist" Name="璐璐腰带" />
+    </Set>
+    <Set Name="电击兔套装">
+        <ItemRef ID="100103" Type="foot" Name="电击兔鞋" />
+        <ItemRef ID="100100" Type="head" Name="电击兔帽" />
+        <ItemRef ID="100102" Type="waist" Name="电击兔腰带" />
+    </Set>
+    <Set Name="疾电套装">
+        <ItemRef ID="100337" Type="foot" Name="疾电滚轮" />
+        <ItemRef ID="100335" Type="hand" Name="疾电护肩" />
+        <ItemRef ID="100334" Type="head" Name="疾电重盔" />
+        <ItemRef ID="100336" Type="waist" Name="疾电弹夹" />
+    </Set>
+    <Set Name="白色天命套装">
+        <ItemRef ID="1300042" Type="eye" Name="白色天命面具" />
+        <ItemRef ID="1300045" Type="foot" Name="白色天命战靴" />
+        <ItemRef ID="1300041" Type="head" Name="白色天命头盔" />
+    </Set>
+    <Set Name="白虎先锋套装">
+        <ItemRef ID="1300274" Type="foot" Name="白虎先锋圣靴" />
+        <ItemRef ID="1300271" Type="head" Name="白虎先锋圣盔" />
+        <ItemRef ID="1300273" Type="waist" Name="白虎先锋腰甲" />
+    </Set>
+    <Set Name="白虎守卫套装">
+        <ItemRef ID="1300270" Type="foot" Name="白虎守卫圣靴" />
+        <ItemRef ID="1300267" Type="head" Name="白虎守卫圣盔" />
+        <ItemRef ID="1300269" Type="waist" Name="白虎守卫腰甲" />
+    </Set>
+    <Set Name="白马王子套装">
+        <ItemRef ID="1300449" Type="foot" Name="白马王子战靴" />
+        <ItemRef ID="1300447" Type="hand" Name="白马王子护手" />
+        <ItemRef ID="1300446" Type="head" Name="白马王子战盔" />
+        <ItemRef ID="1300448" Type="waist" Name="白马王子腰带" />
+    </Set>
+    <Set Name="真红套装">
+        <ItemRef ID="100895" Type="foot" Name="真红战靴" />
+        <ItemRef ID="100892" Type="head" Name="真红战盔" />
+        <ItemRef ID="100894" Type="waist" Name="真红腰带" />
+    </Set>
+    <Set Name="破晓套装">
+        <ItemRef ID="100869" Type="foot" Name="破晓重靴" />
+        <ItemRef ID="100866" Type="head" Name="破晓头盔" />
+        <ItemRef ID="100868" Type="waist" Name="破晓腰带" />
+    </Set>
+    <Set Name="破月套装">
+        <ItemRef ID="1300416" Type="foot" Name="破月战靴" />
+        <ItemRef ID="1300414" Type="hand" Name="破月护手" />
+        <ItemRef ID="1300413" Type="head" Name="破月战盔" />
+    </Set>
+    <Set Name="神月套装">
+        <ItemRef ID="1300153" Type="foot" Name="神月战靴" />
+        <ItemRef ID="1300150" Type="head" Name="神月战盔" />
+        <ItemRef ID="1300152" Type="waist" Name="神月腰带" />
+    </Set>
+    <Set Name="童年机器套装">
+        <ItemRef ID="1300309" Type="foot" Name="童年机器鞋" />
+        <ItemRef ID="1300307" Type="hand" Name="童年机器手臂" />
+        <ItemRef ID="1300306" Type="head" Name="童年机器帽" />
+    </Set>
+    <Set Name="笑傲巅峰套装">
+        <ItemRef ID="1300795" Type="hand" Name="笑傲巅峰护手" />
+        <ItemRef ID="1300794" Type="head" Name="笑傲巅峰头盔" />
+        <ItemRef ID="1300796" Type="waist" Name="笑傲巅峰护腰" />
+    </Set>
+    <Set Name="米咔套装">
+        <ItemRef ID="100942" Type="hand" Name="米咔手套" />
+        <ItemRef ID="100940" Type="head" Name="米咔头盔" />
+        <ItemRef ID="100943" Type="waist" Name="米咔腰带" />
+    </Set>
+    <Set Name="米鲁套装">
+        <ItemRef ID="100270" Type="hand" Name="米鲁手套" />
+        <ItemRef ID="100269" Type="head" Name="米鲁头冠" />
+        <ItemRef ID="100271" Type="waist" Name="米鲁护腰" />
+    </Set>
+    <Set Name="紫光套装">
+        <ItemRef ID="1300333" Type="foot" Name="紫光战靴" />
+        <ItemRef ID="1300330" Type="head" Name="紫光战盔" />
+        <ItemRef ID="1300332" Type="waist" Name="紫光腰带" />
+    </Set>
+    <Set Name="紫旋风套装">
+        <ItemRef ID="100855" Type="foot" Name="紫旋风战靴" />
+        <ItemRef ID="100852" Type="head" Name="紫旋风战盔" />
+        <ItemRef ID="100854" Type="waist" Name="紫旋风腰带" />
+    </Set>
+    <Set Name="红卡套装">
+        <ItemRef ID="100928" Type="eye" Name="红卡面罩" />
+        <ItemRef ID="100931" Type="foot" Name="红卡重靴" />
+        <ItemRef ID="100927" Type="head" Name="红卡头盔" />
+        <ItemRef ID="100930" Type="waist" Name="红卡腰带" />
+    </Set>
+    <Set Name="红宝石套装">
+        <ItemRef ID="100750" Type="foot" Name="红宝石战靴" />
+        <ItemRef ID="100748" Type="hand" Name="红宝石护手" />
+        <ItemRef ID="100747" Type="head" Name="红宝石头盔" />
+        <ItemRef ID="100749" Type="waist" Name="红宝石腰带" />
+    </Set>
+    <Set Name="红旋风套装">
+        <ItemRef ID="100843" Type="foot" Name="红旋风战靴" />
+        <ItemRef ID="100840" Type="head" Name="红旋风战盔" />
+        <ItemRef ID="100842" Type="waist" Name="红旋风腰带" />
+    </Set>
+    <Set Name="红炎套装">
+        <ItemRef ID="1300611" Type="foot" Name="红炎战靴" />
+        <ItemRef ID="1300609" Type="hand" Name="红炎护手" />
+        <ItemRef ID="1300607" Type="head" Name="红炎头盔" />
+    </Set>
+    <Set Name="红莲战士套装">
+        <ItemRef ID="100079" Type="foot" Name="红莲战士靴" />
+        <ItemRef ID="100077" Type="hand" Name="红莲战士光刃" />
+        <ItemRef ID="100076" Type="head" Name="红莲战士头盔" />
+        <ItemRef ID="100078" Type="waist" Name="红莲战士腰带" />
+    </Set>
+    <Set Name="红龙套装">
+        <ItemRef ID="100199" Type="hand" Name="红龙掌" />
+        <ItemRef ID="100198" Type="head" Name="红龙冠" />
+        <ItemRef ID="100200" Type="waist" Name="红龙护腰" />
+    </Set>
+    <Set Name="终极战神套装">
+        <ItemRef ID="1300295" Type="foot" Name="终极战神战盔" />
+        <ItemRef ID="1300292" Type="head" Name="终极战神头盔" />
+        <ItemRef ID="1300294" Type="waist" Name="终极战神腰带" />
+    </Set>
+    <Set Name="绿光套装">
+        <ItemRef ID="100662" Type="foot" Name="绿光战靴" />
+        <ItemRef ID="100660" Type="head" Name="绿光战盔" />
+        <ItemRef ID="100661" Type="waist" Name="绿光腰带" />
+    </Set>
+    <Set Name="绿旋风套装">
+        <ItemRef ID="100838" Type="foot" Name="绿旋风战靴" />
+        <ItemRef ID="100835" Type="head" Name="绿旋风战盔" />
+        <ItemRef ID="100837" Type="waist" Name="绿旋风腰带" />
+    </Set>
+    <Set Name="缤纷狂欢套装">
+        <ItemRef ID="1300689" Type="hand" Name="缤纷狂欢护手" />
+        <ItemRef ID="1300688" Type="head" Name="缤纷狂欢头盔" />
+        <ItemRef ID="1300690" Type="waist" Name="缤纷狂欢腰带" />
+    </Set>
+    <Set Name="罗刹套装">
+        <ItemRef ID="1300574" Type="foot" Name="罗刹战靴" />
+        <ItemRef ID="1300572" Type="hand" Name="罗刹护手" />
+        <ItemRef ID="1300570" Type="head" Name="罗刹头盔" />
+        <ItemRef ID="1300573" Type="waist" Name="罗刹腰带" />
+    </Set>
+    <Set Name="罗马套装">
+        <ItemRef ID="100205" Type="foot" Name="罗马战靴" />
+        <ItemRef ID="100203" Type="hand" Name="罗马长枪" />
+        <ItemRef ID="100202" Type="head" Name="罗马头盔" />
+        <ItemRef ID="100204" Type="waist" Name="罗马腰甲" />
+    </Set>
+    <Set Name="聚能套装">
+        <ItemRef ID="100285" Type="foot" Name="聚能战靴" />
+        <ItemRef ID="100282" Type="head" Name="聚能头盔" />
+        <ItemRef ID="100284" Type="waist" Name="聚能腰带" />
+    </Set>
+    <Set Name="至尊套装">
+        <ItemRef ID="100293" Type="foot" Name="至尊战靴" />
+        <ItemRef ID="100290" Type="head" Name="至尊头盔" />
+        <ItemRef ID="100292" Type="waist" Name="至尊腰甲" />
+    </Set>
+    <Set Name="至高胜利套装">
+        <ItemRef ID="1300700" Type="hand" Name="至高胜利护手" />
+        <ItemRef ID="1300699" Type="head" Name="至高胜利头盔" />
+        <ItemRef ID="1300701" Type="waist" Name="至高胜利护腰" />
+    </Set>
+    <Set Name="荣誉套装">
+        <ItemRef ID="100361" Type="foot" Name="荣誉战靴" />
+        <ItemRef ID="100359" Type="hand" Name="荣誉护肩" />
+        <ItemRef ID="100360" Type="waist" Name="荣誉腰带" />
+    </Set>
+    <Set Name="萌麒麟之套装">
+        <ItemRef ID="1300649" Type="foot" Name="萌麒麟之靴" />
+        <ItemRef ID="1300647" Type="hand" Name="萌麒麟之护手" />
+        <ItemRef ID="1300648" Type="waist" Name="萌麒麟之腰带" />
+    </Set>
+    <Set Name="蓝卡套装">
+        <ItemRef ID="1300002" Type="eye" Name="蓝卡面罩" />
+        <ItemRef ID="1300005" Type="foot" Name="蓝卡重靴" />
+        <ItemRef ID="1300001" Type="head" Name="蓝卡头盔" />
+        <ItemRef ID="1300004" Type="waist" Name="蓝卡腰带" />
+    </Set>
+    <Set Name="蓝宝石套装">
+        <ItemRef ID="100236" Type="foot" Name="蓝宝石战靴" />
+        <ItemRef ID="100234" Type="hand" Name="蓝宝石护手" />
+        <ItemRef ID="100233" Type="head" Name="蓝宝石头盔" />
+        <ItemRef ID="100235" Type="waist" Name="蓝宝石腰带" />
+    </Set>
+    <Set Name="蓝旋风套装">
+        <ItemRef ID="100878" Type="foot" Name="蓝旋风战靴" />
+        <ItemRef ID="100875" Type="head" Name="蓝旋风战盔" />
+        <ItemRef ID="100877" Type="waist" Name="蓝旋风腰带" />
+    </Set>
+    <Set Name="蜘蛛侠侠套装">
+        <ItemRef ID="1300129" Type="foot" Name="蜘蛛侠侠战靴" />
+        <ItemRef ID="1300126" Type="head" Name="蜘蛛侠侠战盔" />
+        <ItemRef ID="1300128" Type="waist" Name="蜘蛛侠侠腰带" />
+    </Set>
+    <Set Name="蝙蝠战侠套装">
+        <ItemRef ID="1300124" Type="foot" Name="蝙蝠战侠战靴" />
+        <ItemRef ID="1300121" Type="head" Name="蝙蝠战侠战盔" />
+        <ItemRef ID="1300123" Type="waist" Name="蝙蝠战侠腰带" />
+    </Set>
+    <Set Name="蝠王套装">
+        <ItemRef ID="100831" Type="eye" Name="蝠王眼罩" />
+        <ItemRef ID="100834" Type="foot" Name="蝠王战靴" />
+        <ItemRef ID="100830" Type="head" Name="蝠王战盔" />
+        <ItemRef ID="100833" Type="waist" Name="蝠王腰带" />
+    </Set>
+    <Set Name="螺旋海啸套装">
+        <ItemRef ID="1300361" Type="foot" Name="螺旋海啸战靴" />
+        <ItemRef ID="1300358" Type="head" Name="螺旋海啸战盔" />
+        <ItemRef ID="1300360" Type="waist" Name="螺旋海啸腰带" />
+    </Set>
+    <Set Name="螺旋烈焰套装">
+        <ItemRef ID="1300357" Type="foot" Name="螺旋烈焰战靴" />
+        <ItemRef ID="1300354" Type="head" Name="螺旋烈焰战盔" />
+        <ItemRef ID="1300356" Type="waist" Name="螺旋烈焰腰带" />
+    </Set>
+    <Set Name="螺旋绿光套装">
+        <ItemRef ID="1300353" Type="foot" Name="螺旋绿光战靴" />
+        <ItemRef ID="1300350" Type="head" Name="螺旋绿光战盔" />
+        <ItemRef ID="1300352" Type="waist" Name="螺旋绿光腰带" />
+    </Set>
+    <Set Name="血狼王套装">
+        <ItemRef ID="1300441" Type="foot" Name="血狼王战靴" />
+        <ItemRef ID="1300439" Type="hand" Name="血狼王护手" />
+        <ItemRef ID="1300438" Type="head" Name="血狼王战盔" />
+    </Set>
+    <Set Name="血色套装">
+        <ItemRef ID="100277" Type="foot" Name="血色战靴" />
+        <ItemRef ID="100274" Type="head" Name="血色头盔" />
+        <ItemRef ID="100276" Type="waist" Name="血色腰甲" />
+    </Set>
+    <Set Name="裂空海啸套装">
+        <ItemRef ID="1300104" Type="foot" Name="裂空海啸战靴" />
+        <ItemRef ID="1300102" Type="head" Name="裂空海啸战盔" />
+        <ItemRef ID="1300103" Type="waist" Name="裂空海啸腰带" />
+    </Set>
+    <Set Name="裂空烈焰套装">
+        <ItemRef ID="1300101" Type="foot" Name="裂空烈焰战靴" />
+        <ItemRef ID="1300099" Type="head" Name="裂空烈焰战盔" />
+        <ItemRef ID="1300100" Type="waist" Name="裂空烈焰腰带" />
+    </Set>
+    <Set Name="裂空绿光套装">
+        <ItemRef ID="1300098" Type="foot" Name="裂空绿光战靴" />
+        <ItemRef ID="1300096" Type="head" Name="裂空绿光战盔" />
+        <ItemRef ID="1300097" Type="waist" Name="裂空绿光腰带" />
+    </Set>
+    <Set Name="裂震套装">
+        <ItemRef ID="100328" Type="foot" Name="裂震重靴" />
+        <ItemRef ID="100326" Type="hand" Name="裂震笼手" />
+        <ItemRef ID="100325" Type="head" Name="裂震头盔" />
+        <ItemRef ID="100327" Type="waist" Name="裂震护腰" />
+    </Set>
+    <Set Name="褐色旋风套装">
+        <ItemRef ID="100935" Type="foot" Name="褐色旋风战靴" />
+        <ItemRef ID="100932" Type="head" Name="褐色旋风战盔" />
+        <ItemRef ID="100934" Type="waist" Name="褐色旋风腰带" />
+    </Set>
+    <Set Name="训练师套装">
+        <ItemRef ID="100039" Type="foot" Name="训练师板鞋" />
+        <ItemRef ID="100037" Type="hand" Name="训练师手臂" />
+        <ItemRef ID="100038" Type="waist" Name="训练师腰带" />
+    </Set>
+    <Set Name="诺曼底套装">
+        <ItemRef ID="100388" Type="hand" Name="诺曼底护手" />
+        <ItemRef ID="100387" Type="head" Name="诺曼底头盔" />
+        <ItemRef ID="100389" Type="waist" Name="诺曼底腰带" />
+    </Set>
+    <Set Name="负能套装">
+        <ItemRef ID="100415" Type="foot" Name="负能战靴" />
+        <ItemRef ID="100412" Type="head" Name="负能头盔" />
+        <ItemRef ID="100414" Type="waist" Name="负能腰带" />
+    </Set>
+    <Set Name="赤火套装">
+        <ItemRef ID="1300580" Type="foot" Name="赤火战靴" />
+        <ItemRef ID="1300578" Type="hand" Name="赤火护手" />
+        <ItemRef ID="1300576" Type="head" Name="赤火头盔" />
+        <ItemRef ID="1300579" Type="waist" Name="赤火腰带" />
+    </Set>
+    <Set Name="赫金套装">
+        <ItemRef ID="100281" Type="foot" Name="赫金靴" />
+        <ItemRef ID="100278" Type="head" Name="赫金冠" />
+        <ItemRef ID="100280" Type="waist" Name="赫金带" />
+    </Set>
+    <Set Name="超人战侠套装">
+        <ItemRef ID="1300137" Type="foot" Name="超人战侠战靴" />
+        <ItemRef ID="1300134" Type="head" Name="超人战侠战盔" />
+        <ItemRef ID="1300136" Type="waist" Name="超人战侠腰带" />
+    </Set>
+    <Set Name="超能士官套装">
+        <ItemRef ID="100523" Type="foot" Name="超能士官战靴" />
+        <ItemRef ID="100520" Type="head" Name="超能士官头盔" />
+        <ItemRef ID="100522" Type="waist" Name="超能士官腰带" />
+    </Set>
+    <Set Name="超能新兵套装">
+        <ItemRef ID="100519" Type="foot" Name="超能新兵战靴" />
+        <ItemRef ID="100516" Type="head" Name="超能新兵头盔" />
+        <ItemRef ID="100518" Type="waist" Name="超能新兵腰带" />
+    </Set>
+    <Set Name="通讯套装">
+        <ItemRef ID="100176" Type="foot" Name="通讯鞋" />
+        <ItemRef ID="100174" Type="hand" Name="通讯手臂" />
+        <ItemRef ID="100173" Type="head" Name="通讯头盔" />
+        <ItemRef ID="100175" Type="waist" Name="通讯腰带" />
+    </Set>
+    <Set Name="遗忘者套装">
+        <ItemRef ID="100558" Type="foot" Name="遗忘者重靴" />
+        <ItemRef ID="100554" Type="head" Name="遗忘者头盔" />
+        <ItemRef ID="100557" Type="waist" Name="遗忘者腰带" />
+    </Set>
+    <Set Name="野战套装">
+        <ItemRef ID="100189" Type="foot" Name="野战履带" />
+        <ItemRef ID="100186" Type="head" Name="野战头盔" />
+        <ItemRef ID="100188" Type="waist" Name="野战弹夹" />
+    </Set>
+    <Set Name="金狮套装">
+        <ItemRef ID="1300325" Type="foot" Name="金狮圣靴" />
+        <ItemRef ID="1300323" Type="hand" Name="金狮圣甲" />
+        <ItemRef ID="1300322" Type="head" Name="金狮头盔" />
+        </Set>
+    <Set Name="金色托鲁克套装">
+        <ItemRef ID="1300227" Type="foot" Name="金色托鲁克战靴" />
+        <ItemRef ID="1300224" Type="head" Name="金色托鲁克头盔" />
+        <ItemRef ID="1300226" Type="waist" Name="金色托鲁克腰带" />
+    </Set>
+    <Set Name="钢爪套装">
+        <ItemRef ID="100289" Type="foot" Name="钢爪战靴" />
+        <ItemRef ID="100287" Type="hand" Name="钢爪笼手" />
+        <ItemRef ID="100286" Type="head" Name="钢爪兜帽" />
+    </Set>
+    <Set Name="钢特拉套装">
+        <ItemRef ID="100307" Type="eye" Name="钢特拉面具" />
+        <ItemRef ID="100310" Type="foot" Name="钢特拉战靴" />
+        <ItemRef ID="100306" Type="head" Name="钢特拉头盔" />
+        <ItemRef ID="100309" Type="waist" Name="钢特拉腰甲" />
+    </Set>
+    <Set Name="钢铁炮手套装">
+        <ItemRef ID="1300379" Type="foot" Name="钢铁炮手重靴" />
+        <ItemRef ID="1300376" Type="head" Name="钢铁炮手战盔" />
+        <ItemRef ID="1300378" Type="waist" Name="钢铁炮手腰带" />
+    </Set>
+    <Set Name="铁打套装">
+        <ItemRef ID="100921" Type="foot" Name="铁打重靴" />
+        <ItemRef ID="100919" Type="hand" Name="铁打手臂" />
+        <ItemRef ID="100917" Type="head" Name="铁打头盔" />
+        <ItemRef ID="100920" Type="waist" Name="铁打腰带" />
+    </Set>
+    <Set Name="银旋风套装">
+        <ItemRef ID="100948" Type="foot" Name="银旋风战靴" />
+        <ItemRef ID="100945" Type="head" Name="银旋风战盔" />
+        <ItemRef ID="100947" Type="waist" Name="银旋风腰带" />
+    </Set>
+    <Set Name="银白兵装套装">
+        <ItemRef ID="1300729" Type="hand" Name="银白兵装护手" />
+        <ItemRef ID="1300728" Type="head" Name="银白兵装头盔" />
+        <ItemRef ID="1300730" Type="waist" Name="银白兵装腰带" />
+    </Set>
+    <Set Name="银翼套装">
+        <ItemRef ID="100341" Type="foot" Name="银翼重靴" />
+        <ItemRef ID="100339" Type="hand" Name="银翼双剑" />
+        <ItemRef ID="100338" Type="head" Name="银翼头盔" />
+        <ItemRef ID="100340" Type="waist" Name="银翼腰带" />
+    </Set>
+    <Set Name="锡蝶套装">
+        <ItemRef ID="100353" Type="foot" Name="锡蝶滚轮" />
+        <ItemRef ID="100351" Type="hand" Name="锡蝶护肩" />
+        <ItemRef ID="100350" Type="head" Name="锡蝶重盔" />
+        <ItemRef ID="100352" Type="waist" Name="锡蝶腰带" />
+    </Set>
+    <Set Name="闪光勇士套装">
+        <ItemRef ID="100099" Type="foot" Name="闪光勇士战靴" />
+        <ItemRef ID="100096" Type="head" Name="闪光勇士战盔" />
+        <ItemRef ID="100098" Type="waist" Name="闪光勇士护腰" />
+    </Set>
+    <Set Name="闪冰套装">
+        <ItemRef ID="100826" Type="foot" Name="闪冰战靴" />
+        <ItemRef ID="100822" Type="head" Name="闪冰战盔" />
+        <ItemRef ID="100825" Type="waist" Name="闪冰腰带" />
+    </Set>
+    <Set Name="阳光套装">
+        <ItemRef ID="100249" Type="foot" Name="阳光战靴" />
+        <ItemRef ID="100247" Type="hand" Name="阳光肩甲" />
+        <ItemRef ID="100246" Type="head" Name="阳光头盔" />
+        <ItemRef ID="100248" Type="waist" Name="阳光腰带" />
+    </Set>
+    <Set Name="集训套装">
+        <ItemRef ID="100211" Type="eye" Name="集训面罩" />
+        <ItemRef ID="100214" Type="foot" Name="集训鞋" />
+        <ItemRef ID="100210" Type="head" Name="集训头盔" />
+        <ItemRef ID="100213" Type="waist" Name="集训腰带" />
+    </Set>
+    <Set Name="雪雷套装">
+        <ItemRef ID="100574" Type="foot" Name="雪雷重靴" />
+        <ItemRef ID="100570" Type="head" Name="雪雷头盔" />
+        <ItemRef ID="100573" Type="waist" Name="雪雷腰带" />
+    </Set>
+    <Set Name="零度套装">
+        <ItemRef ID="1300833" Type="foot" Name="零度战靴" />
+        <ItemRef ID="1300830" Type="head" Name="零度战盔" />
+        <ItemRef ID="1300832" Type="waist" Name="零度腰带" />
+    </Set>
+    <Set Name="雷旋风套装">
+        <ItemRef ID="1300040" Type="foot" Name="雷旋风战靴" />
+        <ItemRef ID="1300037" Type="head" Name="雷旋风战盔" />
+        <ItemRef ID="1300039" Type="waist" Name="雷旋风腰带" />
+    </Set>
+    <Set Name="霸天圣装套装">
+        <ItemRef ID="1300733" Type="hand" Name="霸天圣装护手" />
+        <ItemRef ID="1300732" Type="head" Name="霸天圣装头盔" />
+        <ItemRef ID="1300734" Type="waist" Name="霸天圣装护腰" />
+    </Set>
+    <Set Name="青旋风套装">
+        <ItemRef ID="100912" Type="foot" Name="青旋风战靴" />
+        <ItemRef ID="100909" Type="head" Name="青旋风战盔" />
+        <ItemRef ID="100911" Type="waist" Name="青旋风腰带" />
+    </Set>
+    <Set Name="青龙先锋套装">
+        <ItemRef ID="100976" Type="foot" Name="青龙先锋圣靴" />
+        <ItemRef ID="100973" Type="head" Name="青龙先锋圣盔" />
+        <ItemRef ID="100975" Type="waist" Name="青龙先锋腰甲" />
+    </Set>
+    <Set Name="青龙守卫套装">
+        <ItemRef ID="100972" Type="foot" Name="青龙守卫圣靴" />
+        <ItemRef ID="100969" Type="head" Name="青龙守卫圣盔" />
+        <ItemRef ID="100971" Type="waist" Name="青龙守卫腰甲" />
+    </Set>
+    <Set Name="骷髅套装">
+        <ItemRef ID="100218" Type="foot" Name="骷髅战靴" />
+        <ItemRef ID="100216" Type="hand" Name="骷髅肩甲" />
+        <ItemRef ID="100215" Type="head" Name="骷髅头盔" />
+        <ItemRef ID="100217" Type="waist" Name="骷髅护腰" />
+    </Set>
+    <Set Name="魔神恐惧套装">
+        <ItemRef ID="1300428" Type="foot" Name="魔神恐惧战靴" />
+        <ItemRef ID="1300426" Type="hand" Name="魔神恐惧护手" />
+        <ItemRef ID="1300425" Type="head" Name="魔神恐惧战盔" />
+    </Set>
+    <Set Name="黄蜂套装">
+        <ItemRef ID="1300086" Type="foot" Name="黄蜂战靴" />
+        <ItemRef ID="1300083" Type="head" Name="黄蜂战盔" />
+        <ItemRef ID="1300085" Type="waist" Name="黄蜂腰带" />
+    </Set>
+    <Set Name="黄金玄武套装">
+        <ItemRef ID="1300197" Type="foot" Name="黄金玄武圣靴" />
+        <ItemRef ID="1300194" Type="head" Name="黄金玄武圣盔" />
+        <ItemRef ID="1300196" Type="waist" Name="黄金玄武腰甲" />
+    </Set>
+    <Set Name="黄金白虎套装">
+        <ItemRef ID="1300278" Type="foot" Name="黄金白虎圣靴" />
+        <ItemRef ID="1300275" Type="head" Name="黄金白虎圣盔" />
+        <ItemRef ID="1300277" Type="waist" Name="黄金白虎腰甲" />
+    </Set>
+    <Set Name="黄金青龙套装">
+        <ItemRef ID="100980" Type="foot" Name="黄金青龙圣靴" />
+        <ItemRef ID="100977" Type="head" Name="黄金青龙圣盔" />
+        <ItemRef ID="100979" Type="waist" Name="黄金青龙腰甲" />
+    </Set>
+    <Set Name="黑暗套装">
+        <ItemRef ID="100578" Type="eye" Name="黑暗面具" />
+        <ItemRef ID="100581" Type="foot" Name="黑暗战靴" />
+        <ItemRef ID="100577" Type="head" Name="黑暗头盔" />
+        <ItemRef ID="100580" Type="waist" Name="黑暗腰带" />
+    </Set>
+    <Set Name="黑月套装">
+        <ItemRef ID="100553" Type="foot" Name="黑月重靴" />
+        <ItemRef ID="100549" Type="head" Name="黑月头盔" />
+        <ItemRef ID="100552" Type="waist" Name="黑月腰带" />
+    </Set>
+    <Set Name="黑武士套装">
+        <ItemRef ID="100019" Type="foot" Name="黑武士靴" />
+        <ItemRef ID="100016" Type="head" Name="黑武士头盔" />
+        <ItemRef ID="100018" Type="waist" Name="黑武士腰带" />
+    </Set>
+    <Set Name="黑焰套装">
+        <ItemRef ID="100259" Type="eye" Name="黑焰面罩" />
+        <ItemRef ID="100255" Type="head" Name="黑焰头盔" />
+        <ItemRef ID="100257" Type="waist" Name="黑焰弹夹" />
+    </Set>
+    <Set Name="龙旋风套装">
+        <ItemRef ID="100984" Type="foot" Name="龙旋风战靴" />
+        <ItemRef ID="100981" Type="head" Name="龙旋风战盔" />
+        <ItemRef ID="100983" Type="waist" Name="龙旋风腰带" />
+    </Set>
+    <Set Name="龙炎套装">
+        <ItemRef ID="100449" Type="eye" Name="龙炎面罩" />
+        <ItemRef ID="100888" Type="eye" Name="龙炎面罩" />
+        <ItemRef ID="100452" Type="foot" Name="龙炎战靴" />
+        <ItemRef ID="100891" Type="foot" Name="龙炎战靴" />
+        <ItemRef ID="100448" Type="head" Name="龙炎战盔" />
+        <ItemRef ID="100887" Type="head" Name="龙炎战盔" />
+    </Set>
+</ItemSets>

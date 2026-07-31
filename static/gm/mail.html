@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>尼尔号 GM · 邮件</title>
+  <link rel="stylesheet" href="/common.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1><span class="brand-mark"></span>尼尔号 GM</h1>
+    <div class="top-meta"><span id="who"></span><a href="#" onclick="logout();return false">退出</a></div>
+  </header>
+  <div class="layout">
+    <nav><div class="nav-title">MODULES</div><div id="gm-nav"></div></nav>
+    <main>
+      <section class="card">
+        <h2>发送邮件</h2>
+        <div class="row">
+          <label>范围</label>
+          <select id="scope"><option value="one">指定玩家</option><option value="all">全服</option></select>
+          <label>UID</label><input id="uid" type="number" />
+        </div>
+        <div class="row"><label>标题</label><input class="wide" id="title" placeholder="邮件标题" /></div>
+        <div class="row"><label>正文</label><input class="wide" id="content" placeholder="正文" /></div>
+        <p class="hint">附件：P3 落地后支持道具/精灵 JSON；当前骨架仅预留字段</p>
+        <div class="row"><label>奖励JSON</label><input class="wide" id="rewards" placeholder='{"coins":1000,"items":[{"id":300001,"count":1}]}' /></div>
+        <button type="button" data-perm="mail.send" onclick="sendMail()">发送</button>
+        <div class="msg" id="msg"></div>
+      </section>
+    </main>
+  </div>
+  <script src="/common.js"></script>
+  <script>
+    (async () => { await ensureAuth(); renderShell('mail'); })();
+    document.getElementById('scope').onchange = () => {
+      document.getElementById('uid').disabled = document.getElementById('scope').value === 'all';
+    };
+    async function sendMail() {
+      const broadcast = document.getElementById('scope').value === 'all';
+      const uid = +document.getElementById('uid').value || 0;
+      if (broadcast && !dangerConfirm('向全服发送邮件（高危）')) return;
+      let rewards = null;
+      const raw = document.getElementById('rewards').value.trim();
+      if (raw) { try { rewards = JSON.parse(raw); } catch (e) { alert('奖励 JSON 无效'); return; } }
+      const j = await postJSON('/api/mail/send', {
+        uid: broadcast ? 0 : uid,
+        broadcast,
+        title: document.getElementById('title').value,
+        content: document.getElementById('content').value,
+        rewards,
+        confirm: true,
+      });
+      document.getElementById('msg').textContent = j.ok ? '已发送' : (j.error || '接口未落地');
+      document.getElementById('msg').className = 'msg ' + (j.ok ? 'ok' : 'err');
+    }
+  </script>
+</body>
+</html>
